@@ -3,432 +3,849 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CV — Nairo Samir Boom Vargas</title>
+  <title>Portafolio — Nairo Samir Boom Vargas</title>
+  <meta name="description" content="Portafolio detallado de Nairo Samir Boom Vargas — Desarrollador Fullstack (PrestaShop, PHP, Node.js, Angular, DevOps)" />
 
-  <!-- Fuente + Iconos -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer">
+
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class', /* dark mode por clase */
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(2,6,23,0.12)'
+          }
+        }
+      }
+    }
+  </script>
 
   <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
   <style>
-    :root{
-      --bg: #0b1220;
-      --paper: #0e1726;
-      --ink: #e6eefc;
-      --muted:#9bb3d6;
-      --acc: #6aa6ff;
-      --pill: #14213d;
-      --line:#20304a;
-      --card:#111b2f;
+    html { scroll-behavior: smooth; }
+    .gradient-text { background: linear-gradient(90deg, #60a5fa, #22d3ee); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .card-hover { transition: transform .25s ease, box-shadow .25s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(2,6,23,.12); }
+    .prose-title { letter-spacing: -0.02em; }
+
+    /* Pill/tag sin @apply (funciona con CDN) */
+    .tag{
+      display:inline-flex; align-items:center;
+      padding:.125rem .625rem; /* py-0.5 px-2.5 */
+      border-radius:.375rem;   /* rounded-md */
+      font-size:.75rem; line-height:1; font-weight:600; /* text-xs font-medium */
+      background:#eff6ff; color:#1d4ed8; border:1px solid #dbeafe;
     }
-    body.theme-light{
-      --bg:#f3f7ff; --paper:#ffffff; --ink:#0d1b2a; --muted:#475569; --acc:#0b5fff; --pill:#eef3ff; --line:#e6eefc; --card:#ffffff;
+    .dark .tag{
+      background: rgba(30,58,138,.15);
+      color:#bfdbfe;
+      border-color:#334155;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--ink);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
+    /* Ajustes suaves para modo oscuro sin romper layout */
+    .dark .bg-white { background-color:#0f172a !important; }
+    .dark .border-slate-200, .dark .border-slate-300 { border-color:#334155 !important; }
+    .dark .text-slate-700, .dark .text-slate-800 { color:#e5e7eb !important; }
 
-    /* Layout */
-    .wrap{max-width:1100px;margin:auto;padding:24px}
-    .sheet{
-      background:var(--paper);
-      border:1px solid var(--line);
-      border-radius:22px;
-      box-shadow:0 20px 60px rgba(0,0,0,.25);
-      overflow:hidden;
+    /* Overlay de cielo para transición amanecer/anochecer */
+    #theme-sky{ position:fixed; inset:0; pointer-events:none; z-index:50; }
+    #theme-sky .layer{ position:absolute; inset:0; opacity:0; }
+    /* Amanecer cálido (para ir a claro) */
+    #theme-sky .dawn{
+      background:
+        radial-gradient(120% 120% at 50% 120%, rgba(255,194,120,.35), transparent 60%),
+        linear-gradient(180deg, rgba(255,244,230,.7), rgba(255,255,255,0));
     }
-    header.header{
-      display:grid; grid-template-columns: 140px 1fr auto; gap:24px;
-      padding:28px 28px 0 28px;
+    /* Anochecer frío (para ir a oscuro) */
+    #theme-sky .dusk{
+      background:
+        radial-gradient(120% 120% at 50% -20%, rgba(255,184,120,.25), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0), rgba(2,6,23,.75));
     }
-    .avatar{
-      width:140px; height:140px; border-radius:16px;
-      background:linear-gradient(135deg, #1e293b, #0b5fff);
-      display:grid; place-items:center; font-size:48px; font-weight:800; color:white;
-      border:1px solid var(--line);
-    }
-    .title h1{margin:0 0 6px; font-size:32px; line-height:1.1}
-    .title .role{color:var(--muted); font-weight:600}
-    .actions{display:flex; gap:10px; align-items:start}
-    .btn{
-      border:1px solid var(--line); background:var(--card); color:var(--ink);
-      padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:700;
-    }
-    .btn i{margin-right:.5rem}
-    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgba(0,0,0,.18)}
-    .btn-acc{border-color:transparent; background:var(--acc); color:white}
-    .btn-ghost{background:transparent}
-
-    /* Barra de navegación */
-    .nav{
-      display:flex; gap:12px; padding:16px 28px 22px; border-bottom:1px solid var(--line); flex-wrap:wrap
-    }
-    .nav a{
-      color:var(--muted); text-decoration:none; padding:8px 12px;
-      border-radius:10px; border:1px solid transparent; font-weight:700
-    }
-    .nav a:hover, .nav a.is-active{color:var(--ink); border-color:var(--line); background:var(--card)}
-
-    /* Cuerpo */
-    .content{display:grid; grid-template-columns: 300px 1fr; gap:26px; padding:26px; }
-    .sidebar{display:flex; flex-direction:column; gap:22px}
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:16px; padding:18px 18px 16px;
-    }
-    .card h3{margin:0 0 12px; font-size:15px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
-    .card p{margin:.25rem 0 .5rem; color:var(--ink)}
-
-    .main{display:flex; flex-direction:column; gap:22px}
-    .section{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px}
-    .section h2{margin:0 0 12px; font-size:20px}
-    .section .lead{color:var(--muted)}
-    .grid{display:grid; gap:14px}
-
-    /* Píldoras */
-    .pill{display:inline-flex; gap:8px; align-items:center; font-weight:700; color:var(--ink);
-      background:var(--pill); border:1px solid var(--line); padding:8px 12px; border-radius:999px; margin:4px 6px 0 0}
-    .pill i{opacity:.8}
-
-    /* Experiencia */
-    .xp{display:grid; grid-template-columns: 90px 1fr; gap:16px; padding:14px; border:1px solid var(--line); border-radius:14px}
-    .xp time{color:var(--muted); font-weight:700}
-    .xp h4{margin:2px 0 4px}
-    .xp .meta{color:var(--muted); font-size:.95rem}
-    .xp .tags{margin-top:8px}
-    .xp .desc{color:var(--ink); margin-top:8px}
-    .xp .desc .more{display:none}
-    .xp .toggle{margin-top:8px}
-    .toggle a{color:var(--acc); text-decoration:none; font-weight:800}
-    .toggle a:hover{text-decoration:underline}
-
-    /* Educación */
-    .edu-item{display:grid; grid-template-columns: 120px 1fr; gap:14px; padding:12px; border:1px dashed var(--line); border-radius:12px}
-
-    /* Footer */
-    footer{padding:10px 26px 26px; color:var(--muted); font-size:.9rem}
-
-    /* Responsive */
-    @media (max-width: 980px){
-      header.header{grid-template-columns: 100px 1fr; align-items:center}
-      .avatar{width:100px;height:100px}
-      .actions{grid-column:1 / -1}
-      .content{grid-template-columns: 1fr}
-      .nav{position:sticky; top:0; background:var(--paper); z-index:10}
-    }
-
-    /* Print */
-    @media print{
-      body{background:white}
-      .wrap{padding:0}
-      .sheet{border:none; box-shadow:none}
-      .nav,.actions,.toggle{display:none !important}
-      .content{grid-template-columns: 1fr 1fr}
-      a{color:inherit; text-decoration:none}
-    }
+    @keyframes dawn { 0%{opacity:0} 30%{opacity:.8} 100%{opacity:0} }
+    @keyframes dusk { 0%{opacity:0} 30%{opacity:.85} 100%{opacity:0} }
+    body.theming-light #theme-sky .dawn{ animation: dawn 800ms ease forwards; }
+    body.theming-dark  #theme-sky .dusk{ animation: dusk 800ms ease forwards; }
   </style>
 </head>
-<body class="theme-light">
-  <div class="wrap">
-    <div class="sheet">
-      <!-- Header -->
-      <header class="header">
-        <div class="avatar" aria-hidden="true">NB</div>
-        <div class="title">
-          <h1>Nairo Samir Boom Vargas</h1>
-          <div class="role">Desarrollador Fullstack</div>
-        </div>
-        <div class="actions">
-          <button id="btnTheme" class="btn"><i class="fa-solid fa-circle-half-stroke"></i>Tema</button>
-          <button id="btnPrint" class="btn btn-ghost"><i class="fa-solid fa-print"></i>Imprimir</button>
-          <a href="#contacto" class="btn btn-acc"><i class="fa-solid fa-paper-plane"></i>Contactar</a>
-        </div>
-      </header>
 
-      <!-- Nav -->
-      <nav class="nav">
-        <a href="#acerca">Acerca de</a>
-        <a href="#habilidades">Habilidades</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#educacion">Educación</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-
-      <!-- Body -->
-      <div class="content">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-          <div class="card" id="contacto">
-            <h3>Contacto</h3>
-            <p><i class="fa-solid fa-location-dot"></i> Bogotá D.C., Colombia</p>
-            <p><i class="fa-solid fa-envelope"></i> nairo.boom@example.com</p>
-            <p><i class="fa-brands fa-linkedin"></i> linkedin.com/in/nairoboom</p>
-            <p><i class="fa-brands fa-github"></i> github.com/nairoboom</p>
-          </div>
-
-          <div class="card">
-            <h3>Stack clave</h3>
-            <div class="tags">
-              <span class="pill"><i class="fa-brands fa-php"></i>PHP (OOP)</span>
-              <span class="pill"><i class="fa-brands fa-node-js"></i>Node.js</span>
-              <span class="pill"><i class="fa-solid fa-feather-pointed"></i>Symfony</span>
-              <span class="pill"><i class="fa-brands fa-python"></i>Python</span>
-              <span class="pill"><i class="fa-solid fa-g"></i>Golang</span>
-              <span class="pill"><i class="fa-brands fa-angular"></i>Angular</span>
-              <span class="pill"><i class="fa-brands fa-react"></i>React</span>
-              <span class="pill"><i class="fa-brands fa-js"></i>TypeScript</span>
-              <span class="pill"><i class="fa-brands fa-jquery"></i>jQuery</span>
-              <span class="pill"><i class="fa-solid fa-store"></i>PrestaShop 1.6/1.7</span>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Bases de datos & DevOps</h3>
-            <div class="tags">
-              <span class="pill"><i class="fa-solid fa-database"></i>MySQL</span>
-              <span class="pill"><i class="fa-solid fa-database"></i>PostgreSQL</span>
-              <span class="pill"><i class="fa-brands fa-linux"></i>Linux (Nginx/Apache)</span>
-              <span class="pill"><i class="fa-solid fa-cloud"></i>Cloudflare</span>
-              <span class="pill"><i class="fa-solid fa-gears"></i>Ansible</span>
-              <span class="pill"><i class="fa-brands fa-apple"></i>Xcode / iOS</span>
-              <span class="pill"><i class="fa-brands fa-ionic"></i>Ionic</span>
-              <span class="pill"><i class="fa-solid fa-plug"></i>REST / SOAP</span>
-            </div>
-          </div>
-        </aside>
-
-        <!-- Main -->
-        <main class="main">
-          <section class="section" id="acerca">
-            <h2>Acerca de</h2>
-            <p class="lead">
-              Soy desarrollador web y móvil con más de 8 años de experiencia, sobre todo trabajando con PrestaShop 1.6 y 1.7.
-              Me siento cómodo en el back-end con PHP, Node.js, Symfony, Python, Golang, Asp.net, Bash y en el front-end con Angular, React, TypeScript, Elixir o jQuery.
-            </p>
-            <p>
-              He trabajado en proyectos de todo tipo: webs corporativas, tiendas online completas y apps híbridas con Ionic. También tengo experiencia con MySQL y Postgres, y administrando servidores Linux con Nginx y Apache.
-              Lo que más disfruto es crear soluciones que funcionen bien y hagan la vida más fácil al usuario.
-            </p>
-          </section>
-
-          <section class="section" id="habilidades">
-            <h2>Habilidades destacadas</h2>
-            <div class="tags">
-              <span class="pill">PHP (OOP)</span>
-              <span class="pill">PrestaShop 1.6/1.7</span>
-              <span class="pill">Node.js</span>
-              <span class="pill">Symfony</span>
-              <span class="pill">Python</span>
-              <span class="pill">Golang</span>
-              <span class="pill">ASP.NET</span>
-              <span class="pill">Bash</span>
-              <span class="pill">Angular</span>
-              <span class="pill">React</span>
-              <span class="pill">TypeScript</span>
-              <span class="pill">Elixir</span>
-              <span class="pill">jQuery</span>
-              <span class="pill">MySQL</span>
-              <span class="pill">PostgreSQL</span>
-              <span class="pill">Linux (Nginx/Apache)</span>
-              <span class="pill">Cloudflare</span>
-              <span class="pill">Ansible</span>
-              <span class="pill">Ionic</span>
-              <span class="pill">Xcode / iOS</span>
-              <span class="pill">REST</span>
-              <span class="pill">SOAP</span>
-            </div>
-          </section>
-
-          <section class="section" id="experiencia">
-            <h2>Experiencia</h2>
-            <div class="grid">
-
-              <!-- Farmalisto Senior -->
-              <article class="xp">
-                <time>jun. 2024 – Actualidad</time>
-                <div>
-                  <h4>Ingeniero de Desarrollo Web Senior — Farmalisto</h4>
-                  <div class="meta">Remoto · Distrito Capital, Colombia</div>
-                  <div class="tags">
-                    <span class="pill">Go</span>
-                    <span class="pill">NestJS</span>
-                  </div>
-                  <div class="desc">
-                    <p>Responsable de desarrollo y evolución de plataformas de e-commerce/servicios, trabajando con Go y NestJS, buenas prácticas y enfoque en performance y mantenibilidad.</p>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Farmalisto Semi Senior -->
-              <article class="xp">
-                <time>jun. 2019 – may. 2024</time>
-                <div>
-                  <h4>Desarrollador Web Semi Senior — Farmalisto</h4>
-                  <div class="meta">Bogotá, Distrito Capital, Colombia</div>
-                  <div class="tags">
-                    <span class="pill">PHP OOP</span><span class="pill">Node.js</span><span class="pill">Smarty</span>
-                    <span class="pill">Symfony</span><span class="pill">jQuery</span><span class="pill">HTML5</span>
-                    <span class="pill">Angular</span><span class="pill">Bootstrap</span><span class="pill">MySQL</span>
-                    <span class="pill">Linux</span><span class="pill">Ansible</span><span class="pill">Cloudflare</span>
-                    <span class="pill">REST</span><span class="pill">SOAP</span><span class="pill">Ionic</span><span class="pill">Xcode/iOS</span>
-                  </div>
-                  <div class="desc">
-                    <p>
-                      Desarrollo y mantenimiento de proyectos web y mobile: sitios, aplicaciones existentes y entregas a producción.
-                      Diseño/optimización de bases de datos MySQL; validaciones y seguridad (prevención de inyecciones).
-                      Aprovisionamiento y automatización en Linux (VPS) con Ansible; CDN y reglas de seguridad en Cloudflare.
-                      Integración de APIs REST y SOAP con documentación clara. Desarrollo de apps híbridas con Ionic y procesos de firma iOS con Xcode.
-                    </p>
-                    <p class="more">
-                      Además, participación en revisiones de código, soporte a equipos y foco en código claro, escalable y mantenible.
-                    </p>
-                    <div class="toggle"><a href="#" class="js-more">Ver más</a></div>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Junior -->
-              <article class="xp">
-                <time>may. 2017 – jun. 2019</time>
-                <div>
-                  <h4>Desarrollador Web Junior — Farmalisto</h4>
-                  <div class="meta">Bogotá, Distrito Capital, Colombia</div>
-                  <div class="desc">
-                    <p>Soporte y desarrollo de funcionalidades web; fortalecimiento de bases en front y back, trabajo en equipo y entrega continua.</p>
-                  </div>
-                </div>
-              </article>
-
-              <!-- CDI Interactive -->
-              <article class="xp">
-                <time>mar. 2016 – may. 2017</time>
-                <div>
-                  <h4>Analista de Base de Datos — CDI Interactive</h4>
-                  <div class="meta">Bogotá, Distrito Capital, Colombia</div>
-                  <div class="tags">
-                    <span class="pill">PHP (MVC)</span><span class="pill">jQuery</span><span class="pill">JSON</span>
-                    <span class="pill">MySQL</span><span class="pill">SQL</span><span class="pill">HTML/CSS/JS</span>
-                  </div>
-                  <div class="desc">
-                    <p>
-                      Desarrollo en PHP orientado a objetos (patrón MVC, uso de Singleton según proyecto).
-                      Soporte SQL, análisis de incidencias y paso a producción. Acompañamiento a pruebas funcionales.
-                    </p>
-                    <p class="more">
-                      Proyectos para cuentas como Michelin Colombia; documentación y diagnóstico de carencias de sistemas, proponiendo soluciones técnicas.
-                    </p>
-                    <div class="toggle"><a href="#" class="js-more">Ver más</a></div>
-                  </div>
-                </div>
-              </article>
-
-            </div>
-          </section>
-
-          <section class="section" id="educacion">
-            <h2>Educación</h2>
-            <div class="grid">
-              <div class="edu-item">
-                <time>2017 – 2023</time>
-                <div><strong>UNIMINUTO</strong> — Ingeniería de Sistemas</div>
-              </div>
-              <div class="edu-item">
-                <time>2023</time>
-                <div><strong>UNIMINUTO</strong> — Diplomado SecDevOps</div>
-              </div>
-              <div class="edu-item">
-                <time>2023</time>
-                <div><strong>UNIMINUTO</strong> — Certificación AWS Academy Cloud Foundations</div>
-              </div>
-              <div class="edu-item">
-                <time>2023</time>
-                <div><strong>UNIMINUTO</strong> — Certificación DevNet Associate</div>
-              </div>
-              <div class="edu-item">
-                <time>2011 – 2014</time>
-                <div><strong>UNIMINUTO</strong> — Tecnología en Informática</div>
-              </div>
-              <div class="edu-item">
-                <time>2014</time>
-                <div><strong>UNIMINUTO</strong> — Diplomado Telecomunicaciones Móviles</div>
-              </div>
-            </div>
-          </section>
-        </main>
-      </div>
-
-      <footer>
-        © <span id="year"></span> Nairo Samir Boom Vargas — CV generado con HTML + CSS + jQuery.
-      </footer>
-    </div>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
+  <!-- Overlay de transición de tema -->
+  <div id="theme-sky" aria-hidden="true">
+    <div class="layer dawn"></div>
+    <div class="layer dusk"></div>
   </div>
 
+  <!-- Header fijo -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/70 border-b border-slate-200/60 dark:border-slate-700/60">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#inicio" class="font-extrabold text-lg tracking-tight text-slate-900 dark:text-white">Nairo Samir <span class="text-brand-600">Boom Vargas</span></a>
+        <nav class="hidden md:flex gap-6 text-sm font-medium">
+          <a href="#acerca" class="hover:text-brand-700 dark:hover:text-brand-300">Acerca de</a>
+          <a href="#experiencia" class="hover:text-brand-700 dark:hover:text-brand-300">Experiencia</a>
+          <a href="#stack" class="hover:text-brand-700 dark:hover:text-brand-300">Stack</a>
+          <a href="#servicios" class="hover:text-brand-700 dark:hover:text-brand-300">Servicios</a>
+          <a href="#educacion" class="hover:text-brand-700 dark:hover:text-brand-300">Educación</a>
+          <a href="#contacto" class="hover:text-brand-700 dark:hover:text-brand-300">Contacto</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <!-- Toggle de tema -->
+          <button id="theme-toggle"
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-600 px-3 py-2 text-sm font-semibold
+                   bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700
+                   text-slate-700 dark:text-slate-100 shadow-sm transition-colors"
+            aria-label="Cambiar tema">
+            <!-- Ícono de luna (CLARO) -->
+            <svg class="h-4 w-4 block dark:hidden icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+            <!-- Ícono de sol (OSCURO) -->
+            <svg class="h-4 w-4 hidden dark:block icon-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 14.32l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM12 4V1h0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zM19.16 6.76l1.42-1.42 1.8 1.79-1.41 1.41-1.81-1.78zM12 6a6 6 0 100 12 6 6 0 000-12z"/>
+            </svg>
+            <span class="hidden sm:inline">Tema</span>
+          </button>
+
+          <a href="#contacto" class="md:inline-flex hidden items-center gap-2 px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold shadow-soft hover:bg-brand-700">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12H2"/><path d="M15 5l7 7-7 7"/></svg>
+            Hablemos
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-brand-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800"></div>
+    <div class="max-w-6xl mx-auto px-4 pt-14 pb-10 md:pt-20 md:pb-16">
+      <div class="grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7">
+          <h1 class="prose-title text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
+            Nairo Samir Boom Vargas
+          </h1>
+          <p class="mt-3 text-xl font-semibold gradient-text">Desarrollador Fullstack</p>
+          <p class="mt-5 text-slate-700 dark:text-slate-200 leading-relaxed max-w-2xl">
+            Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>, <b>.Net</b> y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. 
+            Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <span class="tag">PrestaShop</span>
+            <span class="tag">PHP/Symfony</span>
+            <span class="tag">Node.js/NestJS</span>
+            <span class="tag">Golang</span>
+            <span class="tag">Angular/React</span>
+            <span class="tag">MySQL/Postgres</span>
+            <span class="tag">Cloudflare</span>
+            <span class="tag">Ansible</span>
+            <span class="tag">Ionic</span>
+          </div>
+          <div class="mt-8 flex items-center gap-3">
+            <a href="#experiencia" class="px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700">Ver experiencia</a>
+            <a href="#contacto" class="px-5 py-3 rounded-lg border border-slate-300 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400">Contactar</a>
+          </div>
+        </div>
+        <div class="md:col-span-5">
+          <div class="relative">
+            <div class="absolute -inset-1 bg-gradient-to-tr from-brand-300 to-cyan-300 rounded-2xl blur opacity-30"></div>
+            <div class="relative bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-soft border border-slate-200 dark:border-slate-700">
+              <div class="flex items-start gap-4">
+                <!-- Foto -->
+                <div class="h-24 w-24 overflow-hidden rounded-xl ring-1 ring-slate-200 dark:ring-slate-700 shrink-0">
+                  <img
+                    src="img/foto.jpeg"
+                    alt="Foto de Nairo"
+                    class="h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
+
+                <!-- Datos con iconos -->
+                <div class="text-sm">
+                  <p class="text-slate-500 dark:text-slate-400">Ubicación</p>
+                  <ul class="mt-1 space-y-1 text-slate-800 dark:text-slate-200">
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-location-dot text-slate-500 dark:text-slate-400 min-w-5 text-[18px]"></i>
+                      <span>Bogotá D.C., Colombia</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-envelope text-slate-500 dark:text-slate-400 min-w-5 text-[18px]"></i>
+                      <a href="mailto:nairo.boom@example.com" class="hover:text-brand-600 dark:hover:text-brand-300">
+                        nairoboom@gmail.com
+                      </a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-brands fa-github text-slate-500 dark:text-slate-400 min-w-5 text-[18px]"></i>
+                      <a href="https://github.com/nairoboom" target="_blank" rel="noopener"
+                        class="hover:text-brand-600 dark:hover:text-brand-300">
+                        github.com/nairoboom
+                      </a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-phone text-slate-500 dark:text-slate-400 min-w-5 text-[18px]"></i>
+                      <a href="tel:+573105788198" class="hover:text-brand-600 dark:hover:text-brand-300">
+                        +57 310 578 8198
+                      </a>
+                    </li>
+                  </ul>
+                  <p class="text-slate-500 dark:text-slate-400 mt-3">Disponibilidad</p>
+                  <p class="font-semibold">Remoto / Híbrido</p>
+                </div>
+              </div>
+
+              <div class="mt-4 border-t border-slate-200 dark:border-slate-700 pt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Me enfoco en soluciones mantenibles, rendimiento medible y automatización útil. Documentación mínima pero suficiente para que cualquier dev avance sin fricción.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Acerca de -->
+  <section id="acerca" class="py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Acerca de mí</h2>
+      <p class="mt-4 max-w-4xl leading-relaxed text-slate-700 dark:text-slate-200">
+        Soy desarrollador web y móvil con más de 8 años de experiencia. He trabajado en proyectos corporativos, tiendas online completas y apps híbridas. 
+        Fuerte en <b>PrestaShop</b>, sólido en back-end <b>PHP/Node.js/Golang</b> y front-end moderno. 
+        También administro <b>Linux</b> (Nginx/Apache), manejo bases de datos <b>MySQL/PostgreSQL</b> y orquesto despliegues con <b>Ansible</b>. 
+        Me gusta dejar las cosas mejor de como las encontré: refactors iterativos, medición de performance y seguridad sin fricción.
+      </p>
+    </div>
+  </section>
+
+  <!-- Experiencia -->
+  <section id="experiencia" class="py-12 md:py-16 bg-white dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Experiencia</h2>
+
+      <!-- Farmalisto Senior -->
+      <article class="mt-8 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
+        <div class="md:col-span-3">
+          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-xs font-bold text-slate-600 dark:text-slate-300">FL</span>
+          </div>
+          <h3 class="font-bold text-slate-900 dark:text-white">Farmalisto</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Ingeniero de Desarrollo Web <b>Senior</b></p>
+          <p class="text-sm text-slate-500 dark:text-slate-400">jun. 2024 – actualidad · Remoto (Bogotá)</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs">
+            <span class="tag">Go</span>
+            <span class="tag">NestJS</span>
+            <span class="tag">PHP/Symfony</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Cloudflare</span>
+          </div>
+        </div>
+        <div class="md:col-span-9 space-y-3">
+          <p class="leading-relaxed">
+            Desarrollo de <b>servicios y APIs</b> con <b>Go</b> y <b>NestJS</b>, refactor de módulos críticos (precios, stock, promociones), integraciones con servicios internos/terceros y mejoras de rendimiento a nivel de app, edge y base de datos.
+          </p>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li>Endpoints REST con contratos estables, manejo de errores y observabilidad básica.</li>
+            <li>Refactors incrementales que reducen deuda técnica y evitan regresiones.</li>
+            <li>Optimización de latencia: cacheo multicapa, SQL tuning y paginaciones correctas.</li>
+            <li>Code reviews, patrones consistentes y tests puntuales en zonas de riesgo.</li>
+            <li>Despliegues reproducibles con métricas mínimas post-release.</li>
+          </ul>
+          <p class="text-slate-600 dark:text-slate-300 text-sm">Resultado: APIs más predecibles, tiempos de respuesta menores y menos incidentes por validación insuficiente.</p>
+        </div>
+      </article>
+
+      <!-- Farmalisto Semi Senior -->
+      <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
+        <div class="md:col-span-3">
+          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-xs font-bold text-slate-600 dark:text-slate-300">FL</span>
+          </div>
+          <h3 class="font-bold text-slate-900 dark:text-white">Farmalisto</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Desarrollador Web <b>Semi Senior</b></p>
+          <p class="text-sm text-slate-500 dark:text-slate-400">jun. 2019 – may. 2024 · Bogotá</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs">
+            <span class="tag">PrestaShop 1.6/1.7</span>
+            <span class="tag">PHP OOP</span>
+            <span class="tag">Symfony</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Angular</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Linux (VPS)</span>
+            <span class="tag">Ansible</span>
+            <span class="tag">Cloudflare</span>
+            <span class="tag">REST/SOAP</span>
+            <span class="tag">Ionic</span>
+            <span class="tag">Xcode/iOS</span>
+          </div>
+        </div>
+        <div class="md:col-span-9 space-y-3">
+          <p class="leading-relaxed">
+            Desarrollo y mantenimiento de productos web end-to-end. Especial foco en <b>PrestaShop</b> (módulos, hooks, overrides, PUM, promociones), performance y seguridad; administración de servidores <b>Linux</b> (Nginx/Apache), automatización con <b>Ansible</b> y edge con <b>Cloudflare</b>.
+          </p>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li>Diseño/normalización de <b>MySQL</b>, índices, migraciones y backups programados.</li>
+            <li>Validaciones, sanitización y prevención <b>SQLi/XSS/CSRF</b>; roles y políticas de acceso.</li>
+            <li>Integraciones con <b>APIs REST</b> y <b>SOAP</b> + documentación práctica para terceros.</li>
+            <li>Automatización con <b>Ansible</b> para deploys repetibles y tareas crónicas.</li>
+            <li>Apps híbridas con <b>Ionic</b>; firma y entrega iOS con <b>Xcode</b>.</li>
+          </ul>
+          <p class="text-slate-600 dark:text-slate-300 text-sm">Resultado: menor fricción operativa, tiempos de carga mejores y menos bugs por entradas no validadas.</p>
+        </div>
+      </article>
+
+      <!-- Farmalisto Junior -->
+      <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
+        <div class="md:col-span-3">
+          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-xs font-bold text-slate-600 dark:text-slate-300">FL</span>
+          </div>
+          <h3 class="font-bold text-slate-900 dark:text-white">Farmalisto</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Desarrollador Web <b>Junior</b></p>
+          <p class="text-sm text-slate-500 dark:text-slate-400">may. 2017 – jun. 2019 · Bogotá</p>
+        </div>
+        <div class="md:col-span-9 space-y-3">
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li>Soporte correctivo/evolutivo en módulos y sitios existentes.</li>
+            <li>Maquetación, componentes UI y compatibilidad cross-browser.</li>
+            <li>Integraciones puntuales de APIs con guía de uso para equipos internos.</li>
+            <li>Adopción de <b>PHP OOP</b>, Git-flow y buenas prácticas de equipo.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- CDI Interactive -->
+      <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
+        <div class="md:col-span-3">
+          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/cdi.jpeg" alt="Logo Farmalisto"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-xs font-bold text-slate-600 dark:text-slate-300">FL</span>
+          </div>
+          <h3 class="font-bold text-slate-900 dark:text-white">CDI Interactive</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Analista de Base de Datos / Dev Web</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400">mar. 2016 – may. 2017 · Bogotá</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs">
+            <span class="tag">PHP (MVC)</span>
+            <span class="tag">jQuery</span>
+            <span class="tag">MySQL/SQL</span>
+            <span class="tag">HTML/CSS/JS</span>
+          </div>
+        </div>
+        <div class="md:col-span-9 space-y-3">
+          <p class="leading-relaxed">
+            Desarrollo PHP orientado a objetos bajo patrón <b>MVC</b>, soporte SQL, paso de desarrollo a producción y acompañamiento funcional a usuarios.
+          </p>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li>Consultas SQL para diagnóstico, reportes y soporte a negocio.</li>
+            <li>Implementación de patrones (p.ej., <b>Singleton</b> donde aplicaba).</li>
+            <li>Checklists de release y validaciones previas a producción.</li>
+            <li>Documentación técnica breve de módulos e integraciones.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Stack -->
+  <section id="stack" class="py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Tech Stack</h2>
+
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Back-end -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-server text-lg"></i>
+            </span>
+            <h3 class="font-bold">Back-end</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            PHP (OOP), Symfony, Node.js, NestJS, Golang, ASP.NET
+          </p>
+        </div>
+
+        <!-- Front-end -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-code text-lg"></i>
+            </span>
+            <h3 class="font-bold">Front-end</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Angular, React, TypeScript, jQuery, HTML5/CSS3
+          </p>
+        </div>
+
+        <!-- E-commerce -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-cart-shopping text-lg"></i>
+            </span>
+            <h3 class="font-bold">E-commerce</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            PrestaShop 1.6/1.7 (módulos, overrides, hooks, performance)
+          </p>
+        </div>
+
+        <!-- Bases de datos -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-database text-lg"></i>
+            </span>
+            <h3 class="font-bold">Bases de datos</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            MySQL, PostgreSQL (modelado, índices, tuning, backups)
+          </p>
+        </div>
+
+        <!-- Infra & DevOps -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-screwdriver-wrench text-lg"></i>
+            </span>
+            <h3 class="font-bold">Infra & DevOps</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Linux (Nginx/Apache), Ansible, Git, CI/CD básico
+          </p>
+        </div>
+
+        <!-- Seguridad & Edge -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-shield-halved text-lg"></i>
+            </span>
+            <h3 class="font-bold">Seguridad & Edge</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Cloudflare (CDN, WAF, Page Rules), OWASP básica
+          </p>
+        </div>
+
+        <!-- Mobile -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+            </span>
+            <h3 class="font-bold">Mobile</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Ionic/Capacitor, Xcode/iOS (firma, perfiles, subida)
+          </p>
+        </div>
+
+        <!-- APIs -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-code-branch text-lg"></i>
+            </span>
+            <h3 class="font-bold">APIs</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            REST y SOAP (contratos, versionado, errores)
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-12 md:py-16 bg-white dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Servicios</h2>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <!-- Tiendas PrestaShop -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-store text-lg"></i>
+            </span>
+            <h3 class="font-bold">Tiendas PrestaShop</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Módulos a medida, performance, SEO técnico, integraciones de pago/envío, PUM y promociones.
+          </p>
+        </div>
+
+        <!-- APIs & Servicios -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-diagram-project text-lg"></i>
+            </span>
+            <h3 class="font-bold">APIs & Servicios</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            REST/SOAP en Node.js/NestJS o Go, documentación clara y manejo de errores.
+          </p>
+        </div>
+
+        <!-- Bases de Datos -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-database text-lg"></i>
+            </span>
+            <h3 class="font-bold">Bases de Datos</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            Modelado, índices, afinamiento de consultas y planes de backup.
+          </p>
+        </div>
+
+        <!-- Infra y Automatización -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
+                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
+                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
+                        ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-gears text-lg"></i>
+            </span>
+            <h3 class="font-bold">Infra y Automatización</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+            VPS Linux, Nginx/Apache, Ansible, Cloudflare, pipelines de despliegue.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Educación -->
+  <section id="educacion" class="py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Educación & Certificaciones</h2>
+
+      <ul class="mt-6 space-y-3">
+        <!-- UNIMINUTO - Ing. Sistemas -->
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/logo_md.png" alt="Logo UNIMINUTO"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">UNI</span>
+          </div>
+          <span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Ingeniería de Sistemas (2017–2023)</span>
+        </li>
+
+        <!-- Diplomado SecDevOps -->
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/logo_md.png" alt="Logo UNIMINUTO"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">UNI</span>
+          </div>
+          <span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Diplomado SecDevOps (2023)</span>
+        </li>
+
+        <!-- AWS -->
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/aws.jpeg" alt="Logo AWS Academy"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">AWS</span>
+          </div>
+          <span class="text-slate-700 dark:text-slate-200"><b>AWS Academy</b> — Cloud Foundations (2023)</span>
+        </li>
+
+        <!-- DevNet -->
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/DevNet.png" alt="Logo DevNet"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">DN</span>
+          </div>
+          <span class="text-slate-700 dark:text-slate-200"><b>DevNet Associate</b> (2023)</span>
+        </li>
+
+        <!-- Tecnología e Informática -->
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/logo_md.png" alt="Logo UNIMINUTO"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">UNI</span>
+          </div>
+          <span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Tecnología en Informática (2011–2014)</span>
+        </li>
+
+        <!-- Telecomunicaciones móviles -->
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
+            <img src="img/logos/logo_md.png" alt="Logo UNIMINUTO"
+                class="h-full w-full object-contain object-center" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
+            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">UNI</span>
+          </div>
+          <span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Diplomado Telecomunicaciones Móviles (2014)</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- Contacto -->
+  <section id="contacto" class="py-12 md:py-16 bg-white dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Contacto</h2>
+          <p class="mt-3 text-slate-700 dark:text-slate-200">Envíame un correo, llámame o escríbeme al WhatsApp.</p>
+          <div class="mt-5 flex flex-wrap items-center gap-3">
+            <button id="btn-copy-mail" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" data-mail="nairoboom@gmail.com">Copiar e-mail</button>
+            <a class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" href="mailto:nairoboom@gmail.com">Escribir correo</a>
+            <a class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" href="https://wa.me/573105788198" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+        <form id="form-contacto"
+          action="https://formspree.io/f/mvgwrnnz"
+          method="POST"
+          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-soft">
+
+          <!-- Honeypot anti-spam opcional -->
+          <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Nombre</label>
+              <input type="text" name="name"
+                    class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600"
+                    placeholder="Tu nombre" required />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Correo</label>
+              <input type="email" name="email"
+                    class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600"
+                    placeholder="tucorreo@dominio.com" required />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Mensaje</label>
+              <textarea rows="4" name="message"
+                        class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600"
+                        placeholder="Cuéntame brevemente sobre tu proyecto" required></textarea>
+            </div>
+          </div>
+
+          <!-- Asunto personalizado opcional -->
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
+          <!-- Redirección opcional tras éxito -->
+          <!-- <input type="hidden" name="_next" value="https://tu-dominio.com/gracias.html"> -->
+
+          <button class="mt-4 w-full px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" type="submit">
+            Enviar
+          </button>
+          <p id="form-contacto-msg" class="mt-2 text-sm text-slate-600 dark:text-slate-300 hidden"></p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto px-4 text-sm text-slate-500 dark:text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2">
+      <p>© <span id="year"></span> Nairo Samir Boom Vargas · Desarrollador Fullstack</p>
+      <a href="#inicio" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-400 dark:hover:border-slate-600">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+        Volver arriba
+      </a>
+    </div>
+  </footer>
+
+  <!-- Interacciones con jQuery -->
   <script>
     $(function(){
-
       // Año dinámico
       $('#year').text(new Date().getFullYear());
 
-      // Smooth scroll + activo
-      const $links = $('.nav a');
-      const setActive = (hash) => {
-        $links.removeClass('is-active');
-        $links.filter(`[href="${hash}"]`).addClass('is-active');
-      };
-      $links.on('click', function(e){
-        e.preventDefault();
-        const id = $(this).attr('href');
-        $('html,body').animate({scrollTop: $(id).offset().top - 12}, 500);
-        setActive(id);
-        history.replaceState(null,null,id);
+      // Smooth scroll en nav (compensa header fijo)
+      $('a[href^="#"]').on('click', function(e){
+        const id = this.getAttribute('href');
+        if (!id || id === '#') return;
+        const $target = $(id);
+        if ($target.length){
+          e.preventDefault();
+          $('html, body').animate({ scrollTop: $target.offset().top - 72 }, 450);
+        }
       });
 
-      // Ver más / Ver menos
-      $('.js-more').on('click', function(e){
-        e.preventDefault();
-        const $wrap = $(this).closest('.desc');
-        const $more = $wrap.find('.more');
-        const open = $more.is(':visible');
-        $more.slideToggle(180);
-        $(this).text(open ? 'Ver más' : 'Ver menos');
-      });
-
-      // Tema (persistente)
-      const KEY = 'cv-theme';
-      const setTheme = t => $('body').toggleClass('theme-light', t === 'light');
-      const stored = localStorage.getItem(KEY) || 'light';
-      setTheme(stored);
-      $('#btnTheme').on('click', function(){
-        const next = $('body').hasClass('theme-light') ? 'dark' : 'light';
-        setTheme(next);
-        localStorage.setItem(KEY, next);
-      });
-
-      // Imprimir
-      $('#btnPrint').on('click', function(){ window.print(); });
-
-      // Scrollspy ligero
-      const sections = ['#acerca','#habilidades','#experiencia','#educacion','#contacto'].map(s => $(s));
-      $(window).on('scroll', function(){
-        const y = window.scrollY + 90;
-        let current = '#acerca';
-        sections.forEach($s => {
-          if($s.length && y >= $s.offset().top) current = '#' + $s.attr('id');
+      // Copiar email al portapapeles
+      $('#btn-copy-mail').on('click', function(){
+        const mail = $(this).data('mail');
+        if (!mail) return;
+        navigator.clipboard.writeText(mail).then(() => {
+          $(this).text('Copiado ✓').addClass('bg-brand-600 text-white border-brand-600');
+          setTimeout(()=> $(this).text('Copiar e-mail').removeClass('bg-brand-600 text-white border-brand-600'), 2000);
         });
-        setActive(current);
-      }).trigger('scroll');
-    });
+      });
+
+      // Fake submit del formulario de contacto (solo demo)
+    <script>
+        $('#form-contacto').on('submit', function(e){
+          e.preventDefault();
+          const $form = $(this);
+          const $btn  = $form.find('button[type="submit"]');
+          const $msg  = $('#form-contacto-msg');
+
+          $btn.prop('disabled', true).text('Enviando…');
+          $msg.addClass('hidden').text('');
+
+          const fd = new FormData(this);
+
+          fetch(this.action, {
+            method: 'POST',
+            body: fd,
+            headers: { 'Accept': 'application/json' }
+          })
+          .then(async (res) => {
+            if (res.ok) {
+              $msg.removeClass('hidden').text('¡Gracias! Me pondré en contacto pronto.');
+              this.reset();
+            } else {
+              const data = await res.json().catch(()=> ({}));
+              throw new Error(data?.error || 'No se pudo enviar. Intenta de nuevo.');
+            }
+          })
+          .catch(err => {
+            $msg.removeClass('hidden').text(err.message || 'Error de red. Intenta nuevamente.');
+          })
+          .finally(() => {
+            $btn.prop('disabled', false).text('Enviar');
+          });
+        });
+      });
+  </script>
+
+  <!-- Toggle de tema con animación de amanecer/anochecer -->
+  <script>
+    (function(){
+      const root = document.documentElement;   // Tailwind aplica .dark aquí
+      const body = document.body;
+      const btn  = document.getElementById('theme-toggle');
+      const storageKey = 'theme';
+
+      function applyTheme(mode, animate=true){
+        if (mode === 'dark') {
+          root.classList.add('dark');
+          if (animate) {
+            body.classList.add('theming-dark');
+            setTimeout(()=> body.classList.remove('theming-dark'), 900);
+          }
+        } else {
+          root.classList.remove('dark');
+          if (animate) {
+            body.classList.add('theming-light');
+            setTimeout(()=> body.classList.remove('theming-light'), 900);
+          }
+        }
+        try { localStorage.setItem(storageKey, mode); } catch {}
+      }
+
+      // Inicial: claro por defecto; si hay preferencia guardada, respétala
+      const saved = localStorage.getItem(storageKey);
+      applyTheme(saved === 'dark' ? 'dark' : 'light', /* animate */ false);
+
+      // Toggle al hacer clic
+      btn?.addEventListener('click', () => {
+        const nowDark = root.classList.contains('dark');
+        applyTheme(nowDark ? 'light' : 'dark', /* animate */ true);
+      });
+    })();
+    /*document.addEventListener('contextmenu', e => e.preventDefault())
+    document.addEventListener('keydown', e => {
+      const k = e.key.toLowerCase()
+      if (k === 'f12' || (e.ctrlKey && (k === 'u' || (e.shiftKey && ['i','j','c'].includes(k))))) {
+        e.preventDefault()
+      }
+    })*/
   </script>
 </body>
 </html>
