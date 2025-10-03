@@ -10,44 +10,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 -->
+  <!-- Font Awesome 6 (FREE) -->
   <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      referrerpolicy="no-referrer">
-
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        referrerpolicy="no-referrer">
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class', /* dark mode por clase */
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
           colors: {
             brand: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              200: '#bfdbfe',
-              300: '#93c5fd',
-              400: '#60a5fa',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e40af',
-              900: '#1e3a8a'
+              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd',
+              400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8',
+              800: '#1e40af', 900: '#1e3a8a'
             }
           },
-          boxShadow: {
-            soft: '0 10px 30px rgba(2,6,23,0.12)'
-          }
+          boxShadow: { soft: '0 10px 30px rgba(2,6,23,0.12)' }
         }
       }
     }
   </script>
 
   <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
 
   <style>
     html { scroll-behavior: smooth; }
@@ -56,35 +46,27 @@
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(2,6,23,.12); }
     .prose-title { letter-spacing: -0.02em; }
 
-    /* Pill/tag sin @apply (funciona con CDN) */
-    .tag{
-      display:inline-flex; align-items:center;
-      padding:.125rem .625rem; /* py-0.5 px-2.5 */
-      border-radius:.375rem;   /* rounded-md */
-      font-size:.75rem; line-height:1; font-weight:600; /* text-xs font-medium */
-      background:#eff6ff; color:#1d4ed8; border:1px solid #dbeafe;
+    /* === Chips con iconos FA === */
+    .chips{ display:flex; flex-wrap:wrap; gap:.5rem .6rem; }
+    .chip{
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding:.40rem .65rem; border-radius:9999px;
+      border:1px solid #dbeafe; background:#eff6ff;
+      font-size:.85rem; font-weight:800; line-height:1; color:#0f172a;
+      box-shadow: inset 0 0 0 1px rgba(2,6,23,.02);
     }
-    .dark .tag{
-      background: rgba(30,58,138,.15);
-      color:#bfdbfe;
-      border-color:#334155;
-    }
-
-    /* Ajustes suaves para modo oscuro sin romper layout */
-    .dark .bg-white { background-color:#0f172a !important; }
-    .dark .border-slate-200, .dark .border-slate-300 { border-color:#334155 !important; }
-    .dark .text-slate-700, .dark .text-slate-800 { color:#e5e7eb !important; }
+    .chip i{ font-size:14px; color:#1d4ed8; }
+    .dark .chip{ background:rgba(51,65,85,.22); border-color:#334155; color:#e5e7eb; }
+    .dark .chip i{ color:#93c5fd; }
 
     /* Overlay de cielo para transición amanecer/anochecer */
     #theme-sky{ position:fixed; inset:0; pointer-events:none; z-index:50; }
     #theme-sky .layer{ position:absolute; inset:0; opacity:0; }
-    /* Amanecer cálido (para ir a claro) */
     #theme-sky .dawn{
       background:
         radial-gradient(120% 120% at 50% 120%, rgba(255,194,120,.35), transparent 60%),
         linear-gradient(180deg, rgba(255,244,230,.7), rgba(255,255,255,0));
     }
-    /* Anochecer frío (para ir a oscuro) */
     #theme-sky .dusk{
       background:
         radial-gradient(120% 120% at 50% -20%, rgba(255,184,120,.25), transparent 60%),
@@ -98,13 +80,14 @@
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
-  <!-- Overlay de transición de tema -->
+
+  <!-- Overlay transición -->
   <div id="theme-sky" aria-hidden="true">
     <div class="layer dawn"></div>
     <div class="layer dusk"></div>
   </div>
 
-  <!-- Header fijo -->
+  <!-- Header -->
   <header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/70 border-b border-slate-200/60 dark:border-slate-700/60">
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex items-center justify-between h-16">
@@ -124,20 +107,15 @@
                    bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700
                    text-slate-700 dark:text-slate-100 shadow-sm transition-colors"
             aria-label="Cambiar tema">
-            <!-- Ícono de luna (CLARO) -->
-            <svg class="h-4 w-4 block dark:hidden icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-            </svg>
-            <!-- Ícono de sol (OSCURO) -->
-            <svg class="h-4 w-4 hidden dark:block icon-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 14.32l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM12 4V1h0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zM19.16 6.76l1.42-1.42 1.8 1.79-1.41 1.41-1.81-1.78zM12 6a6 6 0 100 12 6 6 0 000-12z"/>
-            </svg>
+            <!-- Ícono luna (modo claro) -->
+            <i class="fa-solid fa-moon block dark:hidden"></i>
+            <!-- Ícono sol (modo oscuro) -->
+            <i class="fa-solid fa-sun hidden dark:block"></i>
             <span class="hidden sm:inline">Tema</span>
           </button>
 
           <a href="#contacto" class="md:inline-flex hidden items-center gap-2 px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold shadow-soft hover:bg-brand-700">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12H2"/><path d="M15 5l7 7-7 7"/></svg>
-            Hablemos
+            <i class="fa-solid fa-paper-plane text-xs"></i> Hablemos
           </a>
         </div>
       </div>
@@ -155,188 +133,166 @@
           </h1>
           <p class="mt-3 text-xl font-semibold gradient-text">Desarrollador Fullstack</p>
           <p class="mt-5 text-slate-700 dark:text-slate-200 leading-relaxed max-w-2xl">
-            Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>, <b>.Net</b> y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. 
+            Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>.
             Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>.
           </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <span class="tag">PrestaShop</span>
-            <span class="tag">PHP/Symfony</span>
-            <span class="tag">Node.js/NestJS</span>
-            <span class="tag">Golang</span>
-            <span class="tag">Angular/React</span>
-            <span class="tag">MySQL/Postgres</span>
-            <span class="tag">Cloudflare</span>
-            <span class="tag">Ansible</span>
-            <span class="tag">Ionic</span>
+
+          <!-- Chips con FA: lenguajes + DB + DevOps -->
+          <div class="mt-6 chips">
+            <!-- Lenguajes / frameworks -->
+            <span class="chip"><i class="fa-brands fa-php"></i>PHP (OOP)</span>
+            <span class="chip"><i class="fa-brands fa-node"></i>Node.js</span>
+            <span class="chip"><i class="fa-brands fa-symfony"></i>Symfony</span>
+            <span class="chip"><i class="fa-brands fa-python"></i>Python</span>
+            <span class="chip"><i class="fa-solid fa-code"></i>Golang</span>
+            <span class="chip"><i class="fa-brands fa-angular"></i>Angular</span>
+            <span class="chip"><i class="fa-brands fa-react"></i>React</span>
+            <span class="chip"><i class="fa-solid fa-code"></i>TypeScript</span>
+            <span class="chip"><i class="fa-brands fa-js"></i>jQuery</span>
+            <span class="chip"><i class="fa-solid fa-store"></i>PrestaShop 1.6/1.7</span>
+
+            <!-- Bases de datos -->
+            <span class="chip"><i class="fa-solid fa-database"></i>MySQL</span>
+            <span class="chip"><i class="fa-solid fa-database"></i>PostgreSQL</span>
+
+            <!-- DevOps / Infra -->
+            <span class="chip"><i class="fa-brands fa-linux"></i>Linux</span>
+            <span class="chip"><i class="fa-solid fa-server"></i>Nginx</span>
+            <span class="chip"><i class="fa-solid fa-server"></i>Apache</span>
+            <span class="chip"><i class="fa-brands fa-ansible"></i>Ansible</span>
+            <span class="chip"><i class="fa-solid fa-cloud"></i>Cloudflare</span>
+            <span class="chip"><i class="fa-brands fa-apple"></i>iOS / Xcode</span>
+            <span class="chip"><i class="fa-solid fa-mobile-screen-button"></i>Ionic</span>
           </div>
+
           <div class="mt-8 flex items-center gap-3">
             <a href="#experiencia" class="px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700">Ver experiencia</a>
             <a href="#contacto" class="px-5 py-3 rounded-lg border border-slate-300 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400">Contactar</a>
           </div>
         </div>
+
+        <!-- Sidebar perfil -->
         <div class="md:col-span-5">
           <div class="relative">
             <div class="absolute -inset-1 bg-gradient-to-tr from-brand-300 to-cyan-300 rounded-2xl blur opacity-30"></div>
             <div class="relative bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-soft border border-slate-200 dark:border-slate-700">
               <div class="flex items-start gap-4">
-                <!-- Foto -->
                 <div class="h-24 w-24 overflow-hidden rounded-xl ring-1 ring-slate-200 dark:ring-slate-700 shrink-0">
-                  <img
-                    src="img/foto.jpeg"
-                    alt="Foto de Nairo"
-                    class="h-full w-full object-cover object-center"
-                    loading="lazy"
-                  />
+                  <img src="img/foto.jpeg" alt="Foto de Nairo" class="h-full w-full object-cover object-center" loading="lazy"/>
                 </div>
-
-                <!-- Datos con iconos -->
                 <div class="text-sm">
                   <p class="text-slate-500 dark:text-slate-400">Ubicación</p>
                   <ul class="mt-1 space-y-1 text-slate-800 dark:text-slate-200">
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-location-dot text-slate-500 dark:text-slate-400 min-w-5 text-[18px]"></i>
-                      <span>Bogotá D.C., Colombia</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-envelope text-slate-500 dark:text-slate-400 min-w-5 text-[18px]"></i>
-                      <a href="mailto:nairo.boom@example.com" class="hover:text-brand-600 dark:hover:text-brand-300">
-                        nairoboom@gmail.com
-                      </a>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <i class="fa-brands fa-github text-slate-500 dark:text-slate-400 min-w-5 text-[18px]"></i>
-                      <a href="https://github.com/nairoboom" target="_blank" rel="noopener"
-                        class="hover:text-brand-600 dark:hover:text-brand-300">
-                        github.com/nairoboom
-                      </a>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-phone text-slate-500 dark:text-slate-400 min-w-5 text-[18px]"></i>
-                      <a href="tel:+573105788198" class="hover:text-brand-600 dark:hover:text-brand-300">
-                        +57 310 578 8198
-                      </a>
-                    </li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-slate-500 dark:text-slate-400"></i> Bogotá D.C., Colombia</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-slate-500 dark:text-slate-400"></i> <a class="hover:text-brand-600 dark:hover:text-brand-300" href="mailto:nairoboom@gmail.com">nairoboom@gmail.com</a></li>
+                    <li class="flex items-center gap-2"><i class="fa-brands fa-github text-slate-500 dark:text-slate-400"></i> <a class="hover:text-brand-600 dark:hover:text-brand-300" href="https://github.com/nairoboom" target="_blank" rel="noopener">github.com/nairoboom</a></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-slate-500 dark:text-slate-400"></i> <a class="hover:text-brand-600 dark:hover:text-brand-300" href="tel:+573105788198">+57 310 578 8198</a></li>
                   </ul>
                   <p class="text-slate-500 dark:text-slate-400 mt-3">Disponibilidad</p>
                   <p class="font-semibold">Remoto / Híbrido</p>
                 </div>
               </div>
-
               <div class="mt-4 border-t border-slate-200 dark:border-slate-700 pt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 Me enfoco en soluciones mantenibles, rendimiento medible y automatización útil. Documentación mínima pero suficiente para que cualquier dev avance sin fricción.
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Acerca de -->
+  <!-- Acerca -->
   <section id="acerca" class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Acerca de mí</h2>
       <p class="mt-4 max-w-4xl leading-relaxed text-slate-700 dark:text-slate-200">
-        Soy desarrollador web y móvil con más de 8 años de experiencia. He trabajado en proyectos corporativos, tiendas online completas y apps híbridas. 
-        Fuerte en <b>PrestaShop</b>, sólido en back-end <b>PHP/Node.js/Golang</b> y front-end moderno. 
-        También administro <b>Linux</b> (Nginx/Apache), manejo bases de datos <b>MySQL/PostgreSQL</b> y orquesto despliegues con <b>Ansible</b>. 
+        Soy desarrollador web y móvil con más de 8 años de experiencia. He trabajado en proyectos corporativos, tiendas online completas y apps híbridas.
+        Fuerte en <b>PrestaShop</b>, sólido en back-end <b>PHP/Node.js/Golang</b> y front-end moderno.
+        También administro <b>Linux</b> (Nginx/Apache), manejo bases de datos <b>MySQL/PostgreSQL</b> y orquesto despliegues con <b>Ansible</b>.
         Me gusta dejar las cosas mejor de como las encontré: refactors iterativos, medición de performance y seguridad sin fricción.
       </p>
     </div>
   </section>
 
-  <!-- Experiencia -->
+  <!-- Experiencia (con logos) -->
   <section id="experiencia" class="py-12 md:py-16 bg-white dark:bg-slate-900">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Experiencia</h2>
 
-      <!-- Farmalisto Senior -->
+      <!-- Senior -->
       <article class="mt-8 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
-          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-xs font-bold text-slate-600 dark:text-slate-300">FL</span>
+          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
+            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto" class="h-full w-full object-contain object-center" loading="lazy"/>
           </div>
-          <h3 class="font-bold text-slate-900 dark:text-white">Farmalisto</h3>
+          <h3 class="font-bold text-slate-900 dark:text-white mt-2">Farmalisto</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400">Ingeniero de Desarrollo Web <b>Senior</b></p>
           <p class="text-sm text-slate-500 dark:text-slate-400">jun. 2024 – actualidad · Remoto (Bogotá)</p>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs">
-            <span class="tag">Go</span>
-            <span class="tag">NestJS</span>
-            <span class="tag">PHP/Symfony</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Cloudflare</span>
+          <div class="mt-3 chips text-xs">
+            <span class="chip"><i class="fa-solid fa-code"></i>Go</span>
+            <span class="chip"><i class="fa-brands fa-node"></i>NestJS</span>
+            <span class="chip"><i class="fa-brands fa-php"></i>PHP/Symfony</span>
+            <span class="chip"><i class="fa-solid fa-database"></i>MySQL</span>
+            <span class="chip"><i class="fa-solid fa-cloud"></i>Cloudflare</span>
           </div>
         </div>
         <div class="md:col-span-9 space-y-3">
-          <p class="leading-relaxed">
-            Desarrollo de <b>servicios y APIs</b> con <b>Go</b> y <b>NestJS</b>, refactor de módulos críticos (precios, stock, promociones), integraciones con servicios internos/terceros y mejoras de rendimiento a nivel de app, edge y base de datos.
-          </p>
+          <p>Desarrollo de <b>servicios y APIs</b> con <b>Go</b> y <b>NestJS</b>, refactor de módulos críticos (precios, stock, promociones), integraciones con servicios internos/terceros y mejoras de rendimiento a nivel de app, edge y base de datos.</p>
           <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
             <li>Endpoints REST con contratos estables, manejo de errores y observabilidad básica.</li>
             <li>Refactors incrementales que reducen deuda técnica y evitan regresiones.</li>
-            <li>Optimización de latencia: cacheo multicapa, SQL tuning y paginaciones correctas.</li>
-            <li>Code reviews, patrones consistentes y tests puntuales en zonas de riesgo.</li>
-            <li>Despliegues reproducibles con métricas mínimas post-release.</li>
+            <li>Optimización de latencia con caché, SQL tuning y paginaciones correctas.</li>
+            <li>Code reviews, patrones consistentes y tests en zonas de riesgo.</li>
+            <li>Despliegues reproducibles con métricas post-release.</li>
           </ul>
-          <p class="text-slate-600 dark:text-slate-300 text-sm">Resultado: APIs más predecibles, tiempos de respuesta menores y menos incidentes por validación insuficiente.</p>
         </div>
       </article>
 
-      <!-- Farmalisto Semi Senior -->
+      <!-- Semi Senior -->
       <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
-          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-xs font-bold text-slate-600 dark:text-slate-300">FL</span>
+          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
+            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto" class="h-full w-full object-contain object-center" loading="lazy"/>
           </div>
-          <h3 class="font-bold text-slate-900 dark:text-white">Farmalisto</h3>
+          <h3 class="font-bold text-slate-900 dark:text-white mt-2">Farmalisto</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400">Desarrollador Web <b>Semi Senior</b></p>
           <p class="text-sm text-slate-500 dark:text-slate-400">jun. 2019 – may. 2024 · Bogotá</p>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs">
-            <span class="tag">PrestaShop 1.6/1.7</span>
-            <span class="tag">PHP OOP</span>
-            <span class="tag">Symfony</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">Angular</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">Linux (VPS)</span>
-            <span class="tag">Ansible</span>
-            <span class="tag">Cloudflare</span>
-            <span class="tag">REST/SOAP</span>
-            <span class="tag">Ionic</span>
-            <span class="tag">Xcode/iOS</span>
+          <div class="mt-3 chips text-xs">
+            <span class="chip"><i class="fa-solid fa-store"></i>PrestaShop</span>
+            <span class="chip"><i class="fa-brands fa-php"></i>PHP OOP</span>
+            <span class="chip"><i class="fa-brands fa-symfony"></i>Symfony</span>
+            <span class="chip"><i class="fa-brands fa-node"></i>Node.js</span>
+            <span class="chip"><i class="fa-brands fa-angular"></i>Angular</span>
+            <span class="chip"><i class="fa-solid fa-database"></i>MySQL</span>
+            <span class="chip"><i class="fa-brands fa-linux"></i>Linux (VPS)</span>
+            <span class="chip"><i class="fa-brands fa-ansible"></i>Ansible</span>
+            <span class="chip"><i class="fa-solid fa-cloud"></i>Cloudflare</span>
+            <span class="chip"><i class="fa-solid fa-code-branch"></i>REST/SOAP</span>
+            <span class="chip"><i class="fa-solid fa-mobile-screen-button"></i>Ionic</span>
+            <span class="chip"><i class="fa-brands fa-apple"></i>Xcode/iOS</span>
           </div>
         </div>
         <div class="md:col-span-9 space-y-3">
-          <p class="leading-relaxed">
-            Desarrollo y mantenimiento de productos web end-to-end. Especial foco en <b>PrestaShop</b> (módulos, hooks, overrides, PUM, promociones), performance y seguridad; administración de servidores <b>Linux</b> (Nginx/Apache), automatización con <b>Ansible</b> y edge con <b>Cloudflare</b>.
-          </p>
+          <p>Desarrollo y mantenimiento de productos web end-to-end con foco en <b>PrestaShop</b>, performance, seguridad y automatización.</p>
           <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-            <li>Diseño/normalización de <b>MySQL</b>, índices, migraciones y backups programados.</li>
-            <li>Validaciones, sanitización y prevención <b>SQLi/XSS/CSRF</b>; roles y políticas de acceso.</li>
-            <li>Integraciones con <b>APIs REST</b> y <b>SOAP</b> + documentación práctica para terceros.</li>
-            <li>Automatización con <b>Ansible</b> para deploys repetibles y tareas crónicas.</li>
-            <li>Apps híbridas con <b>Ionic</b>; firma y entrega iOS con <b>Xcode</b>.</li>
+            <li>Modelado/normalización de MySQL, índices, migraciones y backups.</li>
+            <li>Validaciones y prevención <b>SQLi/XSS/CSRF</b>; roles y políticas.</li>
+            <li>Integraciones con APIs (REST/SOAP) y documentación para terceros.</li>
+            <li>Deploys repetibles con Ansible y tareas crónicas.</li>
+            <li>Apps híbridas con Ionic, firma y entrega iOS con Xcode.</li>
           </ul>
-          <p class="text-slate-600 dark:text-slate-300 text-sm">Resultado: menor fricción operativa, tiempos de carga mejores y menos bugs por entradas no validadas.</p>
         </div>
       </article>
 
-      <!-- Farmalisto Junior -->
+      <!-- Junior -->
       <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
-          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-xs font-bold text-slate-600 dark:text-slate-300">FL</span>
+          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
+            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto" class="h-full w-full object-contain object-center" loading="lazy"/>
           </div>
-          <h3 class="font-bold text-slate-900 dark:text-white">Farmalisto</h3>
+          <h3 class="font-bold text-slate-900 dark:text-white mt-2">Farmalisto</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400">Desarrollador Web <b>Junior</b></p>
           <p class="text-sm text-slate-500 dark:text-slate-400">may. 2017 – jun. 2019 · Bogotá</p>
         </div>
@@ -344,38 +300,35 @@
           <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
             <li>Soporte correctivo/evolutivo en módulos y sitios existentes.</li>
             <li>Maquetación, componentes UI y compatibilidad cross-browser.</li>
-            <li>Integraciones puntuales de APIs con guía de uso para equipos internos.</li>
-            <li>Adopción de <b>PHP OOP</b>, Git-flow y buenas prácticas de equipo.</li>
+            <li>Integraciones puntuales de APIs con guía para equipos internos.</li>
+            <li>Adopción de <b>PHP OOP</b>, Git-flow y buenas prácticas.</li>
           </ul>
         </div>
       </article>
 
-      <!-- CDI Interactive -->
+      <!-- CDI -->
       <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
-          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/cdi.jpeg" alt="Logo Farmalisto"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-xs font-bold text-slate-600 dark:text-slate-300">FL</span>
+          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
+            <img src="img/logos/cdi.jpeg" alt="Logo CDI Interactive" class="h-full w-full object-contain object-center" loading="lazy"/>
           </div>
-          <h3 class="font-bold text-slate-900 dark:text-white">CDI Interactive</h3>
+          <h3 class="font-bold text-slate-900 dark:text-white mt-2">CDI Interactive</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400">Analista de Base de Datos / Dev Web</p>
           <p class="text-sm text-slate-500 dark:text-slate-400">mar. 2016 – may. 2017 · Bogotá</p>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs">
-            <span class="tag">PHP (MVC)</span>
-            <span class="tag">jQuery</span>
-            <span class="tag">MySQL/SQL</span>
-            <span class="tag">HTML/CSS/JS</span>
+          <div class="mt-3 chips text-xs">
+            <span class="chip"><i class="fa-brands fa-php"></i>PHP (MVC)</span>
+            <span class="chip"><i class="fa-brands fa-js"></i>jQuery</span>
+            <span class="chip"><i class="fa-solid fa-database"></i>MySQL/SQL</span>
+            <span class="chip"><i class="fa-brands fa-html5"></i>HTML</span>
+            <span class="chip"><i class="fa-brands fa-css3-alt"></i>CSS</span>
+            <span class="chip"><i class="fa-solid fa-code"></i>JS</span>
           </div>
         </div>
         <div class="md:col-span-9 space-y-3">
-          <p class="leading-relaxed">
-            Desarrollo PHP orientado a objetos bajo patrón <b>MVC</b>, soporte SQL, paso de desarrollo a producción y acompañamiento funcional a usuarios.
-          </p>
+          <p>Desarrollo PHP orientado a objetos bajo patrón <b>MVC</b>, soporte SQL, paso a producción y acompañamiento funcional a usuarios.</p>
           <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
             <li>Consultas SQL para diagnóstico, reportes y soporte a negocio.</li>
-            <li>Implementación de patrones (p.ej., <b>Singleton</b> donde aplicaba).</li>
+            <li>Patrones (p.ej. <b>Singleton</b>) cuando aplicaba.</li>
             <li>Checklists de release y validaciones previas a producción.</li>
             <li>Documentación técnica breve de módulos e integraciones.</li>
           </ul>
@@ -384,7 +337,7 @@
     </div>
   </section>
 
-  <!-- Stack -->
+  <!-- Tech Stack con íconos FA -->
   <section id="stack" class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Tech Stack</h2>
@@ -392,285 +345,175 @@
       <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Back-end -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-server text-lg"></i>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-server"></i>
             </span>
             <h3 class="font-bold">Back-end</h3>
           </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            PHP (OOP), Symfony, Node.js, NestJS, Golang, ASP.NET
-          </p>
+          <div class="chips">
+            <span class="chip"><i class="fa-brands fa-php"></i>PHP</span>
+            <span class="chip"><i class="fa-brands fa-symfony"></i>Symfony</span>
+            <span class="chip"><i class="fa-brands fa-node"></i>Node.js</span>
+            <span class="chip"><i class="fa-solid fa-diagram-project"></i>NestJS</span>
+            <span class="chip"><i class="fa-solid fa-code"></i>Golang</span>
+            <span class="chip"><i class="fa-brands fa-windows"></i>ASP.NET</span>
+          </div>
         </div>
 
         <!-- Front-end -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-code text-lg"></i>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-code"></i>
             </span>
             <h3 class="font-bold">Front-end</h3>
           </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Angular, React, TypeScript, jQuery, HTML5/CSS3
-          </p>
+          <div class="chips">
+            <span class="chip"><i class="fa-brands fa-angular"></i>Angular</span>
+            <span class="chip"><i class="fa-brands fa-react"></i>React</span>
+            <span class="chip"><i class="fa-solid fa-code"></i>TypeScript</span>
+            <span class="chip"><i class="fa-brands fa-js"></i>jQuery</span>
+            <span class="chip"><i class="fa-brands fa-html5"></i>HTML5</span>
+            <span class="chip"><i class="fa-brands fa-css3-alt"></i>CSS3</span>
+          </div>
         </div>
 
         <!-- E-commerce -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-cart-shopping text-lg"></i>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-cart-shopping"></i>
             </span>
             <h3 class="font-bold">E-commerce</h3>
           </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            PrestaShop 1.6/1.7 (módulos, overrides, hooks, performance)
-          </p>
+          <div class="chips">
+            <span class="chip"><i class="fa-solid fa-store"></i>PrestaShop 1.6/1.7</span>
+            <span class="chip"><i class="fa-solid fa-gauge-high"></i>Performance</span>
+            <span class="chip"><i class="fa-solid fa-magnifying-glass"></i>SEO técnico</span>
+          </div>
         </div>
 
         <!-- Bases de datos -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-database text-lg"></i>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-database"></i>
             </span>
             <h3 class="font-bold">Bases de datos</h3>
           </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            MySQL, PostgreSQL (modelado, índices, tuning, backups)
-          </p>
+          <div class="chips">
+            <span class="chip"><i class="fa-solid fa-database"></i>MySQL</span>
+            <span class="chip"><i class="fa-solid fa-database"></i>PostgreSQL</span>
+            <span class="chip"><i class="fa-solid fa-magnifying-glass-chart"></i>Tuning</span>
+            <span class="chip"><i class="fa-solid fa-rotate"></i>Backups</span>
+          </div>
         </div>
 
         <!-- Infra & DevOps -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-screwdriver-wrench text-lg"></i>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
             </span>
             <h3 class="font-bold">Infra & DevOps</h3>
           </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Linux (Nginx/Apache), Ansible, Git, CI/CD básico
-          </p>
+          <div class="chips">
+            <span class="chip"><i class="fa-brands fa-linux"></i>Linux</span>
+            <span class="chip"><i class="fa-solid fa-server"></i>Nginx</span>
+            <span class="chip"><i class="fa-solid fa-server"></i>Apache</span>
+            <span class="chip"><i class="fa-brands fa-ansible"></i>Ansible</span>
+            <span class="chip"><i class="fa-brands fa-git-alt"></i>Git</span>
+            <span class="chip"><i class="fa-solid fa-gears"></i>CI/CD</span>
+          </div>
         </div>
 
         <!-- Seguridad & Edge -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-shield-halved text-lg"></i>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-shield-halved"></i>
             </span>
             <h3 class="font-bold">Seguridad & Edge</h3>
           </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Cloudflare (CDN, WAF, Page Rules), OWASP básica
-          </p>
+          <div class="chips">
+            <span class="chip"><i class="fa-solid fa-cloud"></i>Cloudflare</span>
+            <span class="chip"><i class="fa-solid fa-shield"></i>OWASP básica</span>
+          </div>
         </div>
 
         <!-- Mobile -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-mobile-screen-button"></i>
             </span>
             <h3 class="font-bold">Mobile</h3>
           </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Ionic/Capacitor, Xcode/iOS (firma, perfiles, subida)
-          </p>
+          <div class="chips">
+            <span class="chip"><i class="fa-solid fa-mobile-screen-button"></i>Ionic/Capacitor</span>
+            <span class="chip"><i class="fa-brands fa-apple"></i>Xcode/iOS</span>
+          </div>
         </div>
 
         <!-- APIs -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-code-branch text-lg"></i>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-code-branch"></i>
             </span>
             <h3 class="font-bold">APIs</h3>
           </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            REST y SOAP (contratos, versionado, errores)
-          </p>
+          <div class="chips">
+            <span class="chip"><i class="fa-solid fa-diagram-project"></i>REST</span>
+            <span class="chip"><i class="fa-solid fa-sitemap"></i>SOAP</span>
+            <span class="chip"><i class="fa-solid fa-code-branch"></i>Versionado</span>
+            <span class="chip"><i class="fa-solid fa-triangle-exclamation"></i>Errores</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- Servicios -->
+  <!-- Servicios (ya con FA arriba, se mantiene) -->
   <section id="servicios" class="py-12 md:py-16 bg-white dark:bg-slate-900">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Servicios</h2>
-
       <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <!-- Tiendas PrestaShop -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-store text-lg"></i>
-            </span>
-            <h3 class="font-bold">Tiendas PrestaShop</h3>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Módulos a medida, performance, SEO técnico, integraciones de pago/envío, PUM y promociones.
-          </p>
+          <div class="flex items-center gap-3"><span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-store"></i></span><h3 class="font-bold">Tiendas PrestaShop</h3></div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Módulos a medida, performance, SEO técnico, integraciones de pago/envío, PUM y promociones.</p>
         </div>
-
-        <!-- APIs & Servicios -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-diagram-project text-lg"></i>
-            </span>
-            <h3 class="font-bold">APIs & Servicios</h3>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            REST/SOAP en Node.js/NestJS o Go, documentación clara y manejo de errores.
-          </p>
+          <div class="flex items-center gap-3"><span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-diagram-project"></i></span><h3 class="font-bold">APIs & Servicios</h3></div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">REST/SOAP en Node.js/NestJS o Go, documentación clara y manejo de errores.</p>
         </div>
-
-        <!-- Bases de Datos -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-database text-lg"></i>
-            </span>
-            <h3 class="font-bold">Bases de Datos</h3>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            Modelado, índices, afinamiento de consultas y planes de backup.
-          </p>
+          <div class="flex items-center gap-3"><span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-database"></i></span><h3 class="font-bold">Bases de Datos</h3></div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Modelado, índices, afinamiento de consultas y planes de backup.</p>
         </div>
-
-        <!-- Infra y Automatización -->
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3">
-            <span class="inline-grid place-items-center h-10 w-10 rounded-xl
-                        bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700
-                        dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300
-                        ring-1 ring-brand-200/60 dark:ring-slate-700">
-              <i class="fa-solid fa-gears text-lg"></i>
-            </span>
-            <h3 class="font-bold">Infra y Automatización</h3>
-          </div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-            VPS Linux, Nginx/Apache, Ansible, Cloudflare, pipelines de despliegue.
-          </p>
+          <div class="flex items-center gap-3"><span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-gears"></i></span><h3 class="font-bold">Infra y Automatización</h3></div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">VPS Linux, Nginx/Apache, Ansible, Cloudflare, pipelines de despliegue.</p>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- Educación -->
+  <!-- Educación (mantiene logos de archivo) -->
   <section id="educacion" class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Educación & Certificaciones</h2>
-
       <ul class="mt-6 space-y-3">
-        <!-- UNIMINUTO - Ing. Sistemas -->
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/logo_md.png" alt="Logo UNIMINUTO"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">UNI</span>
-          </div>
-          <span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Ingeniería de Sistemas (2017–2023)</span>
-        </li>
-
-        <!-- Diplomado SecDevOps -->
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/logo_md.png" alt="Logo UNIMINUTO"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">UNI</span>
-          </div>
-          <span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Diplomado SecDevOps (2023)</span>
-        </li>
-
-        <!-- AWS -->
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/aws.jpeg" alt="Logo AWS Academy"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">AWS</span>
-          </div>
-          <span class="text-slate-700 dark:text-slate-200"><b>AWS Academy</b> — Cloud Foundations (2023)</span>
-        </li>
-
-        <!-- DevNet -->
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/DevNet.png" alt="Logo DevNet"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">DN</span>
-          </div>
-          <span class="text-slate-700 dark:text-slate-200"><b>DevNet Associate</b> (2023)</span>
-        </li>
-
-        <!-- Tecnología e Informática -->
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/logo_md.png" alt="Logo UNIMINUTO"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">UNI</span>
-          </div>
-          <span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Tecnología en Informática (2011–2014)</span>
-        </li>
-
-        <!-- Telecomunicaciones móviles -->
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden shrink-0 grid place-items-center">
-            <img src="img/logos/logo_md.png" alt="Logo UNIMINUTO"
-                class="h-full w-full object-contain object-center" loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden')" />
-            <span class="hidden text-[10px] font-bold text-slate-600 dark:text-slate-300">UNI</span>
-          </div>
-          <span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Diplomado Telecomunicaciones Móviles (2014)</span>
-        </li>
+        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Ingeniería de Sistemas (2017–2023)</span></li>
+        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Diplomado SecDevOps (2023)</span></li>
+        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/aws.jpeg" alt="AWS Academy" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>AWS Academy</b> — Cloud Foundations (2023)</span></li>
+        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/DevNet.png" alt="DevNet" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>DevNet Associate</b> (2023)</span></li>
+        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Tecnología en Informática (2011–2014)</span></li>
+        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Diplomado Telecomunicaciones Móviles (2014)</span></li>
       </ul>
     </div>
   </section>
-
 
   <!-- Contacto -->
   <section id="contacto" class="py-12 md:py-16 bg-white dark:bg-slate-900">
@@ -680,51 +523,36 @@
           <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Contacto</h2>
           <p class="mt-3 text-slate-700 dark:text-slate-200">Envíame un correo, llámame o escríbeme al WhatsApp.</p>
           <div class="mt-5 flex flex-wrap items-center gap-3">
-            <button id="btn-copy-mail" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" data-mail="nairoboom@gmail.com">Copiar e-mail</button>
-            <a class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" href="mailto:nairoboom@gmail.com">Escribir correo</a>
-            <a class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" href="https://wa.me/573105788198" target="_blank" rel="noopener">WhatsApp</a>
+            <button id="btn-copy-mail" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" data-mail="nairoboom@gmail.com"><i class="fa-regular fa-copy mr-2"></i>Copiar e-mail</button>
+            <a class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" href="mailto:nairoboom@gmail.com"><i class="fa-solid fa-envelope mr-2"></i>Escribir correo</a>
+            <a class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" href="https://wa.me/573105788198" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp</a>
           </div>
         </div>
+
+        <!-- Formspree -->
         <form id="form-contacto"
-          action="https://formspree.io/f/mvgwrnnz"
-          method="POST"
-          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-soft">
-
-          <!-- Honeypot anti-spam opcional -->
+              action="https://formspree.io/f/mvgwrnnz"
+              method="POST"
+              class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-soft">
           <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
-
           <div class="grid sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Nombre</label>
-              <input type="text" name="name"
-                    class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600"
-                    placeholder="Tu nombre" required />
+              <input type="text" name="name" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" placeholder="Tu nombre" required />
             </div>
             <div>
               <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Correo</label>
-              <input type="email" name="email"
-                    class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600"
-                    placeholder="tucorreo@dominio.com" required />
+              <input type="email" name="email" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" placeholder="tucorreo@dominio.com" required />
             </div>
             <div class="sm:col-span-2">
               <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Mensaje</label>
-              <textarea rows="4" name="message"
-                        class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600"
-                        placeholder="Cuéntame brevemente sobre tu proyecto" required></textarea>
+              <textarea rows="4" name="message" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" placeholder="Cuéntame brevemente sobre tu proyecto" required></textarea>
             </div>
           </div>
-
-          <!-- Asunto personalizado opcional -->
           <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
-          <!-- Redirección opcional tras éxito -->
-          <!-- <input type="hidden" name="_next" value="https://tu-dominio.com/gracias.html"> -->
-
-          <button class="mt-4 w-full px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" type="submit">
-            Enviar
-          </button>
+          <button class="mt-4 w-full px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" type="submit">Enviar</button>
           <p id="form-contacto-msg" class="mt-2 text-sm text-slate-600 dark:text-slate-300 hidden"></p>
         </form>
-
       </div>
     </div>
   </section>
@@ -733,20 +561,16 @@
   <footer class="py-8 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
     <div class="max-w-6xl mx-auto px-4 text-sm text-slate-500 dark:text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2">
       <p>© <span id="year"></span> Nairo Samir Boom Vargas · Desarrollador Fullstack</p>
-      <a href="#inicio" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-400 dark:hover:border-slate-600">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
-        Volver arriba
-      </a>
+      <a href="#inicio" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-400 dark:hover:border-slate-600"><i class="fa-solid fa-arrow-up"></i> Volver arriba</a>
     </div>
   </footer>
 
-  <!-- Interacciones con jQuery -->
+  <!-- Scripts -->
   <script>
     $(function(){
-      // Año dinámico
       $('#year').text(new Date().getFullYear());
 
-      // Smooth scroll en nav (compensa header fijo)
+      // Smooth scroll
       $('a[href^="#"]').on('click', function(e){
         const id = this.getAttribute('href');
         if (!id || id === '#') return;
@@ -757,34 +581,29 @@
         }
       });
 
-      // Copiar email al portapapeles
+      // Copiar email
       $('#btn-copy-mail').on('click', function(){
         const mail = $(this).data('mail');
         if (!mail) return;
         navigator.clipboard.writeText(mail).then(() => {
-          $(this).text('Copiado ✓').addClass('bg-brand-600 text-white border-brand-600');
-          setTimeout(()=> $(this).text('Copiar e-mail').removeClass('bg-brand-600 text-white border-brand-600'), 2000);
+          $(this).html('<i class="fa-regular fa-circle-check mr-2"></i>Copiado').addClass('bg-brand-600 text-white border-brand-600');
+          setTimeout(()=> $(this).html('<i class="fa-regular fa-copy mr-2"></i>Copiar e-mail').removeClass('bg-brand-600 text-white border-brand-600'), 1800);
         });
       });
 
-      // Fake submit del formulario de contacto (solo demo)
-    <script>
-        $('#form-contacto').on('submit', function(e){
-          e.preventDefault();
-          const $form = $(this);
-          const $btn  = $form.find('button[type="submit"]');
-          const $msg  = $('#form-contacto-msg');
+      // Formspree submit
+      $('#form-contacto').on('submit', function(e){
+        e.preventDefault();
+        const $form = $(this);
+        const $btn  = $form.find('button[type="submit"]');
+        const $msg  = $('#form-contacto-msg');
 
-          $btn.prop('disabled', true).text('Enviando…');
-          $msg.addClass('hidden').text('');
+        $btn.prop('disabled', true).text('Enviando…');
+        $msg.addClass('hidden').text('');
 
-          const fd = new FormData(this);
+        const fd = new FormData(this);
 
-          fetch(this.action, {
-            method: 'POST',
-            body: fd,
-            headers: { 'Accept': 'application/json' }
-          })
+        fetch(this.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
           .then(async (res) => {
             if (res.ok) {
               $msg.removeClass('hidden').text('¡Gracias! Me pondré en contacto pronto.');
@@ -794,58 +613,34 @@
               throw new Error(data?.error || 'No se pudo enviar. Intenta de nuevo.');
             }
           })
-          .catch(err => {
-            $msg.removeClass('hidden').text(err.message || 'Error de red. Intenta nuevamente.');
-          })
-          .finally(() => {
-            $btn.prop('disabled', false).text('Enviar');
-          });
-        });
+          .catch(err => { $msg.removeClass('hidden').text(err.message || 'Error de red. Intenta nuevamente.'); })
+          .finally(() => { $btn.prop('disabled', false).text('Enviar'); });
       });
-  </script>
+    });
 
-  <!-- Toggle de tema con animación de amanecer/anochecer -->
-  <script>
+    // Toggle de tema con animación amanecer/anochecer
     (function(){
-      const root = document.documentElement;   // Tailwind aplica .dark aquí
+      const root = document.documentElement;
       const body = document.body;
       const btn  = document.getElementById('theme-toggle');
       const storageKey = 'theme';
-
       function applyTheme(mode, animate=true){
         if (mode === 'dark') {
           root.classList.add('dark');
-          if (animate) {
-            body.classList.add('theming-dark');
-            setTimeout(()=> body.classList.remove('theming-dark'), 900);
-          }
+          if (animate){ body.classList.add('theming-dark'); setTimeout(()=> body.classList.remove('theming-dark'), 900); }
         } else {
           root.classList.remove('dark');
-          if (animate) {
-            body.classList.add('theming-light');
-            setTimeout(()=> body.classList.remove('theming-light'), 900);
-          }
+          if (animate){ body.classList.add('theming-light'); setTimeout(()=> body.classList.remove('theming-light'), 900); }
         }
-        try { localStorage.setItem(storageKey, mode); } catch {}
+        try { localStorage.setItem(storageKey, mode); } catch(e){}
       }
-
-      // Inicial: claro por defecto; si hay preferencia guardada, respétala
       const saved = localStorage.getItem(storageKey);
-      applyTheme(saved === 'dark' ? 'dark' : 'light', /* animate */ false);
-
-      // Toggle al hacer clic
+      applyTheme(saved === 'dark' ? 'dark' : 'light', false);
       btn?.addEventListener('click', () => {
         const nowDark = root.classList.contains('dark');
-        applyTheme(nowDark ? 'light' : 'dark', /* animate */ true);
+        applyTheme(nowDark ? 'light' : 'dark', true);
       });
     })();
-    /*document.addEventListener('contextmenu', e => e.preventDefault())
-    document.addEventListener('keydown', e => {
-      const k = e.key.toLowerCase()
-      if (k === 'f12' || (e.ctrlKey && (k === 'u' || (e.shiftKey && ['i','j','c'].includes(k))))) {
-        e.preventDefault()
-      }
-    })*/
   </script>
 </body>
 </html>
