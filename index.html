@@ -17,66 +17,10 @@
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
-          colors: {
-            brand: {
-              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd',
-              400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8',
-              800: '#1e40af', 900: '#1e3a8a'
-            }
-          },
-          boxShadow: { soft: '0 10px 30px rgba(2,6,23,0.12)' }
-        }
-      }
-    }
-  </script>
 
+  <link rel="stylesheet" href="assets/styles.css">
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-
-  <style>
-    html { scroll-behavior: smooth; }
-    .gradient-text { background: linear-gradient(90deg, #60a5fa, #22d3ee); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .card-hover { transition: transform .25s ease, box-shadow .25s ease; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(2,6,23,.12); }
-    .prose-title { letter-spacing: -0.02em; }
-
-    /* === Chips con iconos FA === */
-    .chips{ display:flex; flex-wrap:wrap; gap:.5rem .6rem; }
-    .chip{
-      display:inline-flex; align-items:center; gap:.45rem;
-      padding:.40rem .65rem; border-radius:9999px;
-      border:1px solid #dbeafe; background:#eff6ff;
-      font-size:.85rem; font-weight:800; line-height:1; color:#0f172a;
-      box-shadow: inset 0 0 0 1px rgba(2,6,23,.02);
-    }
-    .chip i{ font-size:14px; color:#1d4ed8; }
-    .dark .chip{ background:rgba(51,65,85,.22); border-color:#334155; color:#e5e7eb; }
-    .dark .chip i{ color:#93c5fd; }
-
-    /* Overlay de cielo para transición amanecer/anochecer */
-    #theme-sky{ position:fixed; inset:0; pointer-events:none; z-index:50; }
-    #theme-sky .layer{ position:absolute; inset:0; opacity:0; }
-    #theme-sky .dawn{
-      background:
-        radial-gradient(120% 120% at 50% 120%, rgba(255,194,120,.35), transparent 60%),
-        linear-gradient(180deg, rgba(255,244,230,.7), rgba(255,255,255,0));
-    }
-    #theme-sky .dusk{
-      background:
-        radial-gradient(120% 120% at 50% -20%, rgba(255,184,120,.25), transparent 60%),
-        linear-gradient(180deg, rgba(0,0,0,0), rgba(2,6,23,.75));
-    }
-    @keyframes dawn { 0%{opacity:0} 30%{opacity:.8} 100%{opacity:0} }
-    @keyframes dusk { 0%{opacity:0} 30%{opacity:.85} 100%{opacity:0} }
-    body.theming-light #theme-sky .dawn{ animation: dawn 800ms ease forwards; }
-    body.theming-dark  #theme-sky .dusk{ animation: dusk 800ms ease forwards; }
-  </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
@@ -142,6 +86,7 @@
             Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>.
           </p>
 
+          <!-- Chips -->
           <div class="mt-6 chips">
             <span class="chip"><i class="fa-brands fa-php"></i>PHP (OOP)</span>
             <span class="chip"><i class="fa-brands fa-node"></i>Node.js</span>
@@ -515,32 +460,32 @@
   <section id="educacion" class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="edu.title">Educación & Certificaciones</h2>
-      <ul class="mt-6 space-y-3">
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
-          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l1"><b>UNIMINUTO</b> — Ingeniería de Sistemas (2017–2023)</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
-          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l2"><b>UNIMINUTO</b> — Diplomado SecDevOps (2023)</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/aws.jpeg" alt="AWS Academy" class="h-full w-full object-contain"/></div>
-          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l3"><b>AWS Academy</b> — Cloud Foundations (2023)</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/DevNet.png" alt="DevNet" class="h-full w-full object-contain"/></div>
-          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l4"><b>DevNet Associate</b> (2023)</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
-          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l5"><b>UNIMINUTO</b> — Tecnología en Informática (2011–2014)</span>
-        </li>
-        <li class="flex items-center gap-3">
-          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
-          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l6"><b>UNIMINUTO</b> — Diplomado Telecomunicaciones Móviles (2014)</span>
-        </li>
-      </ul>
+    <ul class="mt-6 space-y-3">
+      <li class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
+        <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l1"><b>UNIMINUTO</b> — Ingeniería de Sistemas (2017–2023)</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
+        <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l2"><b>UNIMINUTO</b> — Diplomado SecDevOps (2023)</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/aws.jpeg" alt="AWS Academy" class="h-full w-full object-contain"/></div>
+        <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l3"><b>AWS Academy</b> — Cloud Foundations (2023)</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/DevNet.png" alt="DevNet" class="h-full w-full object-contain"/></div>
+        <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l4"><b>DevNet Associate</b> (2023)</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
+        <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l5"><b>UNIMINUTO</b> — Tecnología en Informática (2011–2014)</span>
+      </li>
+      <li class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
+        <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l6"><b>UNIMININUTO</b> — Diplomado Telecomunicaciones Móviles (2014)</span>
+      </li>
+    </ul>
     </div>
   </section>
 
@@ -594,273 +539,7 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    $(function(){
-      $('#year').text(new Date().getFullYear());
-
-      // Smooth scroll
-      $('a[href^="#"]').on('click', function(e){
-        const id = this.getAttribute('href');
-        if (!id || id === '#') return;
-        const $target = $(id);
-        if ($target.length){
-          e.preventDefault();
-          $('html, body').animate({ scrollTop: $target.offset().top - 72 }, 450);
-        }
-      });
-
-      // Copiar email (texto según idioma)
-      $('#btn-copy-mail').on('click', function(){
-        const mail = $(this).data('mail');
-        if (!mail) return;
-        navigator.clipboard.writeText(mail).then(() => {
-          $(this).html('<i class="fa-regular fa-circle-check mr-2"></i>'+ t('contact.copied')).addClass('bg-brand-600 text-white border-brand-600');
-          setTimeout(()=> $(this).html('<i class="fa-regular fa-copy mr-2"></i>'+ t('contact.copy')).removeClass('bg-brand-600 text-white border-brand-600'), 1800);
-        });
-      });
-
-      // Formspree submit (mensajes según idioma)
-      $('#form-contacto').on('submit', function(e){
-        e.preventDefault();
-        const $form = $(this);
-        const $btn  = $form.find('button[type="submit"]');
-        const $msg  = $('#form-contacto-msg');
-
-        $btn.prop('disabled', true).text(t('form.sending'));
-        $msg.addClass('hidden').text('');
-
-        const fd = new FormData(this);
-
-        fetch(this.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
-          .then(async (res) => {
-            if (res.ok) {
-              $msg.removeClass('hidden').text(t('form.ok'));
-              this.reset();
-            } else {
-              const data = await res.json().catch(()=> ({}));
-              throw new Error(data?.error || t('form.fail'));
-            }
-          })
-          .catch(err => { $msg.removeClass('hidden').text(err.message || t('form.net')); })
-          .finally(() => { $btn.prop('disabled', false).text(t('form.send')); });
-      });
-    });
-
-    // Toggle de tema con animación amanecer/anochecer
-    (function(){
-      const root = document.documentElement;
-      const body = document.body;
-      const btn  = document.getElementById('theme-toggle');
-      const storageKey = 'theme';
-      function applyTheme(mode, animate=true){
-        if (mode === 'dark') {
-          root.classList.add('dark');
-          if (animate){ body.classList.add('theming-dark'); setTimeout(()=> body.classList.remove('theming-dark'), 900); }
-        } else {
-          root.classList.remove('dark');
-          if (animate){ body.classList.add('theming-light'); setTimeout(()=> body.classList.remove('theming-light'), 900); }
-        }
-        try { localStorage.setItem(storageKey, mode); } catch(e){}
-      }
-      const saved = localStorage.getItem(storageKey);
-      applyTheme(saved === 'dark' ? 'dark' : 'light', false);
-      btn?.addEventListener('click', () => {
-        const nowDark = root.classList.contains('dark');
-        applyTheme(nowDark ? 'light' : 'dark', true);
-      });
-    })();
-
-    // ===================== I18N =====================
-    const LANG_KEY = 'site_lang';
-    let CURRENT_LANG = 'es';
-
-    const i18n = {
-      es: {
-        'ui.theme':'Tema','ui.talk':'Hablemos',
-        'nav.about':'Acerca de','nav.experience':'Experiencia','nav.stack':'Stack','nav.services':'Servicios','nav.education':'Educación','nav.contact':'Contacto',
-        'hero.role':'Desarrollador Fullstack',
-        'hero.summary':'Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>.',
-        'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar',
-        'sb.locationLabel':'Ubicación','sb.availabilityLabel':'Disponibilidad','sb.availability':'Remoto / Híbrido','sb.city':'Bogotá D.C., Colombia',
-        'sb.bio':'Me enfoco en soluciones mantenibles, rendimiento medible y automatización útil. Documentación mínima pero suficiente para que cualquier dev avance sin fricción.',
-        'about.title':'Acerca de mí',
-        'about.body':'Soy desarrollador web y móvil con más de 8 años de experiencia. He trabajado en proyectos corporativos, tiendas online completas y apps híbridas. Fuerte en <b>PrestaShop</b>, sólido en back-end <b>PHP/Node.js/Golang</b> y front-end moderno. También administro <b>Linux</b> (Nginx/Apache), manejo bases de datos <b>MySQL/PostgreSQL</b> y orquesto despliegues con <b>Ansible</b>. Me gusta dejar las cosas mejor de como las encontré: refactors iterativos, medición de performance y seguridad sin fricción.',
-        'exp.title':'Experiencia',
-        'exp.senior.role':'Ingeniero de Desarrollo Web <b>Senior</b>',
-        'exp.senior.date':'jun. 2024 – actualidad · Remoto (Bogotá)',
-        'exp.senior.summary':'Desarrollo de <b>servicios y APIs</b> con <b>Go</b> y <b>NestJS</b>, refactor de módulos críticos (precios, stock, promociones), integraciones con servicios internos/terceros y mejoras de rendimiento a nivel de app, edge y base de datos.',
-        'exp.senior.b1':'Endpoints REST con contratos estables, manejo de errores y observabilidad básica.',
-        'exp.senior.b2':'Refactors incrementales que reducen deuda técnica y evitan regresiones.',
-        'exp.senior.b3':'Optimización de latencia con caché, SQL tuning y paginaciones correctas.',
-        'exp.senior.b4':'Code reviews, patrones consistentes y tests en zonas de riesgo.',
-        'exp.senior.b5':'Despliegues reproducibles con métricas post-release.',
-        'exp.semi.role':'Desarrollador Web <b>Semi Senior</b>',
-        'exp.semi.date':'jun. 2019 – may. 2024 · Bogotá',
-        'exp.semi.summary':'Desarrollo y mantenimiento de productos web end-to-end con foco en <b>PrestaShop</b>, performance, seguridad y automatización.',
-        'exp.semi.b1':'Modelado/normalización de MySQL, índices, migraciones y backups.',
-        'exp.semi.b2':'Validaciones y prevención <b>SQLi/XSS/CSRF</b>; roles y políticas.',
-        'exp.semi.b3':'Integraciones con APIs (REST/SOAP) y documentación para terceros.',
-        'exp.semi.b4':'Deploys repetibles con Ansible y tareas crónicas.',
-        'exp.semi.b5':'Apps híbridas con Ionic, firma y entrega iOS con Xcode.',
-        'exp.junior.role':'Desarrollador Web <b>Junior</b>',
-        'exp.junior.date':'may. 2017 – jun. 2019 · Bogotá',
-        'exp.junior.b1':'Soporte correctivo/evolutivo en módulos y sitios existentes.',
-        'exp.junior.b2':'Maquetación, componentes UI y compatibilidad cross-browser.',
-        'exp.junior.b3':'Integraciones puntuales de APIs con guía para equipos internos.',
-        'exp.junior.b4':'Adopción de <b>PHP OOP</b>, Git-flow y buenas prácticas.',
-        'exp.cdi.role':'Analista de Base de Datos / Dev Web',
-        'exp.cdi.date':'mar. 2016 – may. 2017 · Bogotá',
-        'exp.cdi.summary':'Desarrollo PHP orientado a objetos bajo patrón <b>MVC</b>, soporte SQL, paso a producción y acompañamiento funcional a usuarios.',
-        'exp.cdi.b1':'Consultas SQL para diagnóstico, reportes y soporte a negocio.',
-        'exp.cdi.b2':'Patrones (p.ej. <b>Singleton</b>) cuando aplicaba.',
-        'exp.cdi.b3':'Checklists de release y validaciones previas a producción.',
-        'exp.cdi.b4':'Documentación técnica breve de módulos e integraciones.',
-        'stack.title':'Tech Stack',
-        'stack.backend.title':'Back-end',
-        'stack.frontend.title':'Front-end',
-        'stack.ecom.title':'E-commerce',
-        'stack.db.title':'Bases de datos',
-        'stack.devops.title':'Infra & DevOps',
-        'stack.sec.title':'Seguridad & Edge',
-        'stack.mobile.title':'Mobile',
-        'stack.api.title':'APIs',
-        'services.title':'Servicios',
-        'services.s1.title':'Tiendas PrestaShop','services.s1.desc':'Módulos a medida, performance, SEO técnico, integraciones de pago/envío, PUM y promociones.',
-        'services.s2.title':'APIs & Servicios','services.s2.desc':'REST/SOAP en Node.js/NestJS o Go, documentación clara y manejo de errores.',
-        'services.s3.title':'Bases de Datos','services.s3.desc':'Modelado, índices, afinamiento de consultas y planes de backup.',
-        'services.s4.title':'Infra y Automatización','services.s4.desc':'VPS Linux, Nginx/Apache, Ansible, Cloudflare, pipelines de despliegue.',
-        'edu.title':'Educación & Certificaciones',
-        'edu.l1':'<b>UNIMINUTO</b> — Ingeniería de Sistemas (2017–2023)',
-        'edu.l2':'<b>UNIMINUTO</b> — Diplomado SecDevOps (2023)',
-        'edu.l3':'<b>AWS Academy</b> — Cloud Foundations (2023)',
-        'edu.l4':'<b>DevNet Associate</b> (2023)',
-        'edu.l5':'<b>UNIMINUTO</b> — Tecnología en Informática (2011–2014)',
-        'edu.l6':'<b>UNIMINUTO</b> — Diplomado Telecomunicaciones Móviles (2014)',
-        'contact.title':'Contacto','contact.desc':'Envíame un correo, llámame o escríbeme al WhatsApp.',
-        'contact.copy':'Copiar e-mail','contact.copied':'¡Copiado!','contact.write':'Escribir correo','contact.whatsapp':'WhatsApp',
-        'form.name':'Nombre','form.email':'Correo','form.message':'Mensaje','form.send':'Enviar',
-        'form.name_ph':'Tu nombre','form.email_ph':'tucorreo@dominio.com','form.message_ph':'Cuéntame brevemente sobre tu proyecto',
-        'form.sending':'Enviando…','form.ok':'¡Gracias! Me pondré en contacto pronto.','form.fail':'No se pudo enviar. Intenta de nuevo.','form.net':'Error de red. Intenta nuevamente.',
-        'form.subject':'Nuevo mensaje desde el portafolio',
-        'footer.role':'Desarrollador Fullstack','footer.top':'Volver arriba'
-      },
-      en: {
-        'ui.theme':'Theme','ui.talk':'Let’s talk',
-        'nav.about':'About','nav.experience':'Experience','nav.stack':'Stack','nav.services':'Services','nav.education':'Education','nav.contact':'Contact',
-        'hero.role':'Full-stack Developer',
-        'hero.summary':'E-commerce specialist focused on <b>PrestaShop 1.6/1.7</b>, back end with <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET and front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>. Experience with <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> and hybrid apps with <b>Ionic</b>.',
-        'cta.viewExp':'View experience', 'cta.contact':'Contact',
-        'sb.locationLabel':'Location','sb.availabilityLabel':'Availability','sb.availability':'Remote / Hybrid','sb.city':'Bogotá D.C., Colombia',
-        'sb.bio':'I focus on maintainable solutions, measurable performance and practical automation. Minimal but sufficient docs so any dev can move fast.',
-        'about.title':'About me',
-        'about.body':'I am a web and mobile developer with 8+ years of experience. I have worked on corporate projects, full online stores and hybrid apps. Strong in <b>PrestaShop</b>, solid back end in <b>PHP/Node.js/Golang</b>, and modern front end. I also administer <b>Linux</b> (Nginx/Apache), handle <b>MySQL/PostgreSQL</b> and orchestrate deployments with <b>Ansible</b>. I like to leave things better than I found them: iterative refactors, measurable performance and low-friction security.',
-        'exp.title':'Experience',
-        'exp.senior.role':'<b>Senior</b> Web Development Engineer',
-        'exp.senior.date':'Jun 2024 – present · Remote (Bogotá)',
-        'exp.senior.summary':'Development of <b>services and APIs</b> with <b>Go</b> and <b>NestJS</b>, refactor of critical modules (pricing, stock, promotions), integrations with internal/third-party services, and performance improvements at app/edge/database levels.',
-        'exp.senior.b1':'REST endpoints with stable contracts, error handling and basic observability.',
-        'exp.senior.b2':'Incremental refactors that reduce tech debt and prevent regressions.',
-        'exp.senior.b3':'Latency optimization with caching, SQL tuning and correct pagination.',
-        'exp.senior.b4':'Code reviews, consistent patterns and tests in risk areas.',
-        'exp.senior.b5':'Reproducible deployments with post-release metrics.',
-        'exp.semi.role':'<b>Semi-Senior</b> Web Developer',
-        'exp.semi.date':'Jun 2019 – May 2024 · Bogotá',
-        'exp.semi.summary':'End-to-end web product development and maintenance focused on <b>PrestaShop</b>, performance, security and automation.',
-        'exp.semi.b1':'MySQL modeling/normalization, indexes, migrations and backups.',
-        'exp.semi.b2':'Validations and <b>SQLi/XSS/CSRF</b> prevention; roles and policies.',
-        'exp.semi.b3':'API integrations (REST/SOAP) and documentation for third parties.',
-        'exp.semi.b4':'Repeatable deployments with Ansible and scheduled tasks.',
-        'exp.semi.b5':'Hybrid apps with Ionic, iOS signing and delivery with Xcode.',
-        'exp.junior.role':'<b>Junior</b> Web Developer',
-        'exp.junior.date':'May 2017 – Jun 2019 · Bogotá',
-        'exp.junior.b1':'Bugfixing/evolutionary support in existing modules and sites.',
-        'exp.junior.b2':'Markup, UI components and cross-browser compatibility.',
-        'exp.junior.b3':'Targeted API integrations with guidance for internal teams.',
-        'exp.junior.b4':'Adoption of <b>PHP OOP</b>, Git-flow and best practices.',
-        'exp.cdi.role':'Database Analyst / Web Dev',
-        'exp.cdi.date':'Mar 2016 – May 2017 · Bogotá',
-        'exp.cdi.summary':'Object-oriented PHP development under <b>MVC</b>, SQL support, production releases and functional assistance to users.',
-        'exp.cdi.b1':'SQL queries for diagnostics, reporting and business support.',
-        'exp.cdi.b2':'Patterns (e.g., <b>Singleton</b>) where applicable.',
-        'exp.cdi.b3':'Release checklists and pre-production validations.',
-        'exp.cdi.b4':'Concise technical docs for modules and integrations.',
-        'stack.title':'Tech Stack',
-        'stack.backend.title':'Back-end',
-        'stack.frontend.title':'Front-end',
-        'stack.ecom.title':'E-commerce',
-        'stack.db.title':'Databases',
-        'stack.devops.title':'Infra & DevOps',
-        'stack.sec.title':'Security & Edge',
-        'stack.mobile.title':'Mobile',
-        'stack.api.title':'APIs',
-        'services.title':'Services',
-        'services.s1.title':'PrestaShop Stores','services.s1.desc':'Custom modules, performance, technical SEO, payments/shipping integrations, PUM and promotions.',
-        'services.s2.title':'APIs & Services','services.s2.desc':'REST/SOAP in Node.js/NestJS or Go, clear documentation and error handling.',
-        'services.s3.title':'Databases','services.s3.desc':'Modeling, indexes, query tuning and backup plans.',
-        'services.s4.title':'Infra & Automation','services.s4.desc':'Linux VPS, Nginx/Apache, Ansible, Cloudflare, deployment pipelines.',
-        'edu.title':'Education & Certifications',
-        'edu.l1':'<b>UNIMINUTO</b> — Systems Engineering (2017–2023)',
-        'edu.l2':'<b>UNIMINUTO</b> — SecDevOps Diploma (2023)',
-        'edu.l3':'<b>AWS Academy</b> — Cloud Foundations (2023)',
-        'edu.l4':'<b>DevNet Associate</b> (2023)',
-        'edu.l5':'<b>UNIMINUTO</b> — IT Technology (2011–2014)',
-        'edu.l6':'<b>UNIMINUTO</b> — Mobile Telecommunications Diploma (2014)',
-        'contact.title':'Contact','contact.desc':'Email me, call me, or message me on WhatsApp.',
-        'contact.copy':'Copy e-mail','contact.copied':'Copied!','contact.write':'Send e-mail','contact.whatsapp':'WhatsApp',
-        'form.name':'Name','form.email':'E-mail','form.message':'Message','form.send':'Send',
-        'form.name_ph':'Your name','form.email_ph':'you@example.com','form.message_ph':'Tell me briefly about your project',
-        'form.sending':'Sending…','form.ok':'Thanks! I will contact you soon.','form.fail':'Could not send. Please try again.','form.net':'Network error. Please try again.',
-        'form.subject':'New message from portfolio',
-        'footer.role':'Full-stack Developer','footer.top':'Back to top'
-      }
-    };
-
-    function t(key){
-      const lang = CURRENT_LANG in i18n ? CURRENT_LANG : 'es';
-      return i18n[lang][key] ?? i18n.es[key] ?? key;
-    }
-
-    function applyLang(lang){
-      CURRENT_LANG = (lang in i18n) ? lang : 'es';
-      try { localStorage.setItem(LANG_KEY, CURRENT_LANG); } catch(e){}
-      document.getElementById('lang-toggle').textContent = CURRENT_LANG.toUpperCase();
-
-      // Text nodes (innerHTML)
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.getAttribute('data-i18n');
-        const val = t(k);
-        if (val) el.innerHTML = val;
-      });
-
-      // Attributes (placeholder, title, value, aria-label, etc.)
-      document.querySelectorAll('[data-i18n-attr]').forEach(el => {
-        const map = el.getAttribute('data-i18n-attr').split('|');
-        map.forEach(pair => {
-          const [attr, key] = pair.split(':');
-          if (!attr || !key) return;
-          const val = t(key.trim());
-          if (val) el.setAttribute(attr.trim(), val);
-        });
-      });
-    }
-
-    (function initLang(){
-      const saved = localStorage.getItem(LANG_KEY);
-      applyLang(saved || 'es');
-      document.getElementById('lang-toggle')?.addEventListener('click', () => {
-        applyLang(CURRENT_LANG === 'es' ? 'en' : 'es');
-      });
-    })();
-
-    // (opcional) bloquear menú contextual / atajos
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('keydown', e => {
-      const k = e.key.toLowerCase();
-      if (k === 'f12' || (e.ctrlKey && (k === 'u' || (e.shiftKey && ['i','j','c'].includes(k))))) {
-        e.preventDefault();
-      }
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/redux@4.2.1/dist/redux.min.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>
