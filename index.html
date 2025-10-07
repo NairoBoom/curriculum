@@ -93,29 +93,34 @@
       <div class="flex items-center justify-between h-16">
         <a href="#inicio" class="font-extrabold text-lg tracking-tight text-slate-900 dark:text-white">Nairo Samir <span class="text-brand-600">Boom Vargas</span></a>
         <nav class="hidden md:flex gap-6 text-sm font-medium">
-          <a href="#acerca" class="hover:text-brand-700 dark:hover:text-brand-300">Acerca de</a>
-          <a href="#experiencia" class="hover:text-brand-700 dark:hover:text-brand-300">Experiencia</a>
-          <a href="#stack" class="hover:text-brand-700 dark:hover:text-brand-300">Stack</a>
-          <a href="#servicios" class="hover:text-brand-700 dark:hover:text-brand-300">Servicios</a>
-          <a href="#educacion" class="hover:text-brand-700 dark:hover:text-brand-300">Educación</a>
-          <a href="#contacto" class="hover:text-brand-700 dark:hover:text-brand-300">Contacto</a>
+          <a href="#acerca"      data-i18n="nav.about"      class="hover:text-brand-700 dark:hover:text-brand-300">Acerca de</a>
+          <a href="#experiencia" data-i18n="nav.experience" class="hover:text-brand-700 dark:hover:text-brand-300">Experiencia</a>
+          <a href="#stack"       data-i18n="nav.stack"      class="hover:text-brand-700 dark:hover:text-brand-300">Stack</a>
+          <a href="#servicios"   data-i18n="nav.services"   class="hover:text-brand-700 dark:hover:text-brand-300">Servicios</a>
+          <a href="#educacion"   data-i18n="nav.education"  class="hover:text-brand-700 dark:hover:text-brand-300">Educación</a>
+          <a href="#contacto"    data-i18n="nav.contact"    class="hover:text-brand-700 dark:hover:text-brand-300">Contacto</a>
         </nav>
         <div class="flex items-center gap-2">
+          <!-- Toggle idioma -->
+          <button id="lang-toggle"
+            class="inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-600 px-3 py-2 text-sm font-semibold
+                   bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700
+                   text-slate-700 dark:text-slate-100 shadow-sm transition-colors"
+            aria-label="Cambiar idioma">ES</button>
+
           <!-- Toggle de tema -->
           <button id="theme-toggle"
             class="inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-600 px-3 py-2 text-sm font-semibold
                    bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700
                    text-slate-700 dark:text-slate-100 shadow-sm transition-colors"
             aria-label="Cambiar tema">
-            <!-- Ícono luna (modo claro) -->
             <i class="fa-solid fa-moon block dark:hidden"></i>
-            <!-- Ícono sol (modo oscuro) -->
             <i class="fa-solid fa-sun hidden dark:block"></i>
-            <span class="hidden sm:inline">Tema</span>
+            <span data-i18n="ui.theme" class="hidden sm:inline">Tema</span>
           </button>
 
           <a href="#contacto" class="md:inline-flex hidden items-center gap-2 px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold shadow-soft hover:bg-brand-700">
-            <i class="fa-solid fa-paper-plane text-xs"></i> Hablemos
+            <i class="fa-solid fa-paper-plane text-xs"></i> <span data-i18n="ui.talk">Hablemos</span>
           </a>
         </div>
       </div>
@@ -131,15 +136,13 @@
           <h1 class="prose-title text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
             Nairo Samir Boom Vargas
           </h1>
-          <p class="mt-3 text-xl font-semibold gradient-text">Desarrollador Fullstack</p>
-          <p class="mt-5 text-slate-700 dark:text-slate-200 leading-relaxed max-w-2xl">
+          <p class="mt-3 text-xl font-semibold gradient-text" data-i18n="hero.role">Desarrollador Fullstack</p>
+          <p class="mt-5 text-slate-700 dark:text-slate-200 leading-relaxed max-w-2xl" data-i18n="hero.summary">
             Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>.
             Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>.
           </p>
 
-          <!-- Chips con FA: lenguajes + DB + DevOps -->
           <div class="mt-6 chips">
-            <!-- Lenguajes / frameworks -->
             <span class="chip"><i class="fa-brands fa-php"></i>PHP (OOP)</span>
             <span class="chip"><i class="fa-brands fa-node"></i>Node.js</span>
             <span class="chip"><i class="fa-brands fa-symfony"></i>Symfony</span>
@@ -150,12 +153,8 @@
             <span class="chip"><i class="fa-solid fa-code"></i>TypeScript</span>
             <span class="chip"><i class="fa-brands fa-js"></i>jQuery</span>
             <span class="chip"><i class="fa-solid fa-store"></i>PrestaShop 1.6/1.7</span>
-
-            <!-- Bases de datos -->
             <span class="chip"><i class="fa-solid fa-database"></i>MySQL</span>
             <span class="chip"><i class="fa-solid fa-database"></i>PostgreSQL</span>
-
-            <!-- DevOps / Infra -->
             <span class="chip"><i class="fa-brands fa-linux"></i>Linux</span>
             <span class="chip"><i class="fa-solid fa-server"></i>Nginx</span>
             <span class="chip"><i class="fa-solid fa-server"></i>Apache</span>
@@ -166,8 +165,8 @@
           </div>
 
           <div class="mt-8 flex items-center gap-3">
-            <a href="#experiencia" class="px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700">Ver experiencia</a>
-            <a href="#contacto" class="px-5 py-3 rounded-lg border border-slate-300 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400">Contactar</a>
+            <a href="#experiencia" class="px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" data-i18n="cta.viewExp">Ver experiencia</a>
+            <a href="#contacto" class="px-5 py-3 rounded-lg border border-slate-300 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400" data-i18n="cta.contact">Contactar</a>
           </div>
         </div>
 
@@ -181,18 +180,18 @@
                   <img src="img/foto.jpeg" alt="Foto de Nairo" class="h-full w-full object-cover object-center" loading="lazy"/>
                 </div>
                 <div class="text-sm">
-                  <p class="text-slate-500 dark:text-slate-400">Ubicación</p>
+                  <p class="text-slate-500 dark:text-slate-400" data-i18n="sb.locationLabel">Ubicación</p>
                   <ul class="mt-1 space-y-1 text-slate-800 dark:text-slate-200">
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-slate-500 dark:text-slate-400"></i> Bogotá D.C., Colombia</li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-slate-500 dark:text-slate-400"></i> <a class="hover:text-brand-600 dark:hover:text-brand-300" href="mailto:nairoboom@gmail.com">nairoboom@gmail.com</a></li>
-                    <li class="flex items-center gap-2"><i class="fa-brands fa-github text-slate-500 dark:text-slate-400"></i> <a class="hover:text-brand-600 dark:hover:text-brand-300" href="https://github.com/nairoboom" target="_blank" rel="noopener">github.com/nairoboom</a></li>
-                    <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-slate-500 dark:text-slate-400"></i> <a class="hover:text-brand-600 dark:hover:text-brand-300" href="tel:+573105788198">+57 310 578 8198</a></li>
+                    <li><i class="fa-solid fa-location-dot text-slate-500 dark:text-slate-400"></i> <span data-i18n="sb.city">Bogotá D.C., Colombia</span></li>
+                    <li><i class="fa-solid fa-envelope text-slate-500 dark:text-slate-400"></i> <a class="hover:text-brand-600 dark:hover:text-brand-300" href="mailto:nairoboom@gmail.com">nairoboom@gmail.com</a></li>
+                    <li><i class="fa-brands fa-github text-slate-500 dark:text-slate-400"></i> <a class="hover:text-brand-600 dark:hover:text-brand-300" href="https://github.com/nairoboom" target="_blank" rel="noopener">github.com/nairoboom</a></li>
+                    <li><i class="fa-solid fa-phone text-slate-500 dark:text-slate-400"></i> <a class="hover:text-brand-600 dark:hover:text-brand-300" href="tel:+573105788198">+57 310 578 8198</a></li>
                   </ul>
-                  <p class="text-slate-500 dark:text-slate-400 mt-3">Disponibilidad</p>
-                  <p class="font-semibold">Remoto / Híbrido</p>
+                  <p class="text-slate-500 dark:text-slate-400 mt-3" data-i18n="sb.availabilityLabel">Disponibilidad</p>
+                  <p class="font-semibold" data-i18n="sb.availability">Remoto / Híbrido</p>
                 </div>
               </div>
-              <div class="mt-4 border-t border-slate-200 dark:border-slate-700 pt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              <div class="mt-4 border-t border-slate-200 dark:border-slate-700 pt-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed" data-i18n="sb.bio">
                 Me enfoco en soluciones mantenibles, rendimiento medible y automatización útil. Documentación mínima pero suficiente para que cualquier dev avance sin fricción.
               </div>
             </div>
@@ -206,8 +205,8 @@
   <!-- Acerca -->
   <section id="acerca" class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Acerca de mí</h2>
-      <p class="mt-4 max-w-4xl leading-relaxed text-slate-700 dark:text-slate-200">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="about.title">Acerca de mí</h2>
+      <p class="mt-4 max-w-4xl leading-relaxed text-slate-700 dark:text-slate-200" data-i18n="about.body">
         Soy desarrollador web y móvil con más de 8 años de experiencia. He trabajado en proyectos corporativos, tiendas online completas y apps híbridas.
         Fuerte en <b>PrestaShop</b>, sólido en back-end <b>PHP/Node.js/Golang</b> y front-end moderno.
         También administro <b>Linux</b> (Nginx/Apache), manejo bases de datos <b>MySQL/PostgreSQL</b> y orquesto despliegues con <b>Ansible</b>.
@@ -216,10 +215,10 @@
     </div>
   </section>
 
-  <!-- Experiencia (con logos) -->
+  <!-- Experiencia -->
   <section id="experiencia" class="py-12 md:py-16 bg-white dark:bg-slate-900">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Experiencia</h2>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="exp.title">Experiencia</h2>
 
       <!-- Senior -->
       <article class="mt-8 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
@@ -228,8 +227,8 @@
             <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto" class="h-full w-full object-contain object-center" loading="lazy"/>
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white mt-2">Farmalisto</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400">Ingeniero de Desarrollo Web <b>Senior</b></p>
-          <p class="text-sm text-slate-500 dark:text-slate-400">jun. 2024 – actualidad · Remoto (Bogotá)</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.senior.role">Ingeniero de Desarrollo Web <b>Senior</b></p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.senior.date">jun. 2024 – actualidad · Remoto (Bogotá)</p>
           <div class="mt-3 chips text-xs">
             <span class="chip"><i class="fa-solid fa-code"></i>Go</span>
             <span class="chip"><i class="fa-brands fa-node"></i>NestJS</span>
@@ -239,13 +238,13 @@
           </div>
         </div>
         <div class="md:col-span-9 space-y-3">
-          <p>Desarrollo de <b>servicios y APIs</b> con <b>Go</b> y <b>NestJS</b>, refactor de módulos críticos (precios, stock, promociones), integraciones con servicios internos/terceros y mejoras de rendimiento a nivel de app, edge y base de datos.</p>
+          <p data-i18n="exp.senior.summary">Desarrollo de <b>servicios y APIs</b> con <b>Go</b> y <b>NestJS</b>, refactor de módulos críticos (precios, stock, promociones), integraciones con servicios internos/terceros y mejoras de rendimiento a nivel de app, edge y base de datos.</p>
           <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-            <li>Endpoints REST con contratos estables, manejo de errores y observabilidad básica.</li>
-            <li>Refactors incrementales que reducen deuda técnica y evitan regresiones.</li>
-            <li>Optimización de latencia con caché, SQL tuning y paginaciones correctas.</li>
-            <li>Code reviews, patrones consistentes y tests en zonas de riesgo.</li>
-            <li>Despliegues reproducibles con métricas post-release.</li>
+            <li data-i18n="exp.senior.b1">Endpoints REST con contratos estables, manejo de errores y observabilidad básica.</li>
+            <li data-i18n="exp.senior.b2">Refactors incrementales que reducen deuda técnica y evitan regresiones.</li>
+            <li data-i18n="exp.senior.b3">Optimización de latencia con caché, SQL tuning y paginaciones correctas.</li>
+            <li data-i18n="exp.senior.b4">Code reviews, patrones consistentes y tests en zonas de riesgo.</li>
+            <li data-i18n="exp.senior.b5">Despliegues reproducibles con métricas post-release.</li>
           </ul>
         </div>
       </article>
@@ -257,8 +256,8 @@
             <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto" class="h-full w-full object-contain object-center" loading="lazy"/>
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white mt-2">Farmalisto</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400">Desarrollador Web <b>Semi Senior</b></p>
-          <p class="text-sm text-slate-500 dark:text-slate-400">jun. 2019 – may. 2024 · Bogotá</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.semi.role">Desarrollador Web <b>Semi Senior</b></p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.semi.date">jun. 2019 – may. 2024 · Bogotá</p>
           <div class="mt-3 chips text-xs">
             <span class="chip"><i class="fa-solid fa-store"></i>PrestaShop</span>
             <span class="chip"><i class="fa-brands fa-php"></i>PHP OOP</span>
@@ -275,13 +274,13 @@
           </div>
         </div>
         <div class="md:col-span-9 space-y-3">
-          <p>Desarrollo y mantenimiento de productos web end-to-end con foco en <b>PrestaShop</b>, performance, seguridad y automatización.</p>
+          <p data-i18n="exp.semi.summary">Desarrollo y mantenimiento de productos web end-to-end con foco en <b>PrestaShop</b>, performance, seguridad y automatización.</p>
           <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-            <li>Modelado/normalización de MySQL, índices, migraciones y backups.</li>
-            <li>Validaciones y prevención <b>SQLi/XSS/CSRF</b>; roles y políticas.</li>
-            <li>Integraciones con APIs (REST/SOAP) y documentación para terceros.</li>
-            <li>Deploys repetibles con Ansible y tareas crónicas.</li>
-            <li>Apps híbridas con Ionic, firma y entrega iOS con Xcode.</li>
+            <li data-i18n="exp.semi.b1">Modelado/normalización de MySQL, índices, migraciones y backups.</li>
+            <li data-i18n="exp.semi.b2">Validaciones y prevención <b>SQLi/XSS/CSRF</b>; roles y políticas.</li>
+            <li data-i18n="exp.semi.b3">Integraciones con APIs (REST/SOAP) y documentación para terceros.</li>
+            <li data-i18n="exp.semi.b4">Deploys repetibles con Ansible y tareas crónicas.</li>
+            <li data-i18n="exp.semi.b5">Apps híbridas con Ionic, firma y entrega iOS con Xcode.</li>
           </ul>
         </div>
       </article>
@@ -293,15 +292,15 @@
             <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto" class="h-full w-full object-contain object-center" loading="lazy"/>
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white mt-2">Farmalisto</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400">Desarrollador Web <b>Junior</b></p>
-          <p class="text-sm text-slate-500 dark:text-slate-400">may. 2017 – jun. 2019 · Bogotá</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.junior.role">Desarrollador Web <b>Junior</b></p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.junior.date">may. 2017 – jun. 2019 · Bogotá</p>
         </div>
         <div class="md:col-span-9 space-y-3">
           <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-            <li>Soporte correctivo/evolutivo en módulos y sitios existentes.</li>
-            <li>Maquetación, componentes UI y compatibilidad cross-browser.</li>
-            <li>Integraciones puntuales de APIs con guía para equipos internos.</li>
-            <li>Adopción de <b>PHP OOP</b>, Git-flow y buenas prácticas.</li>
+            <li data-i18n="exp.junior.b1">Soporte correctivo/evolutivo en módulos y sitios existentes.</li>
+            <li data-i18n="exp.junior.b2">Maquetación, componentes UI y compatibilidad cross-browser.</li>
+            <li data-i18n="exp.junior.b3">Integraciones puntuales de APIs con guía para equipos internos.</li>
+            <li data-i18n="exp.junior.b4">Adopción de <b>PHP OOP</b>, Git-flow y buenas prácticas.</li>
           </ul>
         </div>
       </article>
@@ -313,8 +312,8 @@
             <img src="img/logos/cdi.jpeg" alt="Logo CDI Interactive" class="h-full w-full object-contain object-center" loading="lazy"/>
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white mt-2">CDI Interactive</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400">Analista de Base de Datos / Dev Web</p>
-          <p class="text-sm text-slate-500 dark:text-slate-400">mar. 2016 – may. 2017 · Bogotá</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.cdi.role">Analista de Base de Datos / Dev Web</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.cdi.date">mar. 2016 – may. 2017 · Bogotá</p>
           <div class="mt-3 chips text-xs">
             <span class="chip"><i class="fa-brands fa-php"></i>PHP (MVC)</span>
             <span class="chip"><i class="fa-brands fa-js"></i>jQuery</span>
@@ -325,22 +324,22 @@
           </div>
         </div>
         <div class="md:col-span-9 space-y-3">
-          <p>Desarrollo PHP orientado a objetos bajo patrón <b>MVC</b>, soporte SQL, paso a producción y acompañamiento funcional a usuarios.</p>
+          <p data-i18n="exp.cdi.summary">Desarrollo PHP orientado a objetos bajo patrón <b>MVC</b>, soporte SQL, paso a producción y acompañamiento funcional a usuarios.</p>
           <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-            <li>Consultas SQL para diagnóstico, reportes y soporte a negocio.</li>
-            <li>Patrones (p.ej. <b>Singleton</b>) cuando aplicaba.</li>
-            <li>Checklists de release y validaciones previas a producción.</li>
-            <li>Documentación técnica breve de módulos e integraciones.</li>
+            <li data-i18n="exp.cdi.b1">Consultas SQL para diagnóstico, reportes y soporte a negocio.</li>
+            <li data-i18n="exp.cdi.b2">Patrones (p.ej. <b>Singleton</b>) cuando aplicaba.</li>
+            <li data-i18n="exp.cdi.b3">Checklists de release y validaciones previas a producción.</li>
+            <li data-i18n="exp.cdi.b4">Documentación técnica breve de módulos e integraciones.</li>
           </ul>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- Tech Stack con íconos FA -->
+  <!-- Tech Stack -->
   <section id="stack" class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Tech Stack</h2>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="stack.title">Tech Stack</h2>
 
       <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Back-end -->
@@ -349,7 +348,7 @@
             <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
               <i class="fa-solid fa-server"></i>
             </span>
-            <h3 class="font-bold">Back-end</h3>
+            <h3 class="font-bold" data-i18n="stack.backend.title">Back-end</h3>
           </div>
           <div class="chips">
             <span class="chip"><i class="fa-brands fa-php"></i>PHP</span>
@@ -367,7 +366,7 @@
             <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
               <i class="fa-solid fa-code"></i>
             </span>
-            <h3 class="font-bold">Front-end</h3>
+            <h3 class="font-bold" data-i18n="stack.frontend.title">Front-end</h3>
           </div>
           <div class="chips">
             <span class="chip"><i class="fa-brands fa-angular"></i>Angular</span>
@@ -385,7 +384,7 @@
             <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
               <i class="fa-solid fa-cart-shopping"></i>
             </span>
-            <h3 class="font-bold">E-commerce</h3>
+            <h3 class="font-bold" data-i18n="stack.ecom.title">E-commerce</h3>
           </div>
           <div class="chips">
             <span class="chip"><i class="fa-solid fa-store"></i>PrestaShop 1.6/1.7</span>
@@ -400,7 +399,7 @@
             <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
               <i class="fa-solid fa-database"></i>
             </span>
-            <h3 class="font-bold">Bases de datos</h3>
+            <h3 class="font-bold" data-i18n="stack.db.title">Bases de datos</h3>
           </div>
           <div class="chips">
             <span class="chip"><i class="fa-solid fa-database"></i>MySQL</span>
@@ -416,7 +415,7 @@
             <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
               <i class="fa-solid fa-screwdriver-wrench"></i>
             </span>
-            <h3 class="font-bold">Infra & DevOps</h3>
+            <h3 class="font-bold" data-i18n="stack.devops.title">Infra & DevOps</h3>
           </div>
           <div class="chips">
             <span class="chip"><i class="fa-brands fa-linux"></i>Linux</span>
@@ -434,7 +433,7 @@
             <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
               <i class="fa-solid fa-shield-halved"></i>
             </span>
-            <h3 class="font-bold">Seguridad & Edge</h3>
+            <h3 class="font-bold" data-i18n="stack.sec.title">Seguridad & Edge</h3>
           </div>
           <div class="chips">
             <span class="chip"><i class="fa-solid fa-cloud"></i>Cloudflare</span>
@@ -448,7 +447,7 @@
             <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
               <i class="fa-solid fa-mobile-screen-button"></i>
             </span>
-            <h3 class="font-bold">Mobile</h3>
+            <h3 class="font-bold" data-i18n="stack.mobile.title">Mobile</h3>
           </div>
           <div class="chips">
             <span class="chip"><i class="fa-solid fa-mobile-screen-button"></i>Ionic/Capacitor</span>
@@ -462,7 +461,7 @@
             <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
               <i class="fa-solid fa-code-branch"></i>
             </span>
-            <h3 class="font-bold">APIs</h3>
+            <h3 class="font-bold" data-i18n="stack.api.title">APIs</h3>
           </div>
           <div class="chips">
             <span class="chip"><i class="fa-solid fa-diagram-project"></i>REST</span>
@@ -475,42 +474,72 @@
     </div>
   </section>
 
-  <!-- Servicios (ya con FA arriba, se mantiene) -->
+  <!-- Servicios -->
   <section id="servicios" class="py-12 md:py-16 bg-white dark:bg-slate-900">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Servicios</h2>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="services.title">Servicios</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3"><span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-store"></i></span><h3 class="font-bold">Tiendas PrestaShop</h3></div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Módulos a medida, performance, SEO técnico, integraciones de pago/envío, PUM y promociones.</p>
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-store"></i></span>
+            <h3 class="font-bold" data-i18n="services.s1.title">Tiendas PrestaShop</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300" data-i18n="services.s1.desc">Módulos a medida, performance, SEO técnico, integraciones de pago/envío, PUM y promociones.</p>
         </div>
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3"><span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-diagram-project"></i></span><h3 class="font-bold">APIs & Servicios</h3></div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">REST/SOAP en Node.js/NestJS o Go, documentación clara y manejo de errores.</p>
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-diagram-project"></i></span>
+            <h3 class="font-bold" data-i18n="services.s2.title">APIs & Servicios</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300" data-i18n="services.s2.desc">REST/SOAP en Node.js/NestJS o Go, documentación clara y manejo de errores.</p>
         </div>
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3"><span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-database"></i></span><h3 class="font-bold">Bases de Datos</h3></div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Modelado, índices, afinamiento de consultas y planes de backup.</p>
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-database"></i></span>
+            <h3 class="font-bold" data-i18n="services.s3.title">Bases de Datos</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300" data-i18n="services.s3.desc">Modelado, índices, afinamiento de consultas y planes de backup.</p>
         </div>
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-          <div class="flex items-center gap-3"><span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-gears"></i></span><h3 class="font-bold">Infra y Automatización</h3></div>
-          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">VPS Linux, Nginx/Apache, Ansible, Cloudflare, pipelines de despliegue.</p>
+          <div class="flex items-center gap-3">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700"><i class="fa-solid fa-gears"></i></span>
+            <h3 class="font-bold" data-i18n="services.s4.title">Infra y Automatización</h3>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300" data-i18n="services.s4.desc">VPS Linux, Nginx/Apache, Ansible, Cloudflare, pipelines de despliegue.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Educación (mantiene logos de archivo) -->
+  <!-- Educación -->
   <section id="educacion" class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Educación & Certificaciones</h2>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="edu.title">Educación & Certificaciones</h2>
       <ul class="mt-6 space-y-3">
-        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Ingeniería de Sistemas (2017–2023)</span></li>
-        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Diplomado SecDevOps (2023)</span></li>
-        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/aws.jpeg" alt="AWS Academy" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>AWS Academy</b> — Cloud Foundations (2023)</span></li>
-        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/DevNet.png" alt="DevNet" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>DevNet Associate</b> (2023)</span></li>
-        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Tecnología en Informática (2011–2014)</span></li>
-        <li class="flex items-center gap-3"><div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div><span class="text-slate-700 dark:text-slate-200"><b>UNIMINUTO</b> — Diplomado Telecomunicaciones Móviles (2014)</span></li>
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
+          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l1"><b>UNIMINUTO</b> — Ingeniería de Sistemas (2017–2023)</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
+          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l2"><b>UNIMINUTO</b> — Diplomado SecDevOps (2023)</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/aws.jpeg" alt="AWS Academy" class="h-full w-full object-contain"/></div>
+          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l3"><b>AWS Academy</b> — Cloud Foundations (2023)</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/DevNet.png" alt="DevNet" class="h-full w-full object-contain"/></div>
+          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l4"><b>DevNet Associate</b> (2023)</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
+          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l5"><b>UNIMINUTO</b> — Tecnología en Informática (2011–2014)</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center"><img src="img/logos/logo_md.png" alt="UNIMINUTO" class="h-full w-full object-contain"/></div>
+          <span class="text-slate-700 dark:text-slate-200" data-i18n="edu.l6"><b>UNIMINUTO</b> — Diplomado Telecomunicaciones Móviles (2014)</span>
+        </li>
       </ul>
     </div>
   </section>
@@ -520,12 +549,12 @@
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-8 items-start">
         <div>
-          <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Contacto</h2>
-          <p class="mt-3 text-slate-700 dark:text-slate-200">Envíame un correo, llámame o escríbeme al WhatsApp.</p>
+          <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="contact.title">Contacto</h2>
+          <p class="mt-3 text-slate-700 dark:text-slate-200" data-i18n="contact.desc">Envíame un correo, llámame o escríbeme al WhatsApp.</p>
           <div class="mt-5 flex flex-wrap items-center gap-3">
-            <button id="btn-copy-mail" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" data-mail="nairoboom@gmail.com"><i class="fa-regular fa-copy mr-2"></i>Copiar e-mail</button>
-            <a class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" href="mailto:nairoboom@gmail.com"><i class="fa-solid fa-envelope mr-2"></i>Escribir correo</a>
-            <a class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" href="https://wa.me/573105788198" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp</a>
+            <button id="btn-copy-mail" class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" data-mail="nairoboom@gmail.com" data-i18n="contact.copy"><i class="fa-regular fa-copy mr-2"></i>Copiar e-mail</button>
+            <a class="px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" href="mailto:nairoboom@gmail.com"><i class="fa-solid fa-envelope mr-2"></i> <span data-i18n="contact.write">Escribir correo</span></a>
+            <a class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 dark:hover:border-slate-600" href="https://wa.me/573105788198" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp mr-2"></i> <span data-i18n="contact.whatsapp">WhatsApp</span></a>
           </div>
         </div>
 
@@ -537,20 +566,20 @@
           <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
           <div class="grid sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Nombre</label>
-              <input type="text" name="name" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" placeholder="Tu nombre" required />
+              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form.name">Nombre</label>
+              <input type="text" name="name" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" data-i18n-attr="placeholder:form.name_ph" placeholder="Tu nombre" required />
             </div>
             <div>
-              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Correo</label>
-              <input type="email" name="email" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" placeholder="tucorreo@dominio.com" required />
+              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form.email">Correo</label>
+              <input type="email" name="email" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" data-i18n-attr="placeholder:form.email_ph" placeholder="tucorreo@dominio.com" required />
             </div>
             <div class="sm:col-span-2">
-              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Mensaje</label>
-              <textarea rows="4" name="message" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" placeholder="Cuéntame brevemente sobre tu proyecto" required></textarea>
+              <label class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form.message">Mensaje</label>
+              <textarea rows="4" name="message" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" data-i18n-attr="placeholder:form.message_ph" placeholder="Cuéntame brevemente sobre tu proyecto" required></textarea>
             </div>
           </div>
-          <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
-          <button class="mt-4 w-full px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" type="submit">Enviar</button>
+          <input type="hidden" name="_subject" data-i18n-attr="value:form.subject" value="Nuevo mensaje desde el portafolio">
+          <button class="mt-4 w-full px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" type="submit" data-i18n="form.send">Enviar</button>
           <p id="form-contacto-msg" class="mt-2 text-sm text-slate-600 dark:text-slate-300 hidden"></p>
         </form>
       </div>
@@ -560,8 +589,8 @@
   <!-- Footer -->
   <footer class="py-8 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
     <div class="max-w-6xl mx-auto px-4 text-sm text-slate-500 dark:text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2">
-      <p>© <span id="year"></span> Nairo Samir Boom Vargas · Desarrollador Fullstack</p>
-      <a href="#inicio" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-400 dark:hover:border-slate-600"><i class="fa-solid fa-arrow-up"></i> Volver arriba</a>
+      <p>© <span id="year"></span> Nairo Samir Boom Vargas · <span data-i18n="footer.role">Desarrollador Fullstack</span></p>
+      <a href="#inicio" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-400 dark:hover:border-slate-600"><i class="fa-solid fa-arrow-up"></i> <span data-i18n="footer.top">Volver arriba</span></a>
     </div>
   </footer>
 
@@ -581,24 +610,24 @@
         }
       });
 
-      // Copiar email
+      // Copiar email (texto según idioma)
       $('#btn-copy-mail').on('click', function(){
         const mail = $(this).data('mail');
         if (!mail) return;
         navigator.clipboard.writeText(mail).then(() => {
-          $(this).html('<i class="fa-regular fa-circle-check mr-2"></i>Copiado').addClass('bg-brand-600 text-white border-brand-600');
-          setTimeout(()=> $(this).html('<i class="fa-regular fa-copy mr-2"></i>Copiar e-mail').removeClass('bg-brand-600 text-white border-brand-600'), 1800);
+          $(this).html('<i class="fa-regular fa-circle-check mr-2"></i>'+ t('contact.copied')).addClass('bg-brand-600 text-white border-brand-600');
+          setTimeout(()=> $(this).html('<i class="fa-regular fa-copy mr-2"></i>'+ t('contact.copy')).removeClass('bg-brand-600 text-white border-brand-600'), 1800);
         });
       });
 
-      // Formspree submit
+      // Formspree submit (mensajes según idioma)
       $('#form-contacto').on('submit', function(e){
         e.preventDefault();
         const $form = $(this);
         const $btn  = $form.find('button[type="submit"]');
         const $msg  = $('#form-contacto-msg');
 
-        $btn.prop('disabled', true).text('Enviando…');
+        $btn.prop('disabled', true).text(t('form.sending'));
         $msg.addClass('hidden').text('');
 
         const fd = new FormData(this);
@@ -606,15 +635,15 @@
         fetch(this.action, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } })
           .then(async (res) => {
             if (res.ok) {
-              $msg.removeClass('hidden').text('¡Gracias! Me pondré en contacto pronto.');
+              $msg.removeClass('hidden').text(t('form.ok'));
               this.reset();
             } else {
               const data = await res.json().catch(()=> ({}));
-              throw new Error(data?.error || 'No se pudo enviar. Intenta de nuevo.');
+              throw new Error(data?.error || t('form.fail'));
             }
           })
-          .catch(err => { $msg.removeClass('hidden').text(err.message || 'Error de red. Intenta nuevamente.'); })
-          .finally(() => { $btn.prop('disabled', false).text('Enviar'); });
+          .catch(err => { $msg.removeClass('hidden').text(err.message || t('form.net')); })
+          .finally(() => { $btn.prop('disabled', false).text(t('form.send')); });
       });
     });
 
@@ -641,13 +670,197 @@
         applyTheme(nowDark ? 'light' : 'dark', true);
       });
     })();
-    document.addEventListener('contextmenu', e => e.preventDefault())
-    document.addEventListener('keydown', e => {
-      const k = e.key.toLowerCase()
-      if (k === 'f12' || (e.ctrlKey && (k === 'u' || (e.shiftKey && ['i','j','c'].includes(k))))) {
-        e.preventDefault()
+
+    // ===================== I18N =====================
+    const LANG_KEY = 'site_lang';
+    let CURRENT_LANG = 'es';
+
+    const i18n = {
+      es: {
+        'ui.theme':'Tema','ui.talk':'Hablemos',
+        'nav.about':'Acerca de','nav.experience':'Experiencia','nav.stack':'Stack','nav.services':'Servicios','nav.education':'Educación','nav.contact':'Contacto',
+        'hero.role':'Desarrollador Fullstack',
+        'hero.summary':'Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>.',
+        'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar',
+        'sb.locationLabel':'Ubicación','sb.availabilityLabel':'Disponibilidad','sb.availability':'Remoto / Híbrido','sb.city':'Bogotá D.C., Colombia',
+        'sb.bio':'Me enfoco en soluciones mantenibles, rendimiento medible y automatización útil. Documentación mínima pero suficiente para que cualquier dev avance sin fricción.',
+        'about.title':'Acerca de mí',
+        'about.body':'Soy desarrollador web y móvil con más de 8 años de experiencia. He trabajado en proyectos corporativos, tiendas online completas y apps híbridas. Fuerte en <b>PrestaShop</b>, sólido en back-end <b>PHP/Node.js/Golang</b> y front-end moderno. También administro <b>Linux</b> (Nginx/Apache), manejo bases de datos <b>MySQL/PostgreSQL</b> y orquesto despliegues con <b>Ansible</b>. Me gusta dejar las cosas mejor de como las encontré: refactors iterativos, medición de performance y seguridad sin fricción.',
+        'exp.title':'Experiencia',
+        'exp.senior.role':'Ingeniero de Desarrollo Web <b>Senior</b>',
+        'exp.senior.date':'jun. 2024 – actualidad · Remoto (Bogotá)',
+        'exp.senior.summary':'Desarrollo de <b>servicios y APIs</b> con <b>Go</b> y <b>NestJS</b>, refactor de módulos críticos (precios, stock, promociones), integraciones con servicios internos/terceros y mejoras de rendimiento a nivel de app, edge y base de datos.',
+        'exp.senior.b1':'Endpoints REST con contratos estables, manejo de errores y observabilidad básica.',
+        'exp.senior.b2':'Refactors incrementales que reducen deuda técnica y evitan regresiones.',
+        'exp.senior.b3':'Optimización de latencia con caché, SQL tuning y paginaciones correctas.',
+        'exp.senior.b4':'Code reviews, patrones consistentes y tests en zonas de riesgo.',
+        'exp.senior.b5':'Despliegues reproducibles con métricas post-release.',
+        'exp.semi.role':'Desarrollador Web <b>Semi Senior</b>',
+        'exp.semi.date':'jun. 2019 – may. 2024 · Bogotá',
+        'exp.semi.summary':'Desarrollo y mantenimiento de productos web end-to-end con foco en <b>PrestaShop</b>, performance, seguridad y automatización.',
+        'exp.semi.b1':'Modelado/normalización de MySQL, índices, migraciones y backups.',
+        'exp.semi.b2':'Validaciones y prevención <b>SQLi/XSS/CSRF</b>; roles y políticas.',
+        'exp.semi.b3':'Integraciones con APIs (REST/SOAP) y documentación para terceros.',
+        'exp.semi.b4':'Deploys repetibles con Ansible y tareas crónicas.',
+        'exp.semi.b5':'Apps híbridas con Ionic, firma y entrega iOS con Xcode.',
+        'exp.junior.role':'Desarrollador Web <b>Junior</b>',
+        'exp.junior.date':'may. 2017 – jun. 2019 · Bogotá',
+        'exp.junior.b1':'Soporte correctivo/evolutivo en módulos y sitios existentes.',
+        'exp.junior.b2':'Maquetación, componentes UI y compatibilidad cross-browser.',
+        'exp.junior.b3':'Integraciones puntuales de APIs con guía para equipos internos.',
+        'exp.junior.b4':'Adopción de <b>PHP OOP</b>, Git-flow y buenas prácticas.',
+        'exp.cdi.role':'Analista de Base de Datos / Dev Web',
+        'exp.cdi.date':'mar. 2016 – may. 2017 · Bogotá',
+        'exp.cdi.summary':'Desarrollo PHP orientado a objetos bajo patrón <b>MVC</b>, soporte SQL, paso a producción y acompañamiento funcional a usuarios.',
+        'exp.cdi.b1':'Consultas SQL para diagnóstico, reportes y soporte a negocio.',
+        'exp.cdi.b2':'Patrones (p.ej. <b>Singleton</b>) cuando aplicaba.',
+        'exp.cdi.b3':'Checklists de release y validaciones previas a producción.',
+        'exp.cdi.b4':'Documentación técnica breve de módulos e integraciones.',
+        'stack.title':'Tech Stack',
+        'stack.backend.title':'Back-end',
+        'stack.frontend.title':'Front-end',
+        'stack.ecom.title':'E-commerce',
+        'stack.db.title':'Bases de datos',
+        'stack.devops.title':'Infra & DevOps',
+        'stack.sec.title':'Seguridad & Edge',
+        'stack.mobile.title':'Mobile',
+        'stack.api.title':'APIs',
+        'services.title':'Servicios',
+        'services.s1.title':'Tiendas PrestaShop','services.s1.desc':'Módulos a medida, performance, SEO técnico, integraciones de pago/envío, PUM y promociones.',
+        'services.s2.title':'APIs & Servicios','services.s2.desc':'REST/SOAP en Node.js/NestJS o Go, documentación clara y manejo de errores.',
+        'services.s3.title':'Bases de Datos','services.s3.desc':'Modelado, índices, afinamiento de consultas y planes de backup.',
+        'services.s4.title':'Infra y Automatización','services.s4.desc':'VPS Linux, Nginx/Apache, Ansible, Cloudflare, pipelines de despliegue.',
+        'edu.title':'Educación & Certificaciones',
+        'edu.l1':'<b>UNIMINUTO</b> — Ingeniería de Sistemas (2017–2023)',
+        'edu.l2':'<b>UNIMINUTO</b> — Diplomado SecDevOps (2023)',
+        'edu.l3':'<b>AWS Academy</b> — Cloud Foundations (2023)',
+        'edu.l4':'<b>DevNet Associate</b> (2023)',
+        'edu.l5':'<b>UNIMINUTO</b> — Tecnología en Informática (2011–2014)',
+        'edu.l6':'<b>UNIMINUTO</b> — Diplomado Telecomunicaciones Móviles (2014)',
+        'contact.title':'Contacto','contact.desc':'Envíame un correo, llámame o escríbeme al WhatsApp.',
+        'contact.copy':'Copiar e-mail','contact.copied':'¡Copiado!','contact.write':'Escribir correo','contact.whatsapp':'WhatsApp',
+        'form.name':'Nombre','form.email':'Correo','form.message':'Mensaje','form.send':'Enviar',
+        'form.name_ph':'Tu nombre','form.email_ph':'tucorreo@dominio.com','form.message_ph':'Cuéntame brevemente sobre tu proyecto',
+        'form.sending':'Enviando…','form.ok':'¡Gracias! Me pondré en contacto pronto.','form.fail':'No se pudo enviar. Intenta de nuevo.','form.net':'Error de red. Intenta nuevamente.',
+        'form.subject':'Nuevo mensaje desde el portafolio',
+        'footer.role':'Desarrollador Fullstack','footer.top':'Volver arriba'
+      },
+      en: {
+        'ui.theme':'Theme','ui.talk':'Let’s talk',
+        'nav.about':'About','nav.experience':'Experience','nav.stack':'Stack','nav.services':'Services','nav.education':'Education','nav.contact':'Contact',
+        'hero.role':'Full-stack Developer',
+        'hero.summary':'E-commerce specialist focused on <b>PrestaShop 1.6/1.7</b>, back end with <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET and front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>. Experience with <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> and hybrid apps with <b>Ionic</b>.',
+        'cta.viewExp':'View experience', 'cta.contact':'Contact',
+        'sb.locationLabel':'Location','sb.availabilityLabel':'Availability','sb.availability':'Remote / Hybrid','sb.city':'Bogotá D.C., Colombia',
+        'sb.bio':'I focus on maintainable solutions, measurable performance and practical automation. Minimal but sufficient docs so any dev can move fast.',
+        'about.title':'About me',
+        'about.body':'I am a web and mobile developer with 8+ years of experience. I have worked on corporate projects, full online stores and hybrid apps. Strong in <b>PrestaShop</b>, solid back end in <b>PHP/Node.js/Golang</b>, and modern front end. I also administer <b>Linux</b> (Nginx/Apache), handle <b>MySQL/PostgreSQL</b> and orchestrate deployments with <b>Ansible</b>. I like to leave things better than I found them: iterative refactors, measurable performance and low-friction security.',
+        'exp.title':'Experience',
+        'exp.senior.role':'<b>Senior</b> Web Development Engineer',
+        'exp.senior.date':'Jun 2024 – present · Remote (Bogotá)',
+        'exp.senior.summary':'Development of <b>services and APIs</b> with <b>Go</b> and <b>NestJS</b>, refactor of critical modules (pricing, stock, promotions), integrations with internal/third-party services, and performance improvements at app/edge/database levels.',
+        'exp.senior.b1':'REST endpoints with stable contracts, error handling and basic observability.',
+        'exp.senior.b2':'Incremental refactors that reduce tech debt and prevent regressions.',
+        'exp.senior.b3':'Latency optimization with caching, SQL tuning and correct pagination.',
+        'exp.senior.b4':'Code reviews, consistent patterns and tests in risk areas.',
+        'exp.senior.b5':'Reproducible deployments with post-release metrics.',
+        'exp.semi.role':'<b>Semi-Senior</b> Web Developer',
+        'exp.semi.date':'Jun 2019 – May 2024 · Bogotá',
+        'exp.semi.summary':'End-to-end web product development and maintenance focused on <b>PrestaShop</b>, performance, security and automation.',
+        'exp.semi.b1':'MySQL modeling/normalization, indexes, migrations and backups.',
+        'exp.semi.b2':'Validations and <b>SQLi/XSS/CSRF</b> prevention; roles and policies.',
+        'exp.semi.b3':'API integrations (REST/SOAP) and documentation for third parties.',
+        'exp.semi.b4':'Repeatable deployments with Ansible and scheduled tasks.',
+        'exp.semi.b5':'Hybrid apps with Ionic, iOS signing and delivery with Xcode.',
+        'exp.junior.role':'<b>Junior</b> Web Developer',
+        'exp.junior.date':'May 2017 – Jun 2019 · Bogotá',
+        'exp.junior.b1':'Bugfixing/evolutionary support in existing modules and sites.',
+        'exp.junior.b2':'Markup, UI components and cross-browser compatibility.',
+        'exp.junior.b3':'Targeted API integrations with guidance for internal teams.',
+        'exp.junior.b4':'Adoption of <b>PHP OOP</b>, Git-flow and best practices.',
+        'exp.cdi.role':'Database Analyst / Web Dev',
+        'exp.cdi.date':'Mar 2016 – May 2017 · Bogotá',
+        'exp.cdi.summary':'Object-oriented PHP development under <b>MVC</b>, SQL support, production releases and functional assistance to users.',
+        'exp.cdi.b1':'SQL queries for diagnostics, reporting and business support.',
+        'exp.cdi.b2':'Patterns (e.g., <b>Singleton</b>) where applicable.',
+        'exp.cdi.b3':'Release checklists and pre-production validations.',
+        'exp.cdi.b4':'Concise technical docs for modules and integrations.',
+        'stack.title':'Tech Stack',
+        'stack.backend.title':'Back-end',
+        'stack.frontend.title':'Front-end',
+        'stack.ecom.title':'E-commerce',
+        'stack.db.title':'Databases',
+        'stack.devops.title':'Infra & DevOps',
+        'stack.sec.title':'Security & Edge',
+        'stack.mobile.title':'Mobile',
+        'stack.api.title':'APIs',
+        'services.title':'Services',
+        'services.s1.title':'PrestaShop Stores','services.s1.desc':'Custom modules, performance, technical SEO, payments/shipping integrations, PUM and promotions.',
+        'services.s2.title':'APIs & Services','services.s2.desc':'REST/SOAP in Node.js/NestJS or Go, clear documentation and error handling.',
+        'services.s3.title':'Databases','services.s3.desc':'Modeling, indexes, query tuning and backup plans.',
+        'services.s4.title':'Infra & Automation','services.s4.desc':'Linux VPS, Nginx/Apache, Ansible, Cloudflare, deployment pipelines.',
+        'edu.title':'Education & Certifications',
+        'edu.l1':'<b>UNIMINUTO</b> — Systems Engineering (2017–2023)',
+        'edu.l2':'<b>UNIMINUTO</b> — SecDevOps Diploma (2023)',
+        'edu.l3':'<b>AWS Academy</b> — Cloud Foundations (2023)',
+        'edu.l4':'<b>DevNet Associate</b> (2023)',
+        'edu.l5':'<b>UNIMINUTO</b> — IT Technology (2011–2014)',
+        'edu.l6':'<b>UNIMINUTO</b> — Mobile Telecommunications Diploma (2014)',
+        'contact.title':'Contact','contact.desc':'Email me, call me, or message me on WhatsApp.',
+        'contact.copy':'Copy e-mail','contact.copied':'Copied!','contact.write':'Send e-mail','contact.whatsapp':'WhatsApp',
+        'form.name':'Name','form.email':'E-mail','form.message':'Message','form.send':'Send',
+        'form.name_ph':'Your name','form.email_ph':'you@example.com','form.message_ph':'Tell me briefly about your project',
+        'form.sending':'Sending…','form.ok':'Thanks! I will contact you soon.','form.fail':'Could not send. Please try again.','form.net':'Network error. Please try again.',
+        'form.subject':'New message from portfolio',
+        'footer.role':'Full-stack Developer','footer.top':'Back to top'
       }
-    })
+    };
+
+    function t(key){
+      const lang = CURRENT_LANG in i18n ? CURRENT_LANG : 'es';
+      return i18n[lang][key] ?? i18n.es[key] ?? key;
+    }
+
+    function applyLang(lang){
+      CURRENT_LANG = (lang in i18n) ? lang : 'es';
+      try { localStorage.setItem(LANG_KEY, CURRENT_LANG); } catch(e){}
+      document.getElementById('lang-toggle').textContent = CURRENT_LANG.toUpperCase();
+
+      // Text nodes (innerHTML)
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        const val = t(k);
+        if (val) el.innerHTML = val;
+      });
+
+      // Attributes (placeholder, title, value, aria-label, etc.)
+      document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+        const map = el.getAttribute('data-i18n-attr').split('|');
+        map.forEach(pair => {
+          const [attr, key] = pair.split(':');
+          if (!attr || !key) return;
+          const val = t(key.trim());
+          if (val) el.setAttribute(attr.trim(), val);
+        });
+      });
+    }
+
+    (function initLang(){
+      const saved = localStorage.getItem(LANG_KEY);
+      applyLang(saved || 'es');
+      document.getElementById('lang-toggle')?.addEventListener('click', () => {
+        applyLang(CURRENT_LANG === 'es' ? 'en' : 'es');
+      });
+    })();
+
+    // (opcional) bloquear menú contextual / atajos
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      const k = e.key.toLowerCase();
+      if (k === 'f12' || (e.ctrlKey && (k === 'u' || (e.shiftKey && ['i','j','c'].includes(k))))) {
+        e.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
