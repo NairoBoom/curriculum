@@ -43,6 +43,7 @@
           <a href="#servicios"   data-i18n="nav.services"   class="hover:text-brand-700 dark:hover:text-brand-300">Servicios</a>
           <a href="#educacion"   data-i18n="nav.education"  class="hover:text-brand-700 dark:hover:text-brand-300">Educación</a>
           <a href="#contacto"    data-i18n="nav.contact"    class="hover:text-brand-700 dark:hover:text-brand-300">Contacto</a>
+          <a href="#ops"         data-i18n="nav.ops"        class="hover:text-brand-700 dark:hover:text-brand-300">Entrega & Operaciones</a>
         </nav>
         <div class="flex items-center gap-2">
           <!-- Toggle idioma -->
@@ -455,6 +456,119 @@
       </div>
     </div>
   </section>
+  <section id="ops" class="py-12 md:py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="ops.title">Entrega & Operaciones</h2>
+    <p class="mt-3 max-w-3xl text-slate-700 dark:text-slate-200" data-i18n="ops.intro">
+      Flujo completo desde ramas locales hasta producción, con QA formal, CI/CD automatizado, aprovisionamiento reproducible y medidas de seguridad/observabilidad.
+    </p>
+
+    <div class="mt-6 grid md:grid-cols-2 gap-6">
+      <!-- Flujo de trabajo con Git -->
+      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+            <i class="fa-brands fa-git-alt"></i>
+          </span>
+          <h3 class="font-bold" data-i18n="ops.flow.title">Flujo de trabajo con Git</h3>
+        </div>
+        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+          <li data-i18n="ops.flow.i1">Ramas locales por feature/bugfix con convenciones de nombres y commits semánticos.</li>
+          <li data-i18n="ops.flow.i2">Pull Requests con checklist (linter, unit tests, revisión de seguridad y performance).</li>
+          <li data-i18n="ops.flow.i3">Merge hacia <code>test</code> para validación integral y pruebas exploratorias.</li>
+          <li data-i18n="ops.flow.i4">Release branches con versionado semántico y changelog generado.</li>
+          <li data-i18n="ops.flow.i5">Merge protegido a <code>main</code>/<code>prod</code> con revisores requeridos.</li>
+        </ul>
+      </article>
+
+      <!-- QA & Lanzamientos -->
+      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+            <i class="fa-solid fa-clipboard-check"></i>
+          </span>
+          <h3 class="font-bold" data-i18n="ops.qa.title">QA & Lanzamientos</h3>
+        </div>
+        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+          <li data-i18n="ops.qa.i1">Plan de pruebas: unitarias, integración, e2e y smoke en staging.</li>
+          <li data-i18n="ops.qa.i2">Validación funcional/UX y pruebas de regresión sobre módulos críticos.</li>
+          <li data-i18n="ops.qa.i3">Aprobación QA con criterios de aceptación claros y tickets enlazados.</li>
+          <li data-i18n="ops.qa.i4">Canary/blue-green cuando aplica para minimizar riesgo.</li>
+          <li data-i18n="ops.qa.i5">Ventana de despliegue + monitoreo post-release y plan de rollback.</li>
+        </ul>
+      </article>
+
+      <!-- CI/CD -->
+      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+            <i class="fa-solid fa-gears"></i>
+          </span>
+          <h3 class="font-bold" data-i18n="ops.cicd.title">CI/CD</h3>
+        </div>
+        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+          <li data-i18n="ops.cicd.i1">Pipelines con lint, tests, build, auditoría de dependencias y artefactos versionados.</li>
+          <li data-i18n="ops.cicd.i2">Despliegues a <code>test</code>/staging automáticos; producción bajo aprobaciones.</li>
+          <li data-i18n="ops.cicd.i3">Env vars/secretos por entorno (vault/secret manager) y plantillas de config.</li>
+          <li data-i18n="ops.cicd.i4">Migraciones de DB orquestadas y verificación de salud (healthchecks).</li>
+          <li data-i18n="ops.cicd.i5">Notificaciones a Slack/Email con resumen de release y métricas.</li>
+        </ul>
+      </article>
+
+      <!-- Aprovisionamiento (Debian/CentOS) -->
+      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+            <i class="fa-solid fa-server"></i>
+          </span>
+          <h3 class="font-bold" data-i18n="ops.prov.title">Aprovisionamiento (Debian/CentOS)</h3>
+        </div>
+        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+          <li data-i18n="ops.prov.i1">Roles Ansible para Nginx/Apache, PHP-FPM, Node.js/NestJS, Python, Go.</li>
+          <li data-i18n="ops.prov.i2">Módulos PrestaShop y PHP con extensiones (pdo_mysql, intl, gd, curl, opcache).</li>
+          <li data-i18n="ops.prov.i3">Systemd services, logrotate, límites de recursos y tuning (worker_processes, FPM pm).</li>
+          <li data-i18n="ops.prov.i4">MySQL/PostgreSQL: creación de usuarios, backups, índices, parámetros (InnoDB, work_mem).</li>
+          <li data-i18n="ops.prov.i5">TLS con ACME/Let’s Encrypt, HTTP/2, compresión y caché en edge.</li>
+        </ul>
+      </article>
+
+      <!-- Red y accesos (VPN, jails, proveedores) -->
+      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+            <i class="fa-solid fa-network-wired"></i>
+          </span>
+          <h3 class="font-bold" data-i18n="ops.net.title">Red y accesos</h3>
+        </div>
+        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+          <li data-i18n="ops.net.i1">VPN WireGuard/OpenVPN para entornos y proveedores.</li>
+          <li data-i18n="ops.net.i2">Bastion/jump host; acceso SSH con llaves y MFA.</li>
+          <li data-i18n="ops.net.i3">Enjaulados/chroot para integraciones de terceros con permisos mínimos.</li>
+          <li data-i18n="ops.net.i4">Firewall (UFW/Firewalld), Fail2ban y listas de acceso por IP/CIDR.</li>
+          <li data-i18n="ops.net.i5">Cloudflare (DNS, WAF, Rate Limiting, reglas de caché).</li>
+        </ul>
+      </article>
+
+      <!-- Observabilidad & Resiliencia -->
+      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+            <i class="fa-solid fa-chart-line"></i>
+          </span>
+          <h3 class="font-bold" data-i18n="ops.obs.title">Observabilidad & Resiliencia</h3>
+        </div>
+        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+          <li data-i18n="ops.obs.i1">Métricas y alertas (Prometheus/Grafana) + logs centralizados (ELK/Opensearch).</li>
+          <li data-i18n="ops.obs.i2">Trazas y APM en endpoints críticos (latencia, errores, throughput).</li>
+          <li data-i18n="ops.obs.i3">Backups programados (Borg/Restic), verificación y restauraciones de prueba.</li>
+          <li data-i18n="ops.obs.i4">SLO/SLI básicos y prácticas de postmortem sin culpa.</li>
+          <li data-i18n="ops.obs.i5">Endurecimiento: SSH, mínimos privilegios, rotación de secretos.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
 
   <!-- Educación -->
   <section id="educacion" class="py-12 md:py-16">

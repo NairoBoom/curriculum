@@ -40,3 +40,7 @@ html { scroll-behavior: smooth; }
 @keyframes dusk { 0%{opacity:0} 30%{opacity:.85} 100%{opacity:0} }
 body.theming-light #theme-sky .dawn{ animation: dawn 800ms ease forwards; }
 body.theming-dark  #theme-sky .dusk{ animation: dusk 800ms ease forwards; }
+pre code, code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
