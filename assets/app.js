@@ -759,13 +759,13 @@
     });
 
     // (opcional) bloquear menú contextual / atajos
-    /*document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('keydown', e => {
       const k = e.key.toLowerCase();
       if (k === 'f12' || (e.ctrlKey && (k === 'u' || (e.shiftKey && ['i','j','c'].includes(k))))) {
         e.preventDefault();
       }
-    });*/
+    });
 
     
 
