@@ -33,31 +33,39 @@
 
   <!-- Header -->
   <header class="sticky top-0 z-40 backdrop-blur bg-white/80 dark:bg-slate-900/70 border-b border-slate-200/60 dark:border-slate-700/60">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        <a href="#inicio" class="font-extrabold text-lg tracking-tight text-slate-900 dark:text-white">Nairo Samir <span class="text-brand-600">Boom Vargas</span></a>
-        <nav class="hidden md:flex gap-6 text-sm font-medium">
+    <div class="max-w-max mx-auto px-4">
+      <div class="flex items-center justify-between h-16 gap-3">
+        <!-- Brand -->
+        <a href="#inicio"
+          class="shrink-0 whitespace-nowrap font-extrabold text-lg tracking-tight text-slate-900 dark:text-white">
+          Nairo Samir <span class="text-brand-600">Boom Vargas</span>
+        </a>
+
+        <!-- Nav -->
+        <nav class="hidden md:flex flex-1 justify-center flex-nowrap overflow-x-auto no-scrollbar
+                    gap-4 lg:gap-6 text-[13px] lg:text-sm font-medium whitespace-nowrap">
           <a href="#acerca"      data-i18n="nav.about"      class="hover:text-brand-700 dark:hover:text-brand-300">Acerca de</a>
           <a href="#experiencia" data-i18n="nav.experience" class="hover:text-brand-700 dark:hover:text-brand-300">Experiencia</a>
           <a href="#stack"       data-i18n="nav.stack"      class="hover:text-brand-700 dark:hover:text-brand-300">Stack</a>
           <a href="#servicios"   data-i18n="nav.services"   class="hover:text-brand-700 dark:hover:text-brand-300">Servicios</a>
+          <a href="#ops"         data-i18n="nav.ops"        class="hover:text-brand-700 dark:hover:text-brand-300">Entrega &amp; Operaciones</a>
+          <a href="#proyectos"   data-i18n="nav.projects"   class="hover:text-brand-700 dark:hover:text-brand-300">Proyectos</a>
           <a href="#educacion"   data-i18n="nav.education"  class="hover:text-brand-700 dark:hover:text-brand-300">Educación</a>
           <a href="#contacto"    data-i18n="nav.contact"    class="hover:text-brand-700 dark:hover:text-brand-300">Contacto</a>
-          <a href="#ops"         data-i18n="nav.ops"        class="hover:text-brand-700 dark:hover:text-brand-300">Entrega & Operaciones</a>
         </nav>
-        <div class="flex items-center gap-2">
-          <!-- Toggle idioma -->
+
+        <!-- Acciones -->
+        <div class="shrink-0 flex items-center gap-2">
           <button id="lang-toggle"
             class="inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-600 px-3 py-2 text-sm font-semibold
-                   bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700
-                   text-slate-700 dark:text-slate-100 shadow-sm transition-colors"
+                  bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700
+                  text-slate-700 dark:text-slate-100 shadow-sm transition-colors"
             aria-label="Cambiar idioma">ES</button>
 
-          <!-- Toggle de tema -->
           <button id="theme-toggle"
             class="inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-600 px-3 py-2 text-sm font-semibold
-                   bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700
-                   text-slate-700 dark:text-slate-100 shadow-sm transition-colors"
+                  bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700
+                  text-slate-700 dark:text-slate-100 shadow-sm transition-colors"
             aria-label="Cambiar tema">
             <i class="fa-solid fa-moon block dark:hidden"></i>
             <i class="fa-solid fa-sun hidden dark:block"></i>
@@ -75,7 +83,7 @@
   <!-- Hero -->
   <section id="inicio" class="relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-br from-brand-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800"></div>
-    <div class="max-w-6xl mx-auto px-4 pt-14 pb-10 md:pt-20 md:pb-16">
+    <div class="max-w-7xl mx-auto px-4 pt-14 pb-10 md:pt-20 md:pb-16">
       <div class="grid md:grid-cols-12 gap-8 items-center">
         <div class="md:col-span-7">
           <h1 class="prose-title text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
@@ -150,9 +158,9 @@
 
   <!-- Acerca -->
   <section id="acerca" class="py-12 md:py-16">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="about.title">Acerca de mí</h2>
-      <p class="mt-4 max-w-4xl leading-relaxed text-slate-700 dark:text-slate-200" data-i18n="about.body">
+      <p class="mt-4 max-w-5xl leading-relaxed text-slate-700 dark:text-slate-200" data-i18n="about.body">
         Soy desarrollador web y móvil con más de 8 años de experiencia. He trabajado en proyectos corporativos, tiendas online completas y apps híbridas.
         Fuerte en <b>PrestaShop</b>, sólido en back-end <b>PHP/Node.js/Golang</b> y front-end moderno.
         También administro <b>Linux</b> (Nginx/Apache), manejo bases de datos <b>MySQL/PostgreSQL</b> y orquesto despliegues con <b>Ansible</b>.
@@ -163,7 +171,7 @@
 
   <!-- Experiencia -->
   <section id="experiencia" class="py-12 md:py-16 bg-white dark:bg-slate-900">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="exp.title">Experiencia</h2>
 
       <!-- Senior -->
@@ -284,7 +292,7 @@
 
   <!-- Tech Stack -->
   <section id="stack" class="py-12 md:py-16">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="stack.title">Tech Stack</h2>
 
       <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -422,7 +430,7 @@
 
   <!-- Servicios -->
   <section id="servicios" class="py-12 md:py-16 bg-white dark:bg-slate-900">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="services.title">Servicios</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
         <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
@@ -457,122 +465,132 @@
     </div>
   </section>
   <section id="ops" class="py-12 md:py-16">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="ops.title">Entrega & Operaciones</h2>
-    <p class="mt-3 max-w-3xl text-slate-700 dark:text-slate-200" data-i18n="ops.intro">
-      Flujo completo desde ramas locales hasta producción, con QA formal, CI/CD automatizado, aprovisionamiento reproducible y medidas de seguridad/observabilidad.
-    </p>
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="ops.title">Entrega & Operaciones</h2>
+      <p class="mt-3 max-w-5xl text-slate-700 dark:text-slate-200" data-i18n="ops.intro">
+        Flujo completo desde ramas locales hasta producción, con QA formal, CI/CD automatizado, aprovisionamiento reproducible y medidas de seguridad/observabilidad.
+      </p>
 
-    <div class="mt-6 grid md:grid-cols-2 gap-6">
-      <!-- Flujo de trabajo con Git -->
-      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
-            <i class="fa-brands fa-git-alt"></i>
-          </span>
-          <h3 class="font-bold" data-i18n="ops.flow.title">Flujo de trabajo con Git</h3>
-        </div>
-        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-          <li data-i18n="ops.flow.i1">Ramas locales por feature/bugfix con convenciones de nombres y commits semánticos.</li>
-          <li data-i18n="ops.flow.i2">Pull Requests con checklist (linter, unit tests, revisión de seguridad y performance).</li>
-          <li data-i18n="ops.flow.i3">Merge hacia <code>test</code> para validación integral y pruebas exploratorias.</li>
-          <li data-i18n="ops.flow.i4">Release branches con versionado semántico y changelog generado.</li>
-          <li data-i18n="ops.flow.i5">Merge protegido a <code>main</code>/<code>prod</code> con revisores requeridos.</li>
-        </ul>
-      </article>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <!-- Flujo de trabajo con Git -->
+        <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-brands fa-git-alt"></i>
+            </span>
+            <h3 class="font-bold" data-i18n="ops.flow.title">Flujo de trabajo con Git</h3>
+          </div>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li data-i18n="ops.flow.i1">Ramas locales por feature/bugfix con convenciones de nombres y commits semánticos.</li>
+            <li data-i18n="ops.flow.i2">Pull Requests con checklist (linter, unit tests, revisión de seguridad y performance).</li>
+            <li data-i18n="ops.flow.i3">Merge hacia <code>test</code> para validación integral y pruebas exploratorias.</li>
+            <li data-i18n="ops.flow.i4">Release branches con versionado semántico y changelog generado.</li>
+            <li data-i18n="ops.flow.i5">Merge protegido a <code>main</code>/<code>prod</code> con revisores requeridos.</li>
+          </ul>
+        </article>
 
-      <!-- QA & Lanzamientos -->
-      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
-            <i class="fa-solid fa-clipboard-check"></i>
-          </span>
-          <h3 class="font-bold" data-i18n="ops.qa.title">QA & Lanzamientos</h3>
-        </div>
-        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-          <li data-i18n="ops.qa.i1">Plan de pruebas: unitarias, integración, e2e y smoke en staging.</li>
-          <li data-i18n="ops.qa.i2">Validación funcional/UX y pruebas de regresión sobre módulos críticos.</li>
-          <li data-i18n="ops.qa.i3">Aprobación QA con criterios de aceptación claros y tickets enlazados.</li>
-          <li data-i18n="ops.qa.i4">Canary/blue-green cuando aplica para minimizar riesgo.</li>
-          <li data-i18n="ops.qa.i5">Ventana de despliegue + monitoreo post-release y plan de rollback.</li>
-        </ul>
-      </article>
+        <!-- QA & Lanzamientos -->
+        <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-clipboard-check"></i>
+            </span>
+            <h3 class="font-bold" data-i18n="ops.qa.title">QA & Lanzamientos</h3>
+          </div>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li data-i18n="ops.qa.i1">Plan de pruebas: unitarias, integración, e2e y smoke en staging.</li>
+            <li data-i18n="ops.qa.i2">Validación funcional/UX y pruebas de regresión sobre módulos críticos.</li>
+            <li data-i18n="ops.qa.i3">Aprobación QA con criterios de aceptación claros y tickets enlazados.</li>
+            <li data-i18n="ops.qa.i4">Canary/blue-green cuando aplica para minimizar riesgo.</li>
+            <li data-i18n="ops.qa.i5">Ventana de despliegue + monitoreo post-release y plan de rollback.</li>
+          </ul>
+        </article>
 
-      <!-- CI/CD -->
-      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
-            <i class="fa-solid fa-gears"></i>
-          </span>
-          <h3 class="font-bold" data-i18n="ops.cicd.title">CI/CD</h3>
-        </div>
-        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-          <li data-i18n="ops.cicd.i1">Pipelines con lint, tests, build, auditoría de dependencias y artefactos versionados.</li>
-          <li data-i18n="ops.cicd.i2">Despliegues a <code>test</code>/staging automáticos; producción bajo aprobaciones.</li>
-          <li data-i18n="ops.cicd.i3">Env vars/secretos por entorno (vault/secret manager) y plantillas de config.</li>
-          <li data-i18n="ops.cicd.i4">Migraciones de DB orquestadas y verificación de salud (healthchecks).</li>
-          <li data-i18n="ops.cicd.i5">Notificaciones a Slack/Email con resumen de release y métricas.</li>
-        </ul>
-      </article>
+        <!-- CI/CD -->
+        <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-gears"></i>
+            </span>
+            <h3 class="font-bold" data-i18n="ops.cicd.title">CI/CD</h3>
+          </div>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li data-i18n="ops.cicd.i1">Pipelines con lint, tests, build, auditoría de dependencias y artefactos versionados.</li>
+            <li data-i18n="ops.cicd.i2">Despliegues a <code>test</code>/staging automáticos; producción bajo aprobaciones.</li>
+            <li data-i18n="ops.cicd.i3">Env vars/secretos por entorno (vault/secret manager) y plantillas de config.</li>
+            <li data-i18n="ops.cicd.i4">Migraciones de DB orquestadas y verificación de salud (healthchecks).</li>
+            <li data-i18n="ops.cicd.i5">Notificaciones a Slack/Email con resumen de release y métricas.</li>
+          </ul>
+        </article>
 
-      <!-- Aprovisionamiento (Debian/CentOS) -->
-      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
-            <i class="fa-solid fa-server"></i>
-          </span>
-          <h3 class="font-bold" data-i18n="ops.prov.title">Aprovisionamiento (Debian/CentOS)</h3>
-        </div>
-        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-          <li data-i18n="ops.prov.i1">Roles Ansible para Nginx/Apache, PHP-FPM, Node.js/NestJS, Python, Go.</li>
-          <li data-i18n="ops.prov.i2">Módulos PrestaShop y PHP con extensiones (pdo_mysql, intl, gd, curl, opcache).</li>
-          <li data-i18n="ops.prov.i3">Systemd services, logrotate, límites de recursos y tuning (worker_processes, FPM pm).</li>
-          <li data-i18n="ops.prov.i4">MySQL/PostgreSQL: creación de usuarios, backups, índices, parámetros (InnoDB, work_mem).</li>
-          <li data-i18n="ops.prov.i5">TLS con ACME/Let’s Encrypt, HTTP/2, compresión y caché en edge.</li>
-        </ul>
-      </article>
+        <!-- Aprovisionamiento (Debian/CentOS) -->
+        <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-server"></i>
+            </span>
+            <h3 class="font-bold" data-i18n="ops.prov.title">Aprovisionamiento (Debian/CentOS)</h3>
+          </div>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li data-i18n="ops.prov.i1">Roles Ansible para Nginx/Apache, PHP-FPM, Node.js/NestJS, Python, Go.</li>
+            <li data-i18n="ops.prov.i2">Módulos PrestaShop y PHP con extensiones (pdo_mysql, intl, gd, curl, opcache).</li>
+            <li data-i18n="ops.prov.i3">Systemd services, logrotate, límites de recursos y tuning (worker_processes, FPM pm).</li>
+            <li data-i18n="ops.prov.i4">MySQL/PostgreSQL: creación de usuarios, backups, índices, parámetros (InnoDB, work_mem).</li>
+            <li data-i18n="ops.prov.i5">TLS con ACME/Let’s Encrypt, HTTP/2, compresión y caché en edge.</li>
+          </ul>
+        </article>
 
-      <!-- Red y accesos (VPN, jails, proveedores) -->
-      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
-            <i class="fa-solid fa-network-wired"></i>
-          </span>
-          <h3 class="font-bold" data-i18n="ops.net.title">Red y accesos</h3>
-        </div>
-        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-          <li data-i18n="ops.net.i1">VPN WireGuard/OpenVPN para entornos y proveedores.</li>
-          <li data-i18n="ops.net.i2">Bastion/jump host; acceso SSH con llaves y MFA.</li>
-          <li data-i18n="ops.net.i3">Enjaulados/chroot para integraciones de terceros con permisos mínimos.</li>
-          <li data-i18n="ops.net.i4">Firewall (UFW/Firewalld), Fail2ban y listas de acceso por IP/CIDR.</li>
-          <li data-i18n="ops.net.i5">Cloudflare (DNS, WAF, Rate Limiting, reglas de caché).</li>
-        </ul>
-      </article>
+        <!-- Red y accesos (VPN, jails, proveedores) -->
+        <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-network-wired"></i>
+            </span>
+            <h3 class="font-bold" data-i18n="ops.net.title">Red y accesos</h3>
+          </div>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li data-i18n="ops.net.i1">VPN WireGuard/OpenVPN para entornos y proveedores.</li>
+            <li data-i18n="ops.net.i2">Bastion/jump host; acceso SSH con llaves y MFA.</li>
+            <li data-i18n="ops.net.i3">Enjaulados/chroot para integraciones de terceros con permisos mínimos.</li>
+            <li data-i18n="ops.net.i4">Firewall (UFW/Firewalld), Fail2ban y listas de acceso por IP/CIDR.</li>
+            <li data-i18n="ops.net.i5">Cloudflare (DNS, WAF, Rate Limiting, reglas de caché).</li>
+          </ul>
+        </article>
 
-      <!-- Observabilidad & Resiliencia -->
-      <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
-        <div class="flex items-center gap-3 mb-2">
-          <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
-            <i class="fa-solid fa-chart-line"></i>
-          </span>
-          <h3 class="font-bold" data-i18n="ops.obs.title">Observabilidad & Resiliencia</h3>
-        </div>
-        <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
-          <li data-i18n="ops.obs.i1">Métricas y alertas (Prometheus/Grafana) + logs centralizados (ELK/Opensearch).</li>
-          <li data-i18n="ops.obs.i2">Trazas y APM en endpoints críticos (latencia, errores, throughput).</li>
-          <li data-i18n="ops.obs.i3">Backups programados (Borg/Restic), verificación y restauraciones de prueba.</li>
-          <li data-i18n="ops.obs.i4">SLO/SLI básicos y prácticas de postmortem sin culpa.</li>
-          <li data-i18n="ops.obs.i5">Endurecimiento: SSH, mínimos privilegios, rotación de secretos.</li>
-        </ul>
-      </article>
+        <!-- Observabilidad & Resiliencia -->
+        <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br from-brand-100 to-cyan-100 text-brand-700 dark:from-brand-800/30 dark:to-cyan-800/30 dark:text-brand-300 ring-1 ring-brand-200/60 dark:ring-slate-700">
+              <i class="fa-solid fa-chart-line"></i>
+            </span>
+            <h3 class="font-bold" data-i18n="ops.obs.title">Observabilidad & Resiliencia</h3>
+          </div>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li data-i18n="ops.obs.i1">Métricas y alertas (Prometheus/Grafana) + logs centralizados (ELK/Opensearch).</li>
+            <li data-i18n="ops.obs.i2">Trazas y APM en endpoints críticos (latencia, errores, throughput).</li>
+            <li data-i18n="ops.obs.i3">Backups programados (Borg/Restic), verificación y restauraciones de prueba.</li>
+            <li data-i18n="ops.obs.i4">SLO/SLI básicos y prácticas de postmortem sin culpa.</li>
+            <li data-i18n="ops.obs.i5">Endurecimiento: SSH, mínimos privilegios, rotación de secretos.</li>
+          </ul>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+  <section id="proyectos" class="py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="projects.title">Proyectos Destacados</h2>
+      <p class="mt-3 max-w-5xl text-slate-700 dark:text-slate-200" data-i18n="projects.subtitle">
+        Selección de trabajos con impacto medible: rendimiento, fiabilidad, automatización y experiencia de usuario.
+      </p>
 
+      <!-- Grid renderizado por JS -->
+      <div id="projects-grid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
 
   <!-- Educación -->
   <section id="educacion" class="py-12 md:py-16">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="edu.title">Educación & Certificaciones</h2>
     <ul class="mt-6 space-y-3">
       <li class="flex items-center gap-3">
@@ -605,7 +623,7 @@
 
   <!-- Contacto -->
   <section id="contacto" class="py-12 md:py-16 bg-white dark:bg-slate-900">
-    <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-7xl mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-8 items-start">
         <div>
           <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="contact.title">Contacto</h2>
@@ -647,7 +665,7 @@
 
   <!-- Footer -->
   <footer class="py-8 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
-    <div class="max-w-6xl mx-auto px-4 text-sm text-slate-500 dark:text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2">
+    <div class="max-w-7xl mx-auto px-4 text-sm text-slate-500 dark:text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2">
       <p>© <span id="year"></span> Nairo Samir Boom Vargas · <span data-i18n="footer.role">Desarrollador Fullstack</span></p>
       <a href="#inicio" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-slate-400 dark:hover:border-slate-600"><i class="fa-solid fa-arrow-up"></i> <span data-i18n="footer.top">Volver arriba</span></a>
     </div>

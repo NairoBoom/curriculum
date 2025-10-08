@@ -44,3 +44,22 @@ pre code, code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 }
+
+.kpi {
+  display:flex; flex-direction:column; align-items:flex-start;
+  padding:.5rem .75rem; border-radius:.75rem; border:1px solid rgba(2,6,23,.08);
+}
+.dark .kpi { border-color: rgba(148,163,184,.18); }
+.kpi .val { font-weight: 900; line-height:1; font-size:1.1rem; }
+.kpi .lbl { font-size:.75rem; opacity:.8; }
+
+.project-icon {
+  filter: drop-shadow(0 6px 18px rgba(2,6,23,.15));
+}
+.dark .project-icon {
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,.35));
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+

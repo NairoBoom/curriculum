@@ -30,6 +30,7 @@
 
       'ui.theme':'Tema','ui.talk':'Hablemos',
       'nav.about':'Acerca de','nav.experience':'Experiencia','nav.stack':'Stack','nav.services':'Servicios','nav.education':'Educación','nav.contact':'Contacto',
+      'nav.ops':'Entrega & Operaciones','nav.projects':'Proyectos',
       'hero.role':'Desarrollador Fullstack',
       'hero.summary':'Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>.',
       'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar',
@@ -133,7 +134,9 @@
       'ops.obs.i2':'Trazas y APM en endpoints críticos (latencia, errores, throughput).',
       'ops.obs.i3':'Backups programados (Borg/Restic), verificación y restauraciones de prueba.',
       'ops.obs.i4':'SLO/SLI básicos y prácticas de postmortem sin culpa.',
-      'ops.obs.i5':'Endurecimiento: SSH, mínimos privilegios, rotación de secretos.'
+      'ops.obs.i5':'Endurecimiento: SSH, mínimos privilegios, rotación de secretos.',
+      'projects.title':'Proyectos Destacados',
+      'projects.subtitle':'Selección de trabajos con impacto medible: rendimiento, fiabilidad, automatización y experiencia de usuario.'
     },
     en: {
       'meta.title':'Portfolio — Nairo Samir Boom Vargas',
@@ -141,6 +144,7 @@
 
       'ui.theme':'Theme','ui.talk':'Let’s talk',
       'nav.about':'About','nav.experience':'Experience','nav.stack':'Stack','nav.services':'Services','nav.education':'Education','nav.contact':'Contact',
+      'nav.ops':'Delivery & Operations','nav.projects':'Projects',
       'hero.role':'Full-stack Developer',
       'hero.summary':'E-commerce specialist focused on <b>PrestaShop 1.6/1.7</b>, back end with <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET and front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>. Experience with <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> and hybrid apps with <b>Ionic</b>.',
       'cta.viewExp':'View experience', 'cta.contact':'Contact',
@@ -243,8 +247,270 @@
       'ops.obs.i2':'Tracing and APM on critical endpoints (latency, errors, throughput).',
       'ops.obs.i3':'Scheduled backups (Borg/Restic), verification and test restores.',
       'ops.obs.i4':'Basic SLO/SLI and blameless postmortems.',
-      'ops.obs.i5':'Hardening: SSH, least privilege, secret rotation.'
+      'ops.obs.i5':'Hardening: SSH, least privilege, secret rotation.',
+      'projects.title':'Featured Projects',
+      'projects.subtitle':'A selection of work with measurable impact: performance, reliability, automation and UX.'
     }
+  };
+
+    // Dataset de proyectos (contenido bilingüe dentro del dataset)
+  const PROJECTS = {
+    es: [
+      {
+        id:'promos',
+        company:'Farmalisto',
+        role:'Backend / E-commerce',
+        period:'2022–2024',
+        title:'Motor de promociones y cupones escalable',
+        img:'img/proyectos/promos.jpg',
+        icon: 'fa-solid fa-percent',
+        stack:[
+          { icon:'fa-brands fa-php',     name:'PHP/Symfony' },
+          { icon:'fa-solid fa-database', name:'MySQL' },
+          { icon:'fa-solid fa-store',    name:'PrestaShop' },
+          { icon:'fa-solid fa-gauge',    name:'Redis' }
+        ],
+        kpis:[
+          { val:'-42%', lbl:'Tiempo cálculo carrito' },
+          { val:'+18%', lbl:'Conversión promo' },
+          { val:'<50ms', lbl:'p95 endpoint reglas' }
+        ],
+        bullets:[
+          'Reglas combinables (mix & match), excepciones, multimoneda y multi-país.',
+          'AB testing en promociones y reporte de uplift.',
+          'Observabilidad: métricas, trazas y alertas de caídas o anomalías.'
+        ]
+      },
+      {
+        id:'price-stock-api',
+        company:'Farmalisto',
+        role:'Go/NestJS',
+        period:'2021–2024',
+        title:'API de precios y disponibilidad de baja latencia',
+        img:'img/proyectos/priceapi.webp',
+        icon: 'fa-solid fa-tag',
+        stack:[
+          { icon:'fa-solid fa-code',     name:'Go' },
+          { icon:'fa-brands fa-node',    name:'NestJS' },
+          { icon:'fa-solid fa-database', name:'MySQL' },
+          { icon:'fa-solid fa-cloud',    name:'Cloudflare' }
+        ],
+        kpis:[
+          { val:'-54%', lbl:'p95 latencia (120→55ms)' },
+          { val:'83%',  lbl:'Tasa de aciertos caché' },
+          { val:'0',    lbl:'Errores post-release críticos' }
+        ],
+        bullets:[
+          'Contratos estables, versionado y manejo de errores consistente.',
+          'Cacheo en edge y políticas de invalidación por evento.',
+          'Pruebas de carga y canary para releases de riesgo.'
+        ]
+      },
+      {
+        id:'prestashop-mig',
+        company:'Farmalisto',
+        role:'PHP/PrestaShop',
+        period:'2021–2022',
+        title:'Migración PrestaShop 1.6 → 1.7 sin downtime',
+        img:'img/proyectos/migracion.png',
+        icon: 'fa-solid fa-cart-shopping',
+        stack:[
+          { icon:'fa-brands fa-php',  name:'PHP' },
+          { icon:'fa-solid fa-store', name:'PrestaShop 1.7' },
+          { icon:'fa-solid fa-server',name:'Nginx' },
+          { icon:'fa-solid fa-cloud', name:'Cloudflare' },
+        ],
+        kpis:[
+          { val:'+12%', lbl:'Tráfico orgánico' },
+          { val:'-35%', lbl:'TTFB promedio' },
+          { val:'0',    lbl:'Pérdida de SEO crítico' }
+        ],
+        bullets:[
+          'Plan de redirecciones 301 y auditoría de SEO técnico.',
+          'Tests funcionales de checkout, promociones y catálogos.',
+          'Rollback plan validado y ventanas de despliegue cuidadas.'
+        ]
+      },
+      {
+        id:'ansible-multi',
+        company:'Multi-entorno',
+        role:'DevOps',
+        period:'2017–2024',
+        title:'Aprovisionamiento reproducible (Debian/CentOS) con Ansible',
+        img:'img/proyectos/ansible.png',
+        icon: 'fa-brands fa-linux',
+        stack:[
+          { icon:'fa-brands fa-linux', name:'Ansible' },
+          { icon:'fa-solid fa-server',   name:'Nginx/Apache' },
+          { icon:'fa-brands fa-php',     name:'PHP-FPM' },
+          { icon:'fa-brands fa-node',    name:'Node.js' },
+          { icon:'fa-brands fa-database',    name:'MariaDb' },
+        ],
+        kpis:[
+          { val:'-70%', lbl:'Tiempo de provisioning' },
+          { val:'100%', lbl:'Entornos consistentes' },
+          { val:'<15m', lbl:'MTTR por reprovisionar' }
+        ],
+        bullets:[
+          'Roles para web/app/db, TLS, logrotate y healthchecks.',
+          'Backups automatizados y restores de prueba programados.',
+          'WAF/Firewall, SSH hardening y mínimos privilegios.'
+        ]
+      },
+      {
+        id:'ionic-ios',
+        company:'Interno',
+        role:'Mobile',
+        period:'2017–2021',
+        title:'App híbrida (Ionic + Capacitor) y entrega iOS, App Nativa - React ',
+        img:'img/proyectos/ionic.png',
+        icon: 'fa-solid fa-mobile-screen-button',
+        stack:[
+          { icon:'fa-solid fa-mobile-screen-button', name:'Ionic/Capacitor' },
+          { icon:'fa-brands fa-apple',               name:'Xcode/iOS' },
+          { icon:'fa-brands fa-angular',             name:'Angular' },
+          { icon:'fa-brands fa-react',               name:'React' },
+        ],
+        kpis:[
+          { val:'<2s',  lbl:'Time-to-interactive' },
+          { val:'>99%', lbl:'Crash-free sessions' },
+          { val:'+9%',  lbl:'Retención mensual' }
+        ],
+        bullets:[
+          'Autenticación, carrito y notificaciones push.',
+          'Flujos offline y sincronización en background.',
+          'Firma, provisioning profile y publicación en App Store.'
+        ]
+      }
+    ],
+    en: [
+      {
+        id:'promos',
+        company:'Farmalisto',
+        role:'Backend / E-commerce',
+        period:'2022–2024',
+        title:'Scalable promotions & coupons engine',
+        img:'img/proyectos/promos.jpg',
+        icon: 'fa-solid fa-percent',
+        stack:[
+          { icon:'fa-brands fa-php',     name:'PHP/Symfony' },
+          { icon:'fa-solid fa-database', name:'MySQL' },
+          { icon:'fa-solid fa-store',    name:'PrestaShop' },
+          { icon:'fa-solid fa-gauge',    name:'Redis' }
+        ],
+        kpis:[
+          { val:'-42%', lbl:'Cart calc time' },
+          { val:'+18%', lbl:'Promo conversion' },
+          { val:'<50ms', lbl:'p95 rules endpoint' }
+        ],
+        bullets:[
+          'Composable rules, exceptions, multi-currency and multi-country.',
+          'Promo A/B testing and uplift reporting.',
+          'Observability with metrics, tracing and alerts.'
+        ]
+      },
+      {
+        id:'price-stock-api',
+        company:'Farmalisto',
+        role:'Go/NestJS',
+        period:'2021–2024',
+        title:'Low-latency price & availability API',
+        img:'img/proyectos/priceapi.webp',
+        icon: 'fa-solid fa-tag',
+        stack:[
+          { icon:'fa-solid fa-code',     name:'Go' },
+          { icon:'fa-brands fa-node',    name:'NestJS' },
+          { icon:'fa-solid fa-database', name:'MySQL' },
+          { icon:'fa-solid fa-cloud',    name:'Cloudflare' }
+        ],
+        kpis:[
+          { val:'-54%', lbl:'p95 latency (120→55ms)' },
+          { val:'83%',  lbl:'Cache hit rate' },
+          { val:'0',    lbl:'Critical post-release errors' }
+        ],
+        bullets:[
+          'Stable contracts, versioning and consistent error handling.',
+          'Edge caching and event-driven invalidation.',
+          'Load testing and canary for risky releases.'
+        ]
+      },
+      {
+        id:'prestashop-mig',
+        company:'Farmalisto',
+        role:'PHP/PrestaShop',
+        period:'2021–2022',
+        title:'PrestaShop 1.6 → 1.7 migration (zero downtime)',
+        img:'img/proyectos/migracion.png',
+        icon: 'fa-solid fa-cart-shopping',
+        stack:[
+          { icon:'fa-brands fa-php',  name:'PHP' },
+          { icon:'fa-solid fa-store', name:'PrestaShop 1.7' },
+          { icon:'fa-solid fa-server',name:'Nginx' },
+          { icon:'fa-solid fa-cloud', name:'Cloudflare' }
+        ],
+        kpis:[
+          { val:'+12%', lbl:'Organic traffic' },
+          { val:'-35%', lbl:'Avg TTFB' },
+          { val:'0',    lbl:'Critical SEO loss' }
+        ],
+        bullets:[
+          '301 plan and technical SEO audit.',
+          'Functional tests on checkout, promos and catalogs.',
+          'Validated rollback and careful deployment windows.'
+        ]
+      },
+      {
+        id:'ansible-multi',
+        company:'Multi-env',
+        role:'DevOps',
+        period:'2017–2024',
+        title:'Reproducible provisioning (Debian/CentOS) with Ansible',
+        img:'img/proyectos/ansible.png',
+        icon: 'fa-brands fa-linux',
+        stack:[
+          { icon:'fa-brands fa-linux', name:'Ansible' },
+          { icon:'fa-solid fa-server',   name:'Nginx/Apache' },
+          { icon:'fa-brands fa-php',     name:'PHP-FPM' },
+          { icon:'fa-brands fa-node',    name:'Node.js' },
+          { icon:'fa-brands fa-database',    name:'MariaDb' },
+        ],
+        kpis:[
+          { val:'-70%', lbl:'Provisioning time' },
+          { val:'100%', lbl:'Consistent envs' },
+          { val:'<15m', lbl:'MTTR by reprovision' }
+        ],
+        bullets:[
+          'Roles for web/app/db, TLS, logrotate and healthchecks.',
+          'Automated backups and scheduled test restores.',
+          'WAF/Firewall, SSH hardening and least privilege.'
+        ]
+      },
+      {
+        id:'ionic-ios',
+        company:'Internal',
+        role:'Mobile',
+        period:'2017–2025',
+        title:'Hybrid app (Ionic + Capacitor) and iOS delivery, Native App - React ',
+        img:'img/proyectos/ionic.png',
+        icon: 'fa-solid fa-mobile-screen-button',
+        stack:[
+          { icon:'fa-solid fa-mobile-screen-button', name:'Ionic/Capacitor' },
+          { icon:'fa-brands fa-apple',               name:'Xcode/iOS' },
+          { icon:'fa-brands fa-angular',             name:'Angular' },
+          { icon:'fa-brands fa-react',               name:'React' },
+        ],
+        kpis:[
+          { val:'<2s',  lbl:'Time-to-interactive' },
+          { val:'>99%', lbl:'Crash-free sessions' },
+          { val:'+9%',  lbl:'Monthly retention' }
+        ],
+        bullets:[
+          'Auth, cart and push notifications.',
+          'Offline flows and background sync.',
+          'Signing, provisioning and App Store delivery.'
+        ]
+      }
+    ]
   };
 
   // Helpers i18n
@@ -328,6 +594,55 @@
     try { localStorage.setItem(STORAGE.LANG, lang); } catch(e){}
   }
 
+  function renderProjects(lang){
+      const list = PROJECTS[lang] || PROJECTS.es;
+      const grid = document.getElementById('projects-grid');
+      if (!grid) return;
+
+      const card = (p) => {
+        const chips = p.stack.map(s => `
+          <span class="chip"><i class="${s.icon}"></i>${s.name}</span>
+        `).join('');
+
+        const kpis = p.kpis.map(k => `
+          <div class="kpi bg-white/70 dark:bg-slate-900/60">
+            <div class="val">${k.val}</div>
+            <div class="lbl">${k.lbl}</div>
+          </div>
+        `).join('');
+
+        const bullets = p.bullets.map(b => `<li>${b}</li>`).join('');
+
+        return `
+          <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden card-hover flex flex-col">
+            <div class="relative h-40 bg-gradient-to-tr from-brand-100 to-cyan-100 dark:from-slate-800 dark:to-slate-700 grid place-items-center">
+              <i class="${p.icon || 'fa-solid fa-briefcase'} text-6xl md:text-7xl text-brand-700 dark:text-brand-300 project-icon" aria-hidden="true"></i>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="font-bold text-slate-900 dark:text-white">${p.title}</h3>
+                <span class="text-xs px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700">${p.period}</span>
+              </div>
+              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">${p.company} · ${p.role}</p>
+
+              <div class="mt-3 chips">${chips}</div>
+
+              <div class="mt-4 grid grid-cols-3 gap-2">${kpis}</div>
+
+              <ul class="mt-4 list-disc pl-5 text-sm text-slate-700 dark:text-slate-200">${bullets}</ul>
+            </div>
+          </article>
+        `;
+      };
+
+      grid.innerHTML = list.map(card).join('');
+
+      // Fallback si la imagen no existe: ocultamos <img> y dejamos el gradiente
+      grid.querySelectorAll('img.project-img').forEach(img => {
+        img.onerror = () => { img.remove(); };
+      });
+    }
+
   function render(prevState){
     const state = store.getState();
 
@@ -338,6 +653,7 @@
     // Tema
     if (!prevState || prevState.theme !== state.theme){
       applyThemeDOM(state.theme, prevState && prevState.theme);
+      renderProjects(state.lang);
     }
 
     // Idioma
@@ -443,12 +759,17 @@
     });
 
     // (opcional) bloquear menú contextual / atajos
-    document.addEventListener('contextmenu', e => e.preventDefault());
+    /*document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('keydown', e => {
       const k = e.key.toLowerCase();
       if (k === 'f12' || (e.ctrlKey && (k === 'u' || (e.shiftKey && ['i','j','c'].includes(k))))) {
         e.preventDefault();
       }
-    });
+    });*/
+
+    
+
   });
+
+   
 })();
