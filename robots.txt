@@ -1,0 +1,13 @@
+# robots.txt for https://nairoboom.github.io/curriculum/
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://nairoboom.github.io/curriculum/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Block common bot paths
+Disallow: /assets/

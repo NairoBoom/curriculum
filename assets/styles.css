@@ -1,5 +1,31 @@
 /* ===== Utilidades generales ===== */
 html { scroll-behavior: smooth; }
+
+/* ===== Accesibilidad ===== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #2563eb;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  z-index: 100;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus visible mejorado */
+*:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+.dark *:focus-visible {
+  outline-color: #60a5fa;
+}
 .gradient-text {
   background: linear-gradient(90deg, #60a5fa, #22d3ee);
   -webkit-background-clip: text;
@@ -62,4 +88,74 @@ pre code, code {
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ===== Animaciones de scroll ===== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  header, #mobile-menu, #scroll-progress, #theme-sky, footer,
+  #theme-toggle, #lang-toggle, #mobile-menu-toggle,
+  #download-cv, #btn-copy-mail, .skip-link, #testimonios {
+    display: none !important;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 1.5rem !important;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .card-hover, article {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    background: white !important;
+  }
+
+  a {
+    text-decoration: underline;
+    color: black !important;
+  }
+
+  .chip {
+    border: 1px solid #333 !important;
+    background: white !important;
+    color: black !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
 

@@ -5,9 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portafolio — Nairo Samir Boom Vargas</title>
   <meta name="description" content="Portafolio detallado de Nairo Samir Boom Vargas — Desarrollador Fullstack (PrestaShop, PHP, Node.js, Angular, DevOps)" />
+  <meta name="author" content="Nairo Samir Boom Vargas">
+  <meta name="keywords" content="desarrollador fullstack, prestashop, php, nodejs, golang, angular, react, devops, bogotá, colombia, e-commerce">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+  <link rel="canonical" href="https://nairoboom.github.io/curriculum/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nairoboom.github.io/curriculum/">
+  <meta property="og:title" content="Nairo Samir Boom Vargas — Desarrollador Fullstack">
+  <meta property="og:description" content="Especialista en e-commerce (PrestaShop), back-end (PHP, Node.js, Golang) y DevOps. +8 años de experiencia construyendo soluciones escalables.">
+  <meta property="og:image" content="https://nairoboom.github.io/curriculum/img/foto.jpeg">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://nairoboom.github.io/curriculum/">
+  <meta name="twitter:title" content="Nairo Samir Boom Vargas — Desarrollador Fullstack">
+  <meta name="twitter:description" content="Especialista en e-commerce (PrestaShop), back-end (PHP, Node.js, Golang) y DevOps. +8 años de experiencia.">
+  <meta name="twitter:image" content="https://nairoboom.github.io/curriculum/img/foto.jpeg">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: dark)">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nairo Boom">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +57,40 @@
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
+
+  <!-- Skip to main content -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-brand-600 z-50 transition-all duration-150" style="width: 0%"></div>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nairo Samir Boom Vargas",
+    "url": "https://nairoboom.dev",
+    "image": "https://nairoboom.github.io/curriculum/img/foto.jpeg",
+    "jobTitle": "Desarrollador Fullstack Senior",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Farmalisto"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bogotá",
+      "addressCountry": "CO"
+    },
+    "email": "nairoboom@gmail.com",
+    "telephone": "+573105788198",
+    "knowsAbout": ["PHP", "Node.js", "Golang", "Python", "PrestaShop", "Angular", "React", "TypeScript", "MySQL", "PostgreSQL", "DevOps", "Ansible", "Linux"],
+    "sameAs": [
+      "https://github.com/nairoboom",
+      "https://linkedin.com/in/nairoboom"
+    ]
+  }
+  </script>
 
   <!-- Overlay transición -->
   <div id="theme-sky" aria-hidden="true">
@@ -53,6 +117,7 @@
           <a href="#servicios"   data-i18n="nav.services"   class="hover:text-brand-700 dark:hover:text-brand-300">Servicios</a>
           <a href="#ops"         data-i18n="nav.ops"        class="hover:text-brand-700 dark:hover:text-brand-300">Entrega &amp; Operaciones</a>
           <a href="#proyectos"   data-i18n="nav.projects"   class="hover:text-brand-700 dark:hover:text-brand-300">Proyectos</a>
+          <a href="#testimonios" data-i18n="nav.testimonials" class="hover:text-brand-700 dark:hover:text-brand-300">Testimonios</a>
           <a href="#educacion"   data-i18n="nav.education"  class="hover:text-brand-700 dark:hover:text-brand-300">Educación</a>
           <a href="#contacto"    data-i18n="nav.contact"    class="hover:text-brand-700 dark:hover:text-brand-300">Contacto</a>
         </nav>
@@ -78,10 +143,36 @@
           <a href="#contacto" class="md:inline-flex hidden items-center gap-2 px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold shadow-soft hover:bg-brand-700">
             <i class="fa-solid fa-paper-plane text-xs"></i> <span data-i18n="ui.talk">Hablemos</span>
           </a>
+
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-toggle" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-700 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Abrir menú" aria-expanded="false">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
         </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 py-4">
+        <nav class="flex flex-col gap-3 px-4">
+          <a href="#acerca" data-i18n="nav.about" class="px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">Acerca de</a>
+          <a href="#experiencia" data-i18n="nav.experience" class="px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">Experiencia</a>
+          <a href="#stack" data-i18n="nav.stack" class="px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">Stack</a>
+          <a href="#servicios" data-i18n="nav.services" class="px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">Servicios</a>
+          <a href="#ops" data-i18n="nav.ops" class="px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">Entrega & Operaciones</a>
+          <a href="#proyectos" data-i18n="nav.projects" class="px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">Proyectos</a>
+          <a href="#testimonios" data-i18n="nav.testimonials" class="px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">Testimonios</a>
+          <a href="#educacion" data-i18n="nav.education" class="px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">Educación</a>
+          <a href="#contacto" data-i18n="nav.contact" class="px-4 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200">Contacto</a>
+          <a href="#contacto" class="px-4 py-3 rounded-lg bg-brand-600 text-white text-center font-semibold shadow-soft hover:bg-brand-700">
+            <i class="fa-solid fa-paper-plane text-xs mr-2"></i><span data-i18n="ui.talk">Hablemos</span>
+          </a>
+        </nav>
       </div>
     </div>
   </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
 
   <!-- Hero -->
   <section id="inicio" class="relative overflow-hidden">
@@ -121,9 +212,12 @@
             <span class="chip"><i class="fa-solid fa-mobile-screen-button"></i>Ionic</span>
           </div>
 
-          <div class="mt-8 flex items-center gap-3">
+          <div class="mt-8 flex items-center gap-3 flex-wrap">
             <a href="#experiencia" class="px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" data-i18n="cta.viewExp">Ver experiencia</a>
             <a href="#contacto" class="px-5 py-3 rounded-lg border border-slate-300 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400" data-i18n="cta.contact">Contactar</a>
+            <button id="download-cv" class="px-5 py-3 rounded-lg border border-slate-300 bg-white dark:bg-slate-900 font-semibold text-slate-800 dark:text-slate-100 hover:border-slate-400 inline-flex items-center gap-2" data-i18n="cta.downloadCV">
+              <i class="fa-solid fa-download"></i> Descargar CV
+            </button>
           </div>
         </div>
 
@@ -134,7 +228,7 @@
             <div class="relative bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-soft border border-slate-200 dark:border-slate-700">
               <div class="flex items-start gap-4">
                 <div class="h-24 w-24 overflow-hidden rounded-xl ring-1 ring-slate-200 dark:ring-slate-700 shrink-0">
-                  <img src="img/foto.jpeg" alt="Foto de Nairo" class="h-full w-full object-cover object-center" loading="lazy"/>
+                  <img src="img/foto.jpeg" alt="Foto profesional de Nairo Samir Boom Vargas, Desarrollador Fullstack" class="h-full w-full object-cover object-center" loading="eager"/>
                 </div>
                 <div class="text-sm">
                   <p class="text-slate-500 dark:text-slate-400" data-i18n="sb.locationLabel">Ubicación</p>
@@ -160,7 +254,7 @@
   </section>
 
   <!-- Acerca -->
-  <section id="acerca" class="py-12 md:py-16">
+  <section id="acerca" class="py-12 md:py-16 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="about.title">Acerca de mí</h2>
       <p class="mt-4 max-w-5xl leading-relaxed text-slate-700 dark:text-slate-200" data-i18n="about.body">
@@ -173,7 +267,7 @@
   </section>
 
   <!-- Experiencia -->
-  <section id="experiencia" class="py-12 md:py-16 bg-white dark:bg-slate-900">
+  <section id="experiencia" class="py-12 md:py-16 bg-white dark:bg-slate-900 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="exp.title">Experiencia</h2>
 
@@ -181,7 +275,7 @@
       <article class="mt-8 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
           <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
-            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto" class="h-full w-full object-contain object-center" loading="lazy"/>
+            <img src="img/logos/farmalisto.jpg" alt="Logo de Farmalisto" class="h-full w-full object-contain object-center" loading="lazy" decoding="async"/>
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white mt-2">Farmalisto</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.senior.role">Ingeniero de Desarrollo Web <b>Senior</b></p>
@@ -210,7 +304,7 @@
       <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
           <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
-            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto" class="h-full w-full object-contain object-center" loading="lazy"/>
+            <img src="img/logos/farmalisto.jpg" alt="Logo de Farmalisto" class="h-full w-full object-contain object-center" loading="lazy" decoding="async"/>
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white mt-2">Farmalisto</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.semi.role">Desarrollador Web <b>Semi Senior</b></p>
@@ -246,7 +340,7 @@
       <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
           <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
-            <img src="img/logos/farmalisto.jpg" alt="Logo Farmalisto" class="h-full w-full object-contain object-center" loading="lazy"/>
+            <img src="img/logos/farmalisto.jpg" alt="Logo de Farmalisto" class="h-full w-full object-contain object-center" loading="lazy" decoding="async"/>
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white mt-2">Farmalisto</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.junior.role">Desarrollador Web <b>Junior</b></p>
@@ -266,7 +360,7 @@
       <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
           <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
-            <img src="img/logos/cdi.jpeg" alt="Logo CDI Interactive" class="h-full w-full object-contain object-center" loading="lazy"/>
+            <img src="img/logos/cdi.jpeg" alt="Logo CDI Interactive" class="h-full w-full object-contain object-center" loading="lazy" decoding="async"/>
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white mt-2">CDI Interactive</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.cdi.role">Analista de Base de Datos / Dev Web</p>
@@ -294,7 +388,7 @@
   </section>
 
   <!-- Tech Stack -->
-  <section id="stack" class="py-12 md:py-16">
+  <section id="stack" class="py-12 md:py-16 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="stack.title">Tech Stack</h2>
 
@@ -432,7 +526,7 @@
   </section>
 
   <!-- Servicios -->
-  <section id="servicios" class="py-12 md:py-16 bg-white dark:bg-slate-900">
+  <section id="servicios" class="py-12 md:py-16 bg-white dark:bg-slate-900 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="services.title">Servicios</h2>
       <div class="mt-6 grid md:grid-cols-2 gap-6">
@@ -467,7 +561,7 @@
       </div>
     </div>
   </section>
-  <section id="ops" class="py-12 md:py-16">
+  <section id="ops" class="py-12 md:py-16 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="ops.title">Entrega & Operaciones</h2>
       <p class="mt-3 max-w-5xl text-slate-700 dark:text-slate-200" data-i18n="ops.intro">
@@ -579,7 +673,7 @@
       </div>
     </div>
   </section>
-  <section id="proyectos" class="py-12 md:py-16">
+  <section id="proyectos" class="py-12 md:py-16 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="projects.title">Proyectos Destacados</h2>
       <p class="mt-3 max-w-5xl text-slate-700 dark:text-slate-200" data-i18n="projects.subtitle">
@@ -591,8 +685,89 @@
     </div>
   </section>
 
+  <!-- Testimonios -->
+  <section id="testimonios" class="py-12 md:py-16 bg-white dark:bg-slate-900 fade-in-up">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="testimonials.title">Testimonios</h2>
+      <p class="mt-3 max-w-5xl text-slate-700 dark:text-slate-200" data-i18n="testimonials.subtitle">
+        Lo que dicen quienes han trabajado conmigo
+      </p>
+
+      <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Testimonio 1 -->
+        <div class="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="h-12 w-12 rounded-full bg-brand-100 dark:bg-brand-900 flex items-center justify-center text-brand-700 dark:text-brand-300 font-bold text-lg">
+              AV
+            </div>
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white">Andrés Valencia Oliveros</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Ingeniero de Implementación </p>
+            </div>
+          </div>
+          <p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
+            "Recomiendo ampliamente a Nairo. Colaboramos 6 años en desarrollo web y móvil. Es un desarrollador full-stack excepcional con dominio en back-end (PHP, Symfony, Node.js, Golang) y front-end (Angular, React, TypeScript). Su expertise en DevOps (Linux, Nginx) y PrestaShop fue clave para el éxito de nuestros proyectos. Es un profesional resolutivo, dedicado y un gran compañero de equipo."
+          </p>
+          <div class="mt-4 flex gap-1 text-yellow-500">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+
+        <!-- Testimonio 2 -->
+        <div class="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="h-12 w-12 rounded-full bg-brand-100 dark:bg-brand-900 flex items-center justify-center text-brand-700 dark:text-brand-300 font-bold text-lg">
+              GP
+            </div>
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white">German Peralta</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Desarrollador Senior</p>
+            </div>
+          </div>
+          <p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
+            "Nairo es un excelente profesional, sobre todo es un gran ser humano, lo conozco desde hace más de 10 años de trabajo en proyectos de e-commerce, aplicaciones móviles, arquitectura de bases de datos, arquitectura de microservicios, administración de AWS y desarrollo de aplicaciones web. Nairo es metódico, analítico, recursivo y muy dedicado, siempre entrega lo mejor de sí en cada reto, es un buen motivador para trabajar con alegría, entusiasmo y productividad con el equipo de trabajo"
+          </p>
+          <div class="mt-4 flex gap-1 text-yellow-500">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+
+        <!-- Testimonio 3 -->
+        <div class="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="h-12 w-12 rounded-full bg-brand-100 dark:bg-brand-900 flex items-center justify-center text-brand-700 dark:text-brand-300 font-bold text-lg">
+              AV
+            </div>
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white">Alejandro Villegas</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Desarrollador Fullstack Senior</p>
+            </div>
+          </div>
+          <p class="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
+            "Nairo es un excelente profesional, comprometido siempre con sus responsabilidades, formamos team trabajando en Farmalisto por 4 años y en ese periodo de tiempo mostro ser muy capaz y proactivo, con excelentes conocimientos en Prestashop, mysql, javascript, y POO"
+          </p>
+          <div class="mt-4 flex gap-1 text-yellow-500">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Educación -->
-  <section id="educacion" class="py-12 md:py-16">
+  <section id="educacion" class="py-12 md:py-16 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="edu.title">Educación & Certificaciones</h2>
     <ul class="mt-6 space-y-3">
@@ -625,7 +800,7 @@
   </section>
 
   <!-- Contacto -->
-  <section id="contacto" class="py-12 md:py-16 bg-white dark:bg-slate-900">
+  <section id="contacto" class="py-12 md:py-16 bg-white dark:bg-slate-900 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid md:grid-cols-2 gap-8 items-start">
         <div>
@@ -665,6 +840,9 @@
       </div>
     </div>
   </section>
+
+  </main>
+  <!-- End Main Content -->
 
   <!-- Footer -->
   <footer class="py-8 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">

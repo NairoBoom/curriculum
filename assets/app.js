@@ -30,10 +30,11 @@
 
       'ui.theme':'Tema','ui.talk':'Hablemos',
       'nav.about':'Acerca de','nav.experience':'Experiencia','nav.stack':'Stack','nav.services':'Servicios','nav.education':'Educación','nav.contact':'Contacto',
-      'nav.ops':'Entrega & Operaciones','nav.projects':'Proyectos',
+      'nav.ops':'Entrega & Operaciones','nav.projects':'Proyectos','nav.testimonials':'Testimonios',
+      'testimonials.title':'Testimonios','testimonials.subtitle':'Lo que dicen quienes han trabajado conmigo',
       'hero.role':'Desarrollador Fullstack',
       'hero.summary':'Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>. Fuerte enfoque en colaboración interdisciplinaria, comunicación efectiva y liderazgo técnico dentro de equipos de desarrollo ágiles.',
-      'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar',
+      'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar', 'cta.downloadCV':'Descargar CV',
       'sb.locationLabel':'Ubicación','sb.availabilityLabel':'Disponibilidad','sb.availability':'Remoto / Híbrido','sb.city':'Bogotá D.C., Colombia',
       'sb.bio':'Me enfoco en soluciones mantenibles, rendimiento medible y automatización útil. Disfruto trabajar en equipo, compartir conocimiento y apoyar la toma de decisiones técnicas. Documentación mínima pero suficiente para que cualquier dev avance sin fricción.',
       'about.title':'Acerca de mí',
@@ -142,12 +143,13 @@
       'meta.title':'Portfolio — Nairo Samir Boom Vargas',
       'meta.desc':'Detailed portfolio of Nairo Samir Boom Vargas — Full-stack Developer (PrestaShop, PHP, Node.js, Angular, DevOps)',
 
-      'ui.theme':'Theme','ui.talk':'Let’s talk',
+      'ui.theme':'Theme','ui.talk':'Let\'s talk',
       'nav.about':'About','nav.experience':'Experience','nav.stack':'Stack','nav.services':'Services','nav.education':'Education','nav.contact':'Contact',
-      'nav.ops':'Delivery & Operations','nav.projects':'Projects',
+      'nav.ops':'Delivery & Operations','nav.projects':'Projects','nav.testimonials':'Testimonials',
+      'testimonials.title':'Testimonials','testimonials.subtitle':'What people I have worked with say',
       'hero.role':'Full-stack Developer',
       'hero.summary':'E-commerce specialist focused on <b>PrestaShop 1.6/1.7</b>, back end with <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET and front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>. Experience with <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> and hybrid apps with <b>Ionic</b>. Strong believer in teamwork, cross-functional collaboration and technical leadership within agile teams.',
-      'cta.viewExp':'View experience', 'cta.contact':'Contact',
+      'cta.viewExp':'View experience', 'cta.contact':'Contact', 'cta.downloadCV':'Download CV',
       'sb.locationLabel':'Location','sb.availabilityLabel':'Availability','sb.availability':'Remote / Hybrid','sb.city':'Bogotá D.C., Colombia',
       'sb.bio':'I focus on maintainable solutions, measurable performance and practical automation. I value teamwork, shared learning and clear communication. Minimal but sufficient docs so any dev can move fast.',
       'about.title':'About me',
@@ -676,11 +678,72 @@
     render(ps);
   });
 
+  // --- Register Service Worker for PWA
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('ServiceWorker registered:', registration.scope);
+        })
+        .catch((error) => {
+          console.log('ServiceWorker registration failed:', error);
+        });
+    });
+  }
+
   // --- Eventos DOM
   $(function(){
     // Render inicial
     prevState = store.getState();
     render(null);
+
+    // Mobile menu toggle
+    $('#mobile-menu-toggle').on('click', function(){
+      const $menu = $('#mobile-menu');
+      const $icon = $(this).find('i');
+      const isExpanded = $(this).attr('aria-expanded') === 'true';
+
+      $menu.toggleClass('hidden');
+      $(this).attr('aria-expanded', !isExpanded);
+
+      if ($icon.hasClass('fa-bars')) {
+        $icon.removeClass('fa-bars').addClass('fa-times');
+      } else {
+        $icon.removeClass('fa-times').addClass('fa-bars');
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    $('#mobile-menu a').on('click', function(){
+      $('#mobile-menu').addClass('hidden');
+      $('#mobile-menu-toggle').attr('aria-expanded', 'false');
+      $('#mobile-menu-toggle i').removeClass('fa-times').addClass('fa-bars');
+    });
+
+    // Scroll progress indicator
+    $(window).on('scroll', function(){
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      $('#scroll-progress').css('width', scrolled + '%');
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 
     // Smooth scroll
     $('a[href^="#"]').on('click', function(e){
@@ -703,6 +766,12 @@
     $('#lang-toggle').on('click', function(){
       const current = store.getState().lang;
       store.dispatch({ type: SET_LANG, payload: current === 'es' ? 'en' : 'es' });
+    });
+
+    // Download CV
+    $('#download-cv').on('click', function(){
+      // Trigger print dialog with optimized print styles
+      window.print();
     });
 
     // Copiar email
@@ -757,17 +826,6 @@
           $btn.prop('disabled', false).text(t('form.send', st.lang));
         });
     });
-
-    // (opcional) bloquear menú contextual / atajos
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('keydown', e => {
-      const k = e.key.toLowerCase();
-      if (k === 'f12' || (e.ctrlKey && (k === 'u' || (e.shiftKey && ['i','j','c'].includes(k))))) {
-        e.preventDefault();
-      }
-    });
-
-    
 
   });
 
