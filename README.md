@@ -275,10 +275,10 @@ gtag('event', 'download_cv', {
 
 ## Contacto
 
-- **Email**: nairoboom@example.com
+- **Email**: nairoboom@gmail.com
 - **LinkedIn**: [linkedin.com/in/nairoboom](https://linkedin.com/in/nairoboom)
 - **GitHub**: [github.com/nairoboom](https://github.com/nairoboom)
-- **Website**: [nairoboom.dev](https://nairoboom.dev)
+- **Website**: [nairoboom.github.io](https://nairoboom.github.io/curriculum/)
 
 ---
 
