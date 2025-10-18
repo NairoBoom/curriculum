@@ -34,6 +34,7 @@
       'testimonials.title':'Testimonios','testimonials.subtitle':'Lo que dicen quienes han trabajado conmigo',
       'filters.all':'Todos', 'filters.ecommerce':'E-commerce', 'filters.api':'APIs', 'filters.devops':'DevOps', 'filters.mobile':'Mobile',
       'modal.stack':'Stack Técnico', 'modal.highlights':'Highlights',
+      'skills.proficiency':'Nivel de Dominio', 'skills.overview':'Vista General',
       'hero.role':'Desarrollador Fullstack',
       'hero.summary':'Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>. Fuerte enfoque en colaboración interdisciplinaria, comunicación efectiva y liderazgo técnico dentro de equipos de desarrollo ágiles.',
       'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar', 'cta.downloadCV':'Descargar CV',
@@ -152,6 +153,7 @@
       'testimonials.title':'Testimonials','testimonials.subtitle':'What people I have worked with say',
       'filters.all':'All', 'filters.ecommerce':'E-commerce', 'filters.api':'APIs', 'filters.devops':'DevOps', 'filters.mobile':'Mobile',
       'modal.stack':'Tech Stack', 'modal.highlights':'Highlights',
+      'skills.proficiency':'Proficiency Level', 'skills.overview':'Overview',
       'hero.role':'Full-stack Developer',
       'hero.summary':'E-commerce specialist focused on <b>PrestaShop 1.6/1.7</b>, back end with <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET and front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>. Experience with <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> and hybrid apps with <b>Ionic</b>. Strong believer in teamwork, cross-functional collaboration and technical leadership within agile teams.',
       'cta.viewExp':'View experience', 'cta.contact':'Contact', 'cta.downloadCV':'Download CV',
@@ -758,6 +760,53 @@
 
     document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 
+    // Custom Cursor (Desktop only)
+    if (window.innerWidth > 768) {
+      const cursorDot = document.getElementById('cursor-dot');
+      const cursorOutline = document.getElementById('cursor-outline');
+
+      let mouseX = 0, mouseY = 0;
+      let outlineX = 0, outlineY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
+        cursorDot.classList.add('active');
+        cursorOutline.classList.add('active');
+      });
+
+      // Smooth follow for outline
+      function animateCursor() {
+        const distX = mouseX - outlineX;
+        const distY = mouseY - outlineY;
+
+        outlineX += distX * 0.1;
+        outlineY += distY * 0.1;
+
+        cursorOutline.style.left = (outlineX - 16) + 'px';
+        cursorOutline.style.top = (outlineY - 16) + 'px';
+
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      // Hover effects
+      const hoverElements = document.querySelectorAll('a, button, .card-hover, .project-card, .filter-btn');
+      hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursorOutline.classList.add('hover');
+          cursorDot.style.transform = 'scale(1.5)';
+        });
+        el.addEventListener('mouseleave', () => {
+          cursorOutline.classList.remove('hover');
+          cursorDot.style.transform = 'scale(1)';
+        });
+      });
+    }
+
     // Animated Grid Background
     const canvas = document.getElementById('grid-canvas');
     if (canvas) {
@@ -882,6 +931,124 @@
       });
     });
     counters.forEach(counter => counterObserver.observe(counter));
+
+    // Skills Progress Bars
+    const skillsData = [
+      { name: 'PHP/Symfony', level: 95, icon: 'fa-brands fa-php' },
+      { name: 'Node.js/NestJS', level: 90, icon: 'fa-brands fa-node' },
+      { name: 'Golang', level: 85, icon: 'fa-solid fa-code' },
+      { name: 'React/Angular', level: 88, icon: 'fa-brands fa-react' },
+      { name: 'MySQL/PostgreSQL', level: 92, icon: 'fa-solid fa-database' },
+      { name: 'DevOps/Ansible', level: 87, icon: 'fa-brands fa-linux' },
+      { name: 'PrestaShop', level: 95, icon: 'fa-solid fa-store' },
+      { name: 'TypeScript', level: 90, icon: 'fa-brands fa-js' }
+    ];
+
+    const skillsBarsContainer = document.getElementById('skills-bars');
+    if (skillsBarsContainer) {
+      skillsData.forEach(skill => {
+        const skillBar = document.createElement('div');
+        skillBar.className = 'skill-bar';
+        skillBar.innerHTML = `
+          <div class="skill-bar-header">
+            <span class="text-slate-700 dark:text-slate-200">
+              <i class="${skill.icon} mr-2"></i>${skill.name}
+            </span>
+            <span class="text-brand-600 dark:text-brand-400 font-bold">${skill.level}%</span>
+          </div>
+          <div class="skill-bar-track">
+            <div class="skill-bar-fill" data-level="${skill.level}"></div>
+          </div>
+        `;
+        skillsBarsContainer.appendChild(skillBar);
+      });
+
+      // Animate bars on scroll
+      const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const fills = entry.target.querySelectorAll('.skill-bar-fill');
+            fills.forEach(fill => {
+              setTimeout(() => {
+                fill.style.width = fill.getAttribute('data-level') + '%';
+              }, 100);
+            });
+            skillsObserver.unobserve(entry.target);
+          }
+        });
+      });
+      skillsObserver.observe(skillsBarsContainer);
+    }
+
+    // Skills Radar Chart
+    const radarCanvas = document.getElementById('skills-radar');
+    if (radarCanvas && typeof Chart !== 'undefined') {
+      const ctx = radarCanvas.getContext('2d');
+      const isDark = document.documentElement.classList.contains('dark');
+
+      const radarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: skillsData.map(s => s.name),
+          datasets: [{
+            label: 'Nivel de Dominio',
+            data: skillsData.map(s => s.level),
+            backgroundColor: 'rgba(37, 99, 235, 0.2)',
+            borderColor: '#2563eb',
+            borderWidth: 2,
+            pointBackgroundColor: '#2563eb',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#2563eb',
+            pointRadius: 4,
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          scales: {
+            r: {
+              beginAtZero: true,
+              max: 100,
+              ticks: {
+                stepSize: 20,
+                color: isDark ? '#94a3b8' : '#64748b',
+                backdropColor: 'transparent'
+              },
+              grid: {
+                color: isDark ? '#334155' : '#e2e8f0'
+              },
+              pointLabels: {
+                color: isDark ? '#f1f5f9' : '#0f172a',
+                font: {
+                  size: 11,
+                  weight: '600'
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+
+      // Update chart on theme change
+      const originalApplyTheme = applyThemeDOM;
+      applyThemeDOM = function(theme, prevTheme) {
+        originalApplyTheme(theme, prevTheme);
+        if (radarChart) {
+          const isDark = theme === 'dark';
+          radarChart.options.scales.r.ticks.color = isDark ? '#94a3b8' : '#64748b';
+          radarChart.options.scales.r.grid.color = isDark ? '#334155' : '#e2e8f0';
+          radarChart.options.scales.r.pointLabels.color = isDark ? '#f1f5f9' : '#0f172a';
+          radarChart.update();
+        }
+      };
+    }
 
     // Project Filters
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -1051,6 +1218,13 @@
 
     // Download CV
     $('#download-cv').on('click', function(){
+      // Analytics event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'download_cv', {
+          event_category: 'engagement',
+          event_label: 'CV Download'
+        });
+      }
       // Trigger print dialog with optimized print styles
       window.print();
     });

@@ -39,9 +39,15 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Nairo Boom">
 
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="assets/styles.css" as="style">
+  <link rel="preload" href="assets/app.js" as="script">
+  <link rel="preload" href="img/foto.jpeg" as="image">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 (FREE) -->
   <link rel="stylesheet"
@@ -57,6 +63,10 @@
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-outline" id="cursor-outline"></div>
 
   <!-- Skip to main content -->
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -426,6 +436,27 @@
   <section id="stack" class="py-12 md:py-16 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="stack.title">Tech Stack</h2>
+
+      <!-- Skills Visualization -->
+      <div class="mt-8 grid lg:grid-cols-2 gap-8">
+        <!-- Progress Bars -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
+          <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-chart-bar text-brand-600"></i>
+            <span data-i18n="skills.proficiency">Nivel de Dominio</span>
+          </h3>
+          <div class="space-y-4" id="skills-bars"></div>
+        </div>
+
+        <!-- Radar Chart -->
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
+          <h3 class="font-bold text-lg mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-radar text-brand-600"></i>
+            <span data-i18n="skills.overview">Vista General</span>
+          </h3>
+          <canvas id="skills-radar" class="w-full" style="max-height: 300px;"></canvas>
+        </div>
+      </div>
 
       <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Back-end -->
@@ -963,6 +994,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/redux@4.2.1/dist/redux.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>
