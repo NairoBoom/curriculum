@@ -174,6 +174,105 @@ pre code, code {
   animation: pulse-ring 1.5s infinite;
 }
 
+/* ===== Timeline Vertical ===== */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #2563eb 0%, #0ea5e9 100%);
+  border-radius: 2px;
+}
+.dark .timeline::before {
+  background: linear-gradient(180deg, #60a5fa 0%, #22d3ee 100%);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.375rem;
+  top: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: #2563eb;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+.dark .timeline-item::before {
+  background: #60a5fa;
+  border-color: #0f172a;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2);
+}
+.timeline-item:hover::before {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Progress line animation */
+.timeline-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 0%;
+  background: linear-gradient(180deg, #22d3ee 0%, #2563eb 100%);
+  transition: height 0.5s ease;
+  border-radius: 2px;
+}
+
+/* ===== Filter Buttons ===== */
+.filter-btn {
+  cursor: pointer;
+  position: relative;
+}
+.filter-btn.active {
+  background: #2563eb !important;
+  color: white !important;
+  border-color: #2563eb !important;
+}
+.dark .filter-btn.active {
+  background: #60a5fa !important;
+}
+
+/* Project card animations */
+.project-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInScale 0.5s ease forwards;
+}
+.project-card.hide {
+  opacity: 0;
+  transform: scale(0.8);
+  height: 0;
+  margin: 0;
+  padding: 0 !important;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 /* ===== Print Styles ===== */
 @media print {
   body {

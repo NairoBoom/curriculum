@@ -32,6 +32,7 @@
       'nav.about':'Acerca de','nav.experience':'Experiencia','nav.stack':'Stack','nav.services':'Servicios','nav.education':'Educación','nav.contact':'Contacto',
       'nav.ops':'Entrega & Operaciones','nav.projects':'Proyectos','nav.testimonials':'Testimonios',
       'testimonials.title':'Testimonios','testimonials.subtitle':'Lo que dicen quienes han trabajado conmigo',
+      'filters.all':'Todos', 'filters.ecommerce':'E-commerce', 'filters.api':'APIs', 'filters.devops':'DevOps', 'filters.mobile':'Mobile',
       'hero.role':'Desarrollador Fullstack',
       'hero.summary':'Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>. Fuerte enfoque en colaboración interdisciplinaria, comunicación efectiva y liderazgo técnico dentro de equipos de desarrollo ágiles.',
       'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar', 'cta.downloadCV':'Descargar CV',
@@ -148,6 +149,7 @@
       'nav.about':'About','nav.experience':'Experience','nav.stack':'Stack','nav.services':'Services','nav.education':'Education','nav.contact':'Contact',
       'nav.ops':'Delivery & Operations','nav.projects':'Projects','nav.testimonials':'Testimonials',
       'testimonials.title':'Testimonials','testimonials.subtitle':'What people I have worked with say',
+      'filters.all':'All', 'filters.ecommerce':'E-commerce', 'filters.api':'APIs', 'filters.devops':'DevOps', 'filters.mobile':'Mobile',
       'hero.role':'Full-stack Developer',
       'hero.summary':'E-commerce specialist focused on <b>PrestaShop 1.6/1.7</b>, back end with <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET and front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>. Experience with <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> and hybrid apps with <b>Ionic</b>. Strong believer in teamwork, cross-functional collaboration and technical leadership within agile teams.',
       'cta.viewExp':'View experience', 'cta.contact':'Contact', 'cta.downloadCV':'Download CV',
@@ -268,6 +270,7 @@
         title:'Motor de promociones y cupones escalable',
         img:'img/proyectos/promos.jpg',
         icon: 'fa-solid fa-percent',
+        categories: ['ecommerce', 'api'],
         stack:[
           { icon:'fa-brands fa-php',     name:'PHP/Symfony' },
           { icon:'fa-solid fa-database', name:'MySQL' },
@@ -293,6 +296,7 @@
         title:'API de precios y disponibilidad de baja latencia',
         img:'img/proyectos/priceapi.webp',
         icon: 'fa-solid fa-tag',
+        categories: ['api', 'ecommerce'],
         stack:[
           { icon:'fa-solid fa-code',     name:'Go' },
           { icon:'fa-brands fa-node',    name:'NestJS' },
@@ -318,6 +322,7 @@
         title:'Migración PrestaShop 1.6 → 1.7 sin downtime',
         img:'img/proyectos/migracion.png',
         icon: 'fa-solid fa-cart-shopping',
+        categories: ['ecommerce', 'devops'],
         stack:[
           { icon:'fa-brands fa-php',  name:'PHP' },
           { icon:'fa-solid fa-store', name:'PrestaShop 1.7' },
@@ -343,6 +348,7 @@
         title:'Aprovisionamiento reproducible (Debian/CentOS) con Ansible',
         img:'img/proyectos/ansible.png',
         icon: 'fa-brands fa-linux',
+        categories: ['devops'],
         stack:[
           { icon:'fa-brands fa-linux', name:'Ansible' },
           { icon:'fa-solid fa-server',   name:'Nginx/Apache' },
@@ -369,6 +375,7 @@
         title:'App híbrida (Ionic + Capacitor) y entrega iOS, App Nativa - React ',
         img:'img/proyectos/ionic.png',
         icon: 'fa-solid fa-mobile-screen-button',
+        categories: ['mobile'],
         stack:[
           { icon:'fa-solid fa-mobile-screen-button', name:'Ionic/Capacitor' },
           { icon:'fa-brands fa-apple',               name:'Xcode/iOS' },
@@ -396,6 +403,7 @@
         title:'Scalable promotions & coupons engine',
         img:'img/proyectos/promos.jpg',
         icon: 'fa-solid fa-percent',
+        categories: ['ecommerce', 'api'],
         stack:[
           { icon:'fa-brands fa-php',     name:'PHP/Symfony' },
           { icon:'fa-solid fa-database', name:'MySQL' },
@@ -617,8 +625,9 @@
 
         const bullets = p.bullets.map(b => `<li>${b}</li>`).join('');
 
+        const categories = (p.categories || []).join(' ');
         return `
-          <article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden card-hover flex flex-col">
+          <article class="project-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden card-hover flex flex-col" data-categories="${categories}" data-project-id="${p.id}">
             <div class="relative h-40 bg-gradient-to-tr from-brand-100 to-cyan-100 dark:from-slate-800 dark:to-slate-700 grid place-items-center">
               <i class="${p.icon || 'fa-solid fa-briefcase'} text-6xl md:text-7xl text-brand-700 dark:text-brand-300 project-icon" aria-hidden="true"></i>
             </div>
@@ -871,6 +880,54 @@
       });
     });
     counters.forEach(counter => counterObserver.observe(counter));
+
+    // Project Filters
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+
+        // Update active state
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        // Filter projects
+        const projects = document.querySelectorAll('.project-card');
+        projects.forEach(project => {
+          const categories = project.getAttribute('data-categories');
+
+          if (filter === 'all' || categories.includes(filter)) {
+            project.classList.remove('hide');
+          } else {
+            project.classList.add('hide');
+          }
+        });
+      });
+    });
+
+    // Timeline Progress Animation
+    const timelineProgress = document.getElementById('timeline-progress');
+    const timeline = document.querySelector('.timeline');
+
+    if (timelineProgress && timeline) {
+      const updateTimelineProgress = () => {
+        const timelineRect = timeline.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const timelineTop = timelineRect.top;
+        const timelineHeight = timelineRect.height;
+
+        let progress = 0;
+        if (timelineTop < windowHeight && timelineTop + timelineHeight > 0) {
+          progress = ((windowHeight - timelineTop) / (timelineHeight + windowHeight)) * 100;
+          progress = Math.min(100, Math.max(0, progress));
+        }
+
+        timelineProgress.style.height = progress + '%';
+      };
+
+      window.addEventListener('scroll', updateTimelineProgress);
+      updateTimelineProgress();
+    }
 
     // Smooth scroll
     $('a[href^="#"]').on('click', function(e){

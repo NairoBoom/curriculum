@@ -291,9 +291,13 @@
   <!-- Experiencia -->
   <section id="experiencia" class="py-12 md:py-16 bg-white dark:bg-slate-900 fade-in-up">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight" data-i18n="exp.title">Experiencia</h2>
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight mb-8" data-i18n="exp.title">Experiencia</h2>
+
+      <div class="timeline">
+        <div class="timeline-progress" id="timeline-progress"></div>
 
       <!-- Senior -->
+      <div class="timeline-item">
       <article class="mt-8 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
           <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
@@ -321,8 +325,10 @@
           </ul>
         </div>
       </article>
+      </div>
 
       <!-- Semi Senior -->
+      <div class="timeline-item">
       <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
           <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
@@ -357,8 +363,10 @@
           </ul>
         </div>
       </article>
+      </div>
 
       <!-- Junior -->
+      <div class="timeline-item">
       <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
           <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
@@ -377,8 +385,10 @@
           </ul>
         </div>
       </article>
+      </div>
 
       <!-- CDI -->
+      <div class="timeline-item">
       <article class="mt-6 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
         <div class="md:col-span-3">
           <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
@@ -406,6 +416,9 @@
           </ul>
         </div>
       </article>
+      </div>
+
+      </div><!-- End timeline -->
     </div>
   </section>
 
@@ -701,6 +714,25 @@
       <p class="mt-3 max-w-5xl text-slate-700 dark:text-slate-200" data-i18n="projects.subtitle">
         Selección de trabajos con impacto medible: rendimiento, fiabilidad, automatización y experiencia de usuario.
       </p>
+
+      <!-- Filters -->
+      <div class="mt-6 flex flex-wrap gap-2" id="project-filters">
+        <button class="filter-btn active px-4 py-2 rounded-lg bg-brand-600 text-white font-semibold text-sm shadow-soft hover:bg-brand-700 transition-all" data-filter="all" data-i18n="filters.all">
+          Todos
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:border-brand-600 hover:text-brand-600 dark:hover:text-brand-400 transition-all" data-filter="ecommerce" data-i18n="filters.ecommerce">
+          E-commerce
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:border-brand-600 hover:text-brand-600 dark:hover:text-brand-400 transition-all" data-filter="api" data-i18n="filters.api">
+          APIs
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:border-brand-600 hover:text-brand-600 dark:hover:text-brand-400 transition-all" data-filter="devops" data-i18n="filters.devops">
+          DevOps
+        </button>
+        <button class="filter-btn px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-semibold text-sm hover:border-brand-600 hover:text-brand-600 dark:hover:text-brand-400 transition-all" data-filter="mobile" data-i18n="filters.mobile">
+          Mobile
+        </button>
+      </div>
 
       <!-- Grid renderizado por JS -->
       <div id="projects-grid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
