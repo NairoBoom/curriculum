@@ -177,13 +177,19 @@
   <!-- Hero -->
   <section id="inicio" class="relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-br from-brand-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800"></div>
+    <!-- Animated Grid Background -->
+    <canvas id="grid-canvas" class="absolute inset-0 -z-10 opacity-30"></canvas>
     <div class="max-w-7xl mx-auto px-4 pt-14 pb-10 md:pt-20 md:pb-16">
       <div class="grid md:grid-cols-12 gap-8 items-center">
         <div class="md:col-span-7">
           <h1 class="prose-title text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
             Nairo Samir Boom Vargas
           </h1>
-          <p class="mt-3 text-xl font-semibold gradient-text" data-i18n="hero.role">Desarrollador Fullstack</p>
+          <p class="mt-3 text-xl font-semibold gradient-text">
+            <span data-i18n="hero.role">Desarrollador Fullstack</span>
+            <span id="typing-text" class="inline-block ml-2"></span>
+            <span id="cursor" class="inline-block w-0.5 h-5 bg-brand-600 dark:bg-brand-400 animate-pulse ml-1"></span>
+          </p>
           <p class="mt-5 text-slate-700 dark:text-slate-200 leading-relaxed max-w-2xl" data-i18n="hero.summary">
             Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>.
             Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>.
@@ -210,6 +216,22 @@
             <span class="chip"><i class="fa-solid fa-cloud"></i>Cloudflare</span>
             <span class="chip"><i class="fa-brands fa-apple"></i>iOS / Xcode</span>
             <span class="chip"><i class="fa-solid fa-mobile-screen-button"></i>Ionic</span>
+          </div>
+
+          <!-- Stats Counter -->
+          <div class="mt-8 grid grid-cols-3 gap-6 max-w-md">
+            <div class="text-center">
+              <div class="text-3xl font-black text-brand-600 dark:text-brand-400 counter" data-target="8">0</div>
+              <div class="text-xs text-slate-600 dark:text-slate-400 mt-1" data-i18n="stats.years">Años Exp.</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-black text-brand-600 dark:text-brand-400 counter" data-target="50">0</div>
+              <div class="text-xs text-slate-600 dark:text-slate-400 mt-1" data-i18n="stats.projects">+ Proyectos</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-black text-brand-600 dark:text-brand-400 counter" data-target="20">0</div>
+              <div class="text-xs text-slate-600 dark:text-slate-400 mt-1" data-i18n="stats.tech">+ Tecnologías</div>
+            </div>
           </div>
 
           <div class="mt-8 flex items-center gap-3 flex-wrap">

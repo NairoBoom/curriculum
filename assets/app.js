@@ -35,6 +35,7 @@
       'hero.role':'Desarrollador Fullstack',
       'hero.summary':'Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>. Fuerte enfoque en colaboración interdisciplinaria, comunicación efectiva y liderazgo técnico dentro de equipos de desarrollo ágiles.',
       'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar', 'cta.downloadCV':'Descargar CV',
+      'stats.years':'Años Exp.', 'stats.projects':'+ Proyectos', 'stats.tech':'+ Tecnologías',
       'sb.locationLabel':'Ubicación','sb.availabilityLabel':'Disponibilidad','sb.availability':'Remoto / Híbrido','sb.city':'Bogotá D.C., Colombia',
       'sb.bio':'Me enfoco en soluciones mantenibles, rendimiento medible y automatización útil. Disfruto trabajar en equipo, compartir conocimiento y apoyar la toma de decisiones técnicas. Documentación mínima pero suficiente para que cualquier dev avance sin fricción.',
       'about.title':'Acerca de mí',
@@ -150,6 +151,7 @@
       'hero.role':'Full-stack Developer',
       'hero.summary':'E-commerce specialist focused on <b>PrestaShop 1.6/1.7</b>, back end with <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET and front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>. Experience with <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> and hybrid apps with <b>Ionic</b>. Strong believer in teamwork, cross-functional collaboration and technical leadership within agile teams.',
       'cta.viewExp':'View experience', 'cta.contact':'Contact', 'cta.downloadCV':'Download CV',
+      'stats.years':'Years Exp.', 'stats.projects':'+ Projects', 'stats.tech':'+ Technologies',
       'sb.locationLabel':'Location','sb.availabilityLabel':'Availability','sb.availability':'Remote / Hybrid','sb.city':'Bogotá D.C., Colombia',
       'sb.bio':'I focus on maintainable solutions, measurable performance and practical automation. I value teamwork, shared learning and clear communication. Minimal but sufficient docs so any dev can move fast.',
       'about.title':'About me',
@@ -744,6 +746,131 @@
     }, observerOptions);
 
     document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+    // Animated Grid Background
+    const canvas = document.getElementById('grid-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = canvas.offsetWidth;
+      let height = canvas.height = canvas.offsetHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+      });
+
+      const dots = [];
+      const dotsCount = 50;
+
+      for (let i = 0; i < dotsCount; i++) {
+        dots.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          radius: Math.random() * 2 + 1
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('color-scheme') === 'dark' ? 'rgba(96, 165, 250, 0.5)' : 'rgba(37, 99, 235, 0.5)';
+        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('color-scheme') === 'dark' ? 'rgba(96, 165, 250, 0.2)' : 'rgba(37, 99, 235, 0.2)';
+
+        dots.forEach(dot => {
+          dot.x += dot.vx;
+          dot.y += dot.vy;
+
+          if (dot.x < 0 || dot.x > width) dot.vx *= -1;
+          if (dot.y < 0 || dot.y > height) dot.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+          ctx.fill();
+
+          dots.forEach(otherDot => {
+            const dx = dot.x - otherDot.x;
+            const dy = dot.y - otherDot.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 100) {
+              ctx.beginPath();
+              ctx.moveTo(dot.x, dot.y);
+              ctx.lineTo(otherDot.x, otherDot.y);
+              ctx.stroke();
+            }
+          });
+        });
+
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // Typing Effect
+    const typingTexts = {
+      es: ['PHP', 'Node.js', 'Golang', 'React', 'Angular', 'DevOps'],
+      en: ['PHP', 'Node.js', 'Golang', 'React', 'Angular', 'DevOps']
+    };
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 150;
+    const deletingSpeed = 75;
+    const pauseTime = 2000;
+
+    function typeText() {
+      const state = store.getState();
+      const currentTexts = typingTexts[state.lang];
+      const currentText = currentTexts[textIndex];
+      const typingElement = document.getElementById('typing-text');
+
+      if (!typingElement) return;
+
+      if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let timeout = isDeleting ? deletingSpeed : typingSpeed;
+
+      if (!isDeleting && charIndex === currentText.length) {
+        timeout = pauseTime;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % currentTexts.length;
+      }
+
+      setTimeout(typeText, timeout);
+    }
+    typeText();
+
+    // Animated Counter
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = parseInt(entry.target.getAttribute('data-target'));
+          let current = 0;
+          const increment = target / 100;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              entry.target.textContent = target + '+';
+              clearInterval(timer);
+            } else {
+              entry.target.textContent = Math.ceil(current);
+            }
+          }, 20);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    });
+    counters.forEach(counter => counterObserver.observe(counter));
 
     // Smooth scroll
     $('a[href^="#"]').on('click', function(e){
