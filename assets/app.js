@@ -33,6 +33,7 @@
       'nav.ops':'Entrega & Operaciones','nav.projects':'Proyectos','nav.testimonials':'Testimonios',
       'testimonials.title':'Testimonios','testimonials.subtitle':'Lo que dicen quienes han trabajado conmigo',
       'filters.all':'Todos', 'filters.ecommerce':'E-commerce', 'filters.api':'APIs', 'filters.devops':'DevOps', 'filters.mobile':'Mobile',
+      'modal.stack':'Stack Técnico', 'modal.highlights':'Highlights',
       'hero.role':'Desarrollador Fullstack',
       'hero.summary':'Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>. Fuerte enfoque en colaboración interdisciplinaria, comunicación efectiva y liderazgo técnico dentro de equipos de desarrollo ágiles.',
       'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar', 'cta.downloadCV':'Descargar CV',
@@ -150,6 +151,7 @@
       'nav.ops':'Delivery & Operations','nav.projects':'Projects','nav.testimonials':'Testimonials',
       'testimonials.title':'Testimonials','testimonials.subtitle':'What people I have worked with say',
       'filters.all':'All', 'filters.ecommerce':'E-commerce', 'filters.api':'APIs', 'filters.devops':'DevOps', 'filters.mobile':'Mobile',
+      'modal.stack':'Tech Stack', 'modal.highlights':'Highlights',
       'hero.role':'Full-stack Developer',
       'hero.summary':'E-commerce specialist focused on <b>PrestaShop 1.6/1.7</b>, back end with <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET and front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>. Experience with <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> and hybrid apps with <b>Ionic</b>. Strong believer in teamwork, cross-functional collaboration and technical leadership within agile teams.',
       'cta.viewExp':'View experience', 'cta.contact':'Contact', 'cta.downloadCV':'Download CV',
@@ -903,6 +905,101 @@
           }
         });
       });
+    });
+
+    // Project Modal
+    let currentProjectIndex = 0;
+    const modal = document.getElementById('project-modal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
+    const modalPrev = document.querySelector('.modal-prev');
+    const modalNext = document.querySelector('.modal-next');
+
+    function getVisibleProjects() {
+      return Array.from(document.querySelectorAll('.project-card:not(.hide)'));
+    }
+
+    function openModal(projectId) {
+      const state = store.getState();
+      const projects = PROJECTS[state.lang] || PROJECTS.es;
+      const project = projects.find(p => p.id === projectId);
+
+      if (!project) return;
+
+      const visibleProjects = getVisibleProjects();
+      currentProjectIndex = visibleProjects.findIndex(p => p.getAttribute('data-project-id') === projectId);
+
+      // Populate modal
+      document.getElementById('modal-icon').className = project.icon || 'fa-solid fa-briefcase';
+      document.getElementById('modal-title').textContent = project.title;
+      document.getElementById('modal-company').textContent = `${project.company} · ${project.role} · ${project.period}`;
+
+      // KPIs
+      const kpisHTML = project.kpis.map(k => `
+        <div class="kpi">
+          <div class="val">${k.val}</div>
+          <div class="lbl">${k.lbl}</div>
+        </div>
+      `).join('');
+      document.getElementById('modal-kpis').innerHTML = kpisHTML;
+
+      // Stack
+      const stackHTML = project.stack.map(s => `
+        <span class="chip"><i class="${s.icon}"></i>${s.name}</span>
+      `).join('');
+      document.getElementById('modal-stack').innerHTML = stackHTML;
+
+      // Bullets
+      const bulletsHTML = project.bullets.map(b => `<li>${b}</li>`).join('');
+      document.getElementById('modal-bullets').innerHTML = bulletsHTML;
+
+      // Show modal
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      // Update nav buttons
+      modalPrev.style.display = currentProjectIndex > 0 ? 'flex' : 'none';
+      modalNext.style.display = currentProjectIndex < visibleProjects.length - 1 ? 'flex' : 'none';
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function navigateModal(direction) {
+      const visibleProjects = getVisibleProjects();
+      currentProjectIndex += direction;
+
+      if (currentProjectIndex >= 0 && currentProjectIndex < visibleProjects.length) {
+        const projectId = visibleProjects[currentProjectIndex].getAttribute('data-project-id');
+        openModal(projectId);
+      }
+    }
+
+    // Event listeners
+    document.addEventListener('click', (e) => {
+      const projectCard = e.target.closest('.project-card');
+      if (projectCard) {
+        const projectId = projectCard.getAttribute('data-project-id');
+        openModal(projectId);
+      }
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+    modalPrev.addEventListener('click', () => navigateModal(-1));
+    modalNext.addEventListener('click', () => navigateModal(1));
+
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+      if (!modal.classList.contains('hidden')) {
+        if (e.key === 'ArrowLeft') navigateModal(-1);
+        if (e.key === 'ArrowRight') navigateModal(1);
+      }
     });
 
     // Timeline Progress Animation

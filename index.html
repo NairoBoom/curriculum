@@ -898,6 +898,62 @@
   </main>
   <!-- End Main Content -->
 
+  <!-- Project Modal -->
+  <div id="project-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" aria-hidden="true"></div>
+    <div class="modal-container">
+      <div class="modal-content">
+        <!-- Close Button -->
+        <button class="modal-close" aria-label="Cerrar modal">
+          <i class="fa-solid fa-times"></i>
+        </button>
+
+        <!-- Navigation Buttons -->
+        <button class="modal-nav modal-prev" aria-label="Proyecto anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="modal-nav modal-next" aria-label="Proyecto siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <!-- Header with Icon -->
+          <div class="modal-header">
+            <div class="modal-icon-container">
+              <i id="modal-icon" class="fa-solid fa-briefcase"></i>
+            </div>
+            <div class="flex-1">
+              <h2 id="modal-title" class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white"></h2>
+              <p id="modal-company" class="text-slate-600 dark:text-slate-400 mt-1"></p>
+            </div>
+          </div>
+
+          <!-- KPIs -->
+          <div id="modal-kpis" class="modal-kpis"></div>
+
+          <!-- Stack -->
+          <div class="modal-section">
+            <h3 class="modal-section-title">
+              <i class="fa-solid fa-layer-group mr-2"></i>
+              <span data-i18n="modal.stack">Stack Técnico</span>
+            </h3>
+            <div id="modal-stack" class="chips"></div>
+          </div>
+
+          <!-- Description -->
+          <div class="modal-section">
+            <h3 class="modal-section-title">
+              <i class="fa-solid fa-list-check mr-2"></i>
+              <span data-i18n="modal.highlights">Highlights</span>
+            </h3>
+            <ul id="modal-bullets" class="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-200"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="py-8 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
     <div class="max-w-7xl mx-auto px-4 text-sm text-slate-500 dark:text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2">
