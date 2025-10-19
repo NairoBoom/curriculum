@@ -7,9 +7,10 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=()
 
   # Content Security Policy (CSP)
+  # Note: GitHub Pages may not support custom headers. Consider using Cloudflare or Netlify for full CSP support
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://code.jquery.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://www.google-analytics.com; frame-ancestors 'self';
 
-  # Cache Control
+  # Cache Control for static assets
   Cache-Control: public, max-age=31536000, immutable
 
 /*.css
