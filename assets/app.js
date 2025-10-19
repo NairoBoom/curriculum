@@ -807,65 +807,229 @@
       });
     }
 
-    // Animated Grid Background
-    const canvas = document.getElementById('grid-canvas');
-    if (canvas) {
+    // Animated Grid Background - Enhanced Particle System
+    function initParticleCanvas(canvasId, options = {}) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+
+      const {
+        particleDensity = 15000,
+        maxParticles = 80,
+        connectionDistance = 120,
+        mouseRadius = 150,
+        particleOpacity = 0.9
+      } = options;
+
       const ctx = canvas.getContext('2d');
       let width = canvas.width = canvas.offsetWidth;
       let height = canvas.height = canvas.offsetHeight;
 
-      window.addEventListener('resize', () => {
-        width = canvas.width = canvas.offsetWidth;
-        height = canvas.height = canvas.offsetHeight;
+      // Mouse position tracking for interaction
+      let mouse = {
+        x: null,
+        y: null,
+        radius: mouseRadius
+      };
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
       });
 
-      const dots = [];
-      const dotsCount = 50;
+      window.addEventListener('mouseout', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
 
-      for (let i = 0; i < dotsCount; i++) {
-        dots.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          radius: Math.random() * 2 + 1
-        });
+      const resizeHandler = () => {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+        initParticles();
+      };
+
+      window.addEventListener('resize', resizeHandler);
+
+      // Particle class
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.5;
+          this.vy = (Math.random() - 0.5) * 0.5;
+          this.radius = Math.random() * 2 + 1;
+          this.originalVx = this.vx;
+          this.originalVy = this.vy;
+        }
+
+        update() {
+          // Mouse interaction
+          if (mouse.x != null && mouse.y != null) {
+            const dx = this.x - mouse.x;
+            const dy = this.y - mouse.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < mouse.radius) {
+              const force = (mouse.radius - distance) / mouse.radius;
+              const angle = Math.atan2(dy, dx);
+              this.vx += Math.cos(angle) * force * 0.2;
+              this.vy += Math.sin(angle) * force * 0.2;
+            }
+          }
+
+          // Apply friction to gradually return to original velocity
+          this.vx += (this.originalVx - this.vx) * 0.05;
+          this.vy += (this.originalVy - this.vy) * 0.05;
+
+          // Update position
+          this.x += this.vx;
+          this.y += this.vy;
+
+          // Bounce off edges
+          if (this.x < 0 || this.x > width) {
+            this.vx *= -1;
+            this.originalVx *= -1;
+            this.x = Math.max(0, Math.min(width, this.x));
+          }
+          if (this.y < 0 || this.y > height) {
+            this.vy *= -1;
+            this.originalVy *= -1;
+            this.y = Math.max(0, Math.min(height, this.y));
+          }
+        }
+
+        draw() {
+          const isDark = document.documentElement.classList.contains('dark');
+
+          // Glow effect
+          const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 3);
+          if (isDark) {
+            gradient.addColorStop(0, `rgba(96, 165, 250, ${particleOpacity * 0.8})`);
+            gradient.addColorStop(0.5, `rgba(96, 165, 250, ${particleOpacity * 0.4})`);
+            gradient.addColorStop(1, 'rgba(96, 165, 250, 0)');
+          } else {
+            gradient.addColorStop(0, `rgba(37, 99, 235, ${particleOpacity * 0.6})`);
+            gradient.addColorStop(0.5, `rgba(37, 99, 235, ${particleOpacity * 0.3})`);
+            gradient.addColorStop(1, 'rgba(37, 99, 235, 0)');
+          }
+
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius * 3, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Core particle
+          ctx.fillStyle = isDark ? `rgba(96, 165, 250, ${particleOpacity})` : `rgba(37, 99, 235, ${particleOpacity * 0.8})`;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      const particles = [];
+
+      function initParticles() {
+        particles.length = 0;
+        const count = Math.min(Math.floor((width * height) / particleDensity), maxParticles);
+        for (let i = 0; i < count; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      initParticles();
+
+      // Pause animation when page is not visible (performance optimization)
+      let animationId;
+      const visibilityHandler = () => {
+        if (document.hidden) {
+          if (animationId) cancelAnimationFrame(animationId);
+        } else {
+          animate();
+        }
+      };
+      document.addEventListener('visibilitychange', visibilityHandler);
+
+      function connectParticles() {
+        const isDark = document.documentElement.classList.contains('dark');
+
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < connectionDistance) {
+              const opacity = (1 - distance / connectionDistance) * 0.5 * particleOpacity;
+
+              // Gradient line for more visual appeal
+              const gradient = ctx.createLinearGradient(
+                particles[i].x, particles[i].y,
+                particles[j].x, particles[j].y
+              );
+
+              if (isDark) {
+                gradient.addColorStop(0, `rgba(96, 165, 250, ${opacity})`);
+                gradient.addColorStop(0.5, `rgba(147, 197, 253, ${opacity * 0.8})`);
+                gradient.addColorStop(1, `rgba(96, 165, 250, ${opacity})`);
+              } else {
+                gradient.addColorStop(0, `rgba(37, 99, 235, ${opacity})`);
+                gradient.addColorStop(0.5, `rgba(59, 130, 246, ${opacity * 0.8})`);
+                gradient.addColorStop(1, `rgba(37, 99, 235, ${opacity})`);
+              }
+
+              ctx.strokeStyle = gradient;
+              ctx.lineWidth = 1.5;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
       }
 
       function animate() {
         ctx.clearRect(0, 0, width, height);
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('color-scheme') === 'dark' ? 'rgba(96, 165, 250, 0.5)' : 'rgba(37, 99, 235, 0.5)';
-        ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('color-scheme') === 'dark' ? 'rgba(96, 165, 250, 0.2)' : 'rgba(37, 99, 235, 0.2)';
 
-        dots.forEach(dot => {
-          dot.x += dot.vx;
-          dot.y += dot.vy;
-
-          if (dot.x < 0 || dot.x > width) dot.vx *= -1;
-          if (dot.y < 0 || dot.y > height) dot.vy *= -1;
-
-          ctx.beginPath();
-          ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
-          ctx.fill();
-
-          dots.forEach(otherDot => {
-            const dx = dot.x - otherDot.x;
-            const dy = dot.y - otherDot.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < 100) {
-              ctx.beginPath();
-              ctx.moveTo(dot.x, dot.y);
-              ctx.lineTo(otherDot.x, otherDot.y);
-              ctx.stroke();
-            }
-          });
+        // Update and draw particles
+        particles.forEach(particle => {
+          particle.update();
+          particle.draw();
         });
 
-        requestAnimationFrame(animate);
+        // Draw connections
+        connectParticles();
+
+        animationId = requestAnimationFrame(animate);
       }
+
       animate();
+
+      // Cleanup function
+      return () => {
+        if (animationId) cancelAnimationFrame(animationId);
+        window.removeEventListener('resize', resizeHandler);
+        document.removeEventListener('visibilitychange', visibilityHandler);
+      };
     }
+
+    // Initialize both canvas instances
+    // Global canvas with lower particle density
+    initParticleCanvas('grid-canvas-global', {
+      particleDensity: 20000,
+      maxParticles: 60,
+      connectionDistance: 100,
+      mouseRadius: 150,
+      particleOpacity: 0.6
+    });
+
+    // Hero canvas with higher particle density
+    initParticleCanvas('grid-canvas', {
+      particleDensity: 12000,
+      maxParticles: 80,
+      connectionDistance: 120,
+      mouseRadius: 150,
+      particleOpacity: 0.9
+    });
 
     // Typing Effect
     const typingTexts = {

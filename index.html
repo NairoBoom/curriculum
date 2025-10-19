@@ -181,14 +181,21 @@
     </div>
   </header>
 
+  <!-- Animated Grid Background (Global) -->
+  <div class="fixed inset-0 -z-50 pointer-events-none">
+    <canvas id="grid-canvas-global" class="w-full h-full opacity-20"></canvas>
+  </div>
+
   <!-- Main Content -->
   <main id="main-content">
 
   <!-- Hero -->
   <section id="inicio" class="relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-br from-brand-50 via-white to-cyan-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800"></div>
-    <!-- Animated Grid Background -->
-    <canvas id="grid-canvas" class="absolute inset-0 -z-10 opacity-30"></canvas>
+    <!-- Animated Particle Background (Hero) -->
+    <div class="absolute inset-0 -z-10 pointer-events-none">
+      <canvas id="grid-canvas" class="w-full h-full opacity-40"></canvas>
+    </div>
     <div class="max-w-7xl mx-auto px-4 pt-14 pb-10 md:pt-20 md:pb-16">
       <div class="grid md:grid-cols-12 gap-8 items-center">
         <div class="md:col-span-7">
