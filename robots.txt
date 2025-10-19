@@ -2,12 +2,23 @@
 
 User-agent: *
 Allow: /
+Allow: /assets/styles.css
+Allow: /assets/app.js
 
 # Sitemaps
 Sitemap: https://nairoboom.github.io/curriculum/sitemap.xml
 
-# Crawl-delay
+# Crawl-delay for polite crawling
 Crawl-delay: 1
 
-# Block common bot paths
-Disallow: /assets/
+# Block sensitive paths only
+Disallow: /.git/
+Disallow: /.claude/
+Disallow: /sw.js
+
+# Allow common search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
