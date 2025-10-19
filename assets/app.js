@@ -735,12 +735,25 @@
       $('#mobile-menu-toggle i').removeClass('fa-times').addClass('fa-bars');
     });
 
-    // Scroll progress indicator
+    // Scroll progress indicator & scroll-to-top button
+    const $scrollToTop = $('#scroll-to-top');
     $(window).on('scroll', function(){
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const scrolled = (winScroll / height) * 100;
       $('#scroll-progress').css('width', scrolled + '%');
+
+      // Show/hide scroll-to-top button
+      if (winScroll > 300) {
+        $scrollToTop.removeClass('opacity-0 pointer-events-none').addClass('opacity-100 pointer-events-auto');
+      } else {
+        $scrollToTop.removeClass('opacity-100 pointer-events-auto').addClass('opacity-0 pointer-events-none');
+      }
+    });
+
+    // Scroll to top on click
+    $scrollToTop.on('click', function(){
+      $('html, body').animate({ scrollTop: 0 }, 600);
     });
 
     // Intersection Observer for fade-in animations
@@ -1410,17 +1423,24 @@
       });
     });
 
-    // Formspree submit
+    // Formspree submit with enhanced feedback
     $('#form-contacto').on('submit', function(e){
       e.preventDefault();
       const state = store.getState();
-      const $form = $(this);
-      const $btn  = $form.find('button[type="submit"]');
+      const $btn  = $('#form-submit-btn');
+      const $btnText = $btn.find('.btn-text');
+      const $btnSpinner = $btn.find('.btn-spinner');
       const $msg  = $('#form-contacto-msg');
+      const $msgContainer = $msg.find('div');
+      const $statusIcon = $msg.find('.status-icon');
+      const $messageText = $msg.find('.message-text');
 
+      // Show loading state
       store.dispatch({ type: FORM_STATUS, payload: { status: 'sending' } });
-      $btn.prop('disabled', true).text(t('form.sending', state.lang));
-      $msg.addClass('hidden').text('');
+      $btn.prop('disabled', true);
+      $btnText.addClass('hidden');
+      $btnSpinner.removeClass('hidden');
+      $msg.addClass('hidden');
 
       const fd = new FormData(this);
 
@@ -1428,8 +1448,24 @@
         .then(async (res) => {
           if (res.ok) {
             store.dispatch({ type: FORM_STATUS, payload: { status: 'success', message: t('form.ok', state.lang) } });
-            $msg.removeClass('hidden').text(t('form.ok', state.lang));
-            (this).reset();
+
+            // Success feedback
+            $msgContainer.removeClass('bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800')
+                        .addClass('bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800');
+            $statusIcon.removeClass('fa-solid fa-circle-exclamation text-red-600')
+                      .addClass('fa-solid fa-circle-check text-green-600');
+            $messageText.removeClass('text-red-700 dark:text-red-300')
+                       .addClass('text-green-700 dark:text-green-300')
+                       .text(t('form.ok', state.lang));
+            $msg.removeClass('hidden');
+
+            // Reset form
+            this.reset();
+
+            // Auto-hide success message after 5 seconds
+            setTimeout(() => {
+              $msg.addClass('hidden');
+            }, 5000);
           } else {
             const data = await res.json().catch(()=> ({}));
             const errMsg = data?.error || t('form.fail', state.lang);
@@ -1438,11 +1474,23 @@
         })
         .catch(err => {
           store.dispatch({ type: FORM_STATUS, payload: { status: 'error', message: err.message || t('form.net', state.lang) } });
-          $msg.removeClass('hidden').text(err.message || t('form.net', state.lang));
+
+          // Error feedback
+          $msgContainer.removeClass('bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800')
+                      .addClass('bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800');
+          $statusIcon.removeClass('fa-solid fa-circle-check text-green-600')
+                    .addClass('fa-solid fa-circle-exclamation text-red-600');
+          $messageText.removeClass('text-green-700 dark:text-green-300')
+                     .addClass('text-red-700 dark:text-red-300')
+                     .text(err.message || t('form.net', state.lang));
+          $msg.removeClass('hidden');
         })
         .finally(() => {
           const st = store.getState();
-          $btn.prop('disabled', false).text(t('form.send', st.lang));
+          $btn.prop('disabled', false);
+          $btnText.removeClass('hidden');
+          $btnSpinner.addClass('hidden');
+          $btnText.text(t('form.send', st.lang));
         });
     });
 

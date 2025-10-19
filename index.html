@@ -12,6 +12,15 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
   <link rel="canonical" href="https://nairoboom.github.io/curriculum/">
 
+  <!-- Alternate Languages -->
+  <link rel="alternate" hreflang="es" href="https://nairoboom.github.io/curriculum/">
+  <link rel="alternate" hreflang="en" href="https://nairoboom.github.io/curriculum/">
+  <link rel="alternate" hreflang="x-default" href="https://nairoboom.github.io/curriculum/">
+
+  <!-- Search Engine Verification (Uncomment and add your verification codes) -->
+  <!-- <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE"> -->
+  <!-- <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE"> -->
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nairoboom.github.io/curriculum/">
@@ -32,6 +41,13 @@
   <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1e293b" media="(prefers-color-scheme: dark)">
 
+  <!-- Security Headers -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+
   <!-- PWA Manifest -->
   <link rel="manifest" href="/manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
@@ -39,27 +55,59 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Nairo Boom">
 
+  <!-- DNS Prefetch & Preconnect -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+  <link rel="dns-prefetch" href="https://code.jquery.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://formspree.io">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
   <!-- Preload Critical Resources -->
   <link rel="preload" href="assets/styles.css" as="style">
   <link rel="preload" href="assets/app.js" as="script">
   <link rel="preload" href="img/foto.jpeg" as="image">
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (FREE) -->
+
+  <!-- Font Awesome 6 (FREE) with SRI -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous"
         referrerpolicy="no-referrer">
 
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="stylesheet" href="assets/styles.css">
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+
+  <!-- jQuery with SRI -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (Replace G-XXXXXXXXXX with your tracking ID) -->
+  <!-- Uncomment when you have your Google Analytics ID -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+      'anonymize_ip': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  </script>
+  -->
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500">
@@ -74,6 +122,13 @@
   <!-- Scroll Progress Bar -->
   <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-brand-600 z-50 transition-all duration-150" style="width: 0%"></div>
 
+  <!-- Scroll to Top Button -->
+  <button id="scroll-to-top"
+          class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-brand-600 text-white shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-brand-700 hover:scale-110 z-40 flex items-center justify-center"
+          aria-label="Volver arriba">
+    <i class="fa-solid fa-arrow-up text-lg"></i>
+  </button>
+
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {
@@ -83,22 +138,100 @@
     "url": "https://nairoboom.github.io/curriculum/",
     "image": "https://nairoboom.github.io/curriculum/img/foto.jpeg",
     "jobTitle": "Desarrollador Fullstack Senior",
+    "description": "Desarrollador Fullstack con +8 años de experiencia especializado en e-commerce, PrestaShop, PHP, Node.js, Golang y DevOps",
     "worksFor": {
       "@type": "Organization",
-      "name": "Farmalisto"
+      "name": "Farmalisto",
+      "url": "https://www.farmalisto.com.co"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "UNIMINUTO",
+      "url": "https://www.uniminuto.edu"
     },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Bogotá",
+      "addressRegion": "Bogotá D.C.",
       "addressCountry": "CO"
     },
     "email": "nairoboom@gmail.com",
     "telephone": "+573105788198",
-    "knowsAbout": ["PHP", "Node.js", "Golang", "Python", "PrestaShop", "Angular", "React", "TypeScript", "MySQL", "PostgreSQL", "DevOps", "Ansible", "Linux"],
+    "knowsAbout": [
+      "PHP", "Node.js", "Golang", "Python", "C#", ".NET",
+      "PrestaShop", "Angular", "React", "TypeScript", "jQuery",
+      "MySQL", "PostgreSQL", "DevOps", "Ansible", "Linux",
+      "Nginx", "Apache", "Cloudflare", "E-commerce", "Ionic"
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Ingeniería de Sistemas",
+        "educationalLevel": "Undergraduate",
+        "credentialCategory": "degree"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Diplomado SecDevOps",
+        "educationalLevel": "Professional Development",
+        "credentialCategory": "certificate"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "AWS Academy Cloud Foundations",
+        "educationalLevel": "Professional Development",
+        "credentialCategory": "certificate"
+      }
+    ],
     "sameAs": [
       "https://github.com/nairoboom",
       "https://www.linkedin.com/in/nairo-boom-8b39a115a"
     ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://nairoboom.github.io/curriculum/#inicio"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Experiencia",
+      "item": "https://nairoboom.github.io/curriculum/#experiencia"
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Proyectos",
+      "item": "https://nairoboom.github.io/curriculum/#proyectos"
+    },{
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Contacto",
+      "item": "https://nairoboom.github.io/curriculum/#contacto"
+    }]
+  }
+  </script>
+
+  <!-- WebSite Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Nairo Samir Boom Vargas - Portafolio",
+    "url": "https://nairoboom.github.io/curriculum/",
+    "description": "Portafolio profesional de Nairo Samir Boom Vargas - Desarrollador Fullstack",
+    "author": {
+      "@type": "Person",
+      "name": "Nairo Samir Boom Vargas"
+    },
+    "inLanguage": ["es", "en"]
   }
   </script>
 
@@ -263,7 +396,7 @@
             <div class="relative bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-soft border border-slate-200 dark:border-slate-700">
               <div class="flex items-start gap-4">
                 <div class="h-24 w-24 overflow-hidden rounded-xl ring-1 ring-slate-200 dark:ring-slate-700 shrink-0">
-                  <img src="img/foto.jpeg" alt="Foto profesional de Nairo Samir Boom Vargas, Desarrollador Fullstack" class="h-full w-full object-cover object-center" loading="eager"/>
+                  <img src="img/foto.jpeg" alt="Foto profesional de Nairo Samir Boom Vargas, Desarrollador Fullstack" class="h-full w-full object-cover object-center" loading="eager" decoding="async"/>
                 </div>
                 <div class="text-sm">
                   <p class="text-slate-500 dark:text-slate-400" data-i18n="sb.locationLabel">Ubicación</p>
@@ -910,20 +1043,53 @@
           <div class="grid sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form.name">Nombre</label>
-              <input type="text" name="name" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" data-i18n-attr="placeholder:form.name_ph" placeholder="Tu nombre" required />
+              <input type="text" name="name"
+                     minlength="2"
+                     maxlength="100"
+                     class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600 transition-all"
+                     data-i18n-attr="placeholder:form.name_ph"
+                     placeholder="Tu nombre"
+                     required />
             </div>
             <div>
               <label class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form.email">Correo</label>
-              <input type="email" name="email" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" data-i18n-attr="placeholder:form.email_ph" placeholder="tucorreo@dominio.com" required />
+              <input type="email" name="email"
+                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                     class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600 transition-all"
+                     data-i18n-attr="placeholder:form.email_ph"
+                     placeholder="tucorreo@dominio.com"
+                     required />
             </div>
             <div class="sm:col-span-2">
               <label class="block text-sm font-medium text-slate-700 dark:text-slate-300" data-i18n="form.message">Mensaje</label>
-              <textarea rows="4" name="message" class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600" data-i18n-attr="placeholder:form.message_ph" placeholder="Cuéntame brevemente sobre tu proyecto" required></textarea>
+              <textarea rows="4" name="message"
+                        minlength="10"
+                        maxlength="1000"
+                        class="mt-1 w-full rounded-lg border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:border-brand-600 focus:ring-brand-600 transition-all resize-none"
+                        data-i18n-attr="placeholder:form.message_ph"
+                        placeholder="Cuéntame brevemente sobre tu proyecto"
+                        required></textarea>
             </div>
           </div>
           <input type="hidden" name="_subject" data-i18n-attr="value:form.subject" value="Nuevo mensaje desde el portafolio">
-          <button class="mt-4 w-full px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700" type="submit" data-i18n="form.send">Enviar</button>
-          <p id="form-contacto-msg" class="mt-2 text-sm text-slate-600 dark:text-slate-300 hidden"></p>
+          <button id="form-submit-btn"
+                  class="mt-4 w-full px-5 py-3 rounded-lg bg-brand-600 text-white font-semibold shadow-soft hover:bg-brand-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  type="submit"
+                  data-i18n="form.send">
+            <span class="btn-text">Enviar</span>
+            <span class="btn-spinner hidden">
+              <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </span>
+          </button>
+          <div id="form-contacto-msg" class="mt-3 hidden">
+            <div class="flex items-start gap-2 p-3 rounded-lg">
+              <i class="status-icon mt-0.5"></i>
+              <p class="text-sm message-text"></p>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -996,8 +1162,13 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/redux@4.2.1/dist/redux.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Scripts with SRI -->
+  <script src="https://cdn.jsdelivr.net/npm/redux@4.2.1/dist/redux.min.js"
+          integrity="sha256-TXn5e1ThPKbkfFMGYJJZKvJXZ3kLvGWTpxL1K0cR/Ks="
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
+          integrity="sha256-y26Vegdj9eIKTI17Aa47xN7jW7J2BdON7Y1hjDZxY6o="
+          crossorigin="anonymous"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>
