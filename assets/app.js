@@ -36,16 +36,17 @@
       'modal.stack':'Stack Técnico', 'modal.highlights':'Highlights',
       'skills.proficiency':'Nivel de Dominio', 'skills.overview':'Vista General',
       'hero.role':'Desarrollador Fullstack',
-      'hero.summary':'Especialista en <b>e-commerce</b> con foco en <b>PrestaShop 1.6/1.7</b>, back-end en <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET y front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>. Experiencia en <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> y apps híbridas con <b>Ionic</b>. Fuerte enfoque en colaboración interdisciplinaria, comunicación efectiva y liderazgo técnico dentro de equipos de desarrollo ágiles.',
+      'hero.summary':'Ingeniero de software senior con +9 años creando soluciones <b>backend</b> y <b>fullstack</b> de extremo a extremo. Sólido en <b>PHP/Symfony</b>, <b>Node.js/NestJS</b> y <b>e-commerce</b> (<b>PrestaShop 1.6/1.7</b>), actualmente desarrollando <b>microservicios en Go</b> con arquitectura hexagonal. Front-end con <b>Angular</b>, <b>React</b> y <b>TypeScript</b>; bases de datos <b>MySQL/PostgreSQL</b>; infraestructura <b>Linux</b> (Nginx/Apache), <b>Ansible</b> y <b>Cloudflare</b>, con experiencia adicional en <b>Python</b> y <b>C#/.NET</b>. Enfoque en código mantenible, rendimiento medible, colaboración interdisciplinaria y comunicación efectiva.',
       'cta.viewExp':'Ver experiencia', 'cta.contact':'Contactar', 'cta.downloadCV':'Descargar CV',
       'stats.years':'Años Exp.', 'stats.projects':'+ Proyectos', 'stats.tech':'+ Tecnologías',
       'sb.locationLabel':'Ubicación','sb.availabilityLabel':'Disponibilidad','sb.availability':'Remoto / Híbrido','sb.city':'Bogotá D.C., Colombia',
+      'sb.languagesLabel':'Idiomas','sb.languages':'Español (nativo) · Inglés A2 (lectura/escritura)',
       'sb.bio':'Me enfoco en soluciones mantenibles, rendimiento medible y automatización útil. Disfruto trabajar en equipo, compartir conocimiento y apoyar la toma de decisiones técnicas. Documentación mínima pero suficiente para que cualquier dev avance sin fricción.',
       'about.title':'Acerca de mí',
       'about.body':'Soy desarrollador web y móvil con más de 8 años de experiencia. He trabajado en proyectos corporativos, tiendas online completas y apps híbridas. Fuerte en <b>PrestaShop</b>, sólido en back-end <b>PHP/Node.js/Golang</b> y front-end moderno. También administro <b>Linux</b> (Nginx/Apache), manejo bases de datos <b>MySQL/PostgreSQL</b> y orquesto despliegues con <b>Ansible</b>. Me gusta dejar las cosas mejor de como las encontré: refactors iterativos, medición de performance y seguridad sin fricción. Me motiva construir soluciones en colaboración con equipos diversos y orientados a objetivos comunes.',
       'exp.title':'Experiencia',
       'exp.senior.role':'Ingeniero de Desarrollo Web <b>Senior</b>',
-      'exp.senior.date':'jun. 2024 – actualidad · Remoto (Bogotá)',
+      'exp.senior.date':'jun. 2024 – dic. 2025 · Remoto (Bogotá)',
       'exp.senior.summary':'Desarrollo de <b>servicios y APIs</b> con <b>Go</b> y <b>NestJS</b>, refactor de módulos críticos (precios, stock, promociones), integraciones con servicios internos/terceros y mejoras de rendimiento a nivel de app, edge y base de datos. Trabajo en conjunto con equipos de producto, QA y diseño para mantener una comunicación fluida y una entrega continua sin fricciones.',
       'exp.senior.b1':'Endpoints REST con contratos estables, manejo de errores y observabilidad básica.',
       'exp.senior.b2':'Refactors incrementales que reducen deuda técnica y evitan regresiones.',
@@ -174,16 +175,17 @@
       'modal.stack':'Tech Stack', 'modal.highlights':'Highlights',
       'skills.proficiency':'Proficiency Level', 'skills.overview':'Overview',
       'hero.role':'Full-stack Developer',
-      'hero.summary':'E-commerce specialist focused on <b>PrestaShop 1.6/1.7</b>, back end with <b>PHP</b>, <b>Node.js/NestJS</b>, <b>Golang</b>, <b>Python</b>, <b>C#</b>/.NET and front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>. Experience with <b>MySQL/PostgreSQL</b>, <b>Linux</b> (Nginx/Apache), <b>Ansible</b>, <b>Cloudflare</b> and hybrid apps with <b>Ionic</b>. Strong believer in teamwork, cross-functional collaboration and technical leadership within agile teams.',
+      'hero.summary':'Senior software engineer with 9+ years building end-to-end <b>backend</b> and <b>fullstack</b> solutions. Strong in <b>PHP/Symfony</b>, <b>Node.js/NestJS</b> and <b>e-commerce</b> (<b>PrestaShop 1.6/1.7</b>), currently building <b>microservices in Go</b> with hexagonal architecture. Front end with <b>Angular</b>, <b>React</b> and <b>TypeScript</b>; databases <b>MySQL/PostgreSQL</b>; infrastructure <b>Linux</b> (Nginx/Apache), <b>Ansible</b> and <b>Cloudflare</b>, with additional experience in <b>Python</b> and <b>C#/.NET</b>. Focused on maintainable code, measurable performance, cross-functional collaboration and effective communication.',
       'cta.viewExp':'View experience', 'cta.contact':'Contact', 'cta.downloadCV':'Download CV',
       'stats.years':'Years Exp.', 'stats.projects':'+ Projects', 'stats.tech':'+ Technologies',
       'sb.locationLabel':'Location','sb.availabilityLabel':'Availability','sb.availability':'Remote / Hybrid','sb.city':'Bogotá D.C., Colombia',
+      'sb.languagesLabel':'Languages','sb.languages':'Spanish (native) · English A2 (reading/writing)',
       'sb.bio':'I focus on maintainable solutions, measurable performance and practical automation. I value teamwork, shared learning and clear communication. Minimal but sufficient docs so any dev can move fast.',
       'about.title':'About me',
       'about.body':'I am a web and mobile developer with 8+ years of experience. I have worked on corporate projects, full online stores and hybrid apps. Strong in <b>PrestaShop</b>, solid back end in <b>PHP/Node.js/Golang</b>, and modern front end. I also administer <b>Linux</b> (Nginx/Apache), handle <b>MySQL/PostgreSQL</b> and orchestrate deployments with <b>Ansible</b>. I enjoy collaborating with diverse teams to build reliable, scalable and meaningful solutions.',
       'exp.title':'Experience',
       'exp.senior.role':'<b>Senior</b> Web Development Engineer',
-      'exp.senior.date':'Jun 2024 – present · Remote (Bogotá)',
+      'exp.senior.date':'Jun 2024 – Dec 2025 · Remote (Bogotá)',
       'exp.senior.summary':'Development of <b>services and APIs</b> with <b>Go</b> and <b>NestJS</b>, refactor of critical modules (pricing, stock, promotions), integrations with internal/third-party services, and performance improvements at app/edge/database levels. Active coordination with product, QA and design teams to ensure seamless delivery.',
       'exp.senior.b1':'REST endpoints with stable contracts, error handling and basic observability.',
       'exp.senior.b2':'Incremental refactors that reduce tech debt and prevent regressions.',
@@ -304,6 +306,32 @@
     // Dataset de proyectos (contenido bilingüe dentro del dataset)
   const PROJECTS = {
     es: [
+      {
+        id:'marketplace-go',
+        company:'Proyecto personal',
+        role:'Fullstack · Go + React',
+        period:'2025–2026',
+        title:'Marketplace B2B (proveedores ↔ tenderos)',
+        img:'img/proyectos/marketplace.jpg',
+        icon: 'fa-solid fa-store',
+        categories: ['api', 'ecommerce'],
+        stack:[
+          { icon:'fa-solid fa-code',        name:'Go' },
+          { icon:'fa-brands fa-react',      name:'React' },
+          { icon:'fa-solid fa-database',    name:'PostgreSQL' },
+          { icon:'fa-solid fa-code-branch', name:'REST API' }
+        ],
+        kpis:[
+          { val:'Go',     lbl:'API REST backend' },
+          { val:'React',  lbl:'SPA frontend' },
+          { val:'2 roles',lbl:'Proveedor / Tendero' }
+        ],
+        bullets:[
+          'Backend en Go: API REST con autenticación, gestión de proveedores, catálogo y pedidos.',
+          'Roles diferenciados: los proveedores publican productos y los tenderos compran desde la app.',
+          'Frontend SPA en React consumiendo la API; persistencia en PostgreSQL.'
+        ]
+      },
       {
         id:'promos',
         company:'Farmalisto',
@@ -437,6 +465,32 @@
       }
     ],
     en: [
+      {
+        id:'marketplace-go',
+        company:'Personal project',
+        role:'Fullstack · Go + React',
+        period:'2025–2026',
+        title:'B2B Marketplace (suppliers ↔ retailers)',
+        img:'img/proyectos/marketplace.jpg',
+        icon: 'fa-solid fa-store',
+        categories: ['api', 'ecommerce'],
+        stack:[
+          { icon:'fa-solid fa-code',        name:'Go' },
+          { icon:'fa-brands fa-react',      name:'React' },
+          { icon:'fa-solid fa-database',    name:'PostgreSQL' },
+          { icon:'fa-solid fa-code-branch', name:'REST API' }
+        ],
+        kpis:[
+          { val:'Go',      lbl:'REST API backend' },
+          { val:'React',   lbl:'SPA frontend' },
+          { val:'2 roles', lbl:'Supplier / Retailer' }
+        ],
+        bullets:[
+          'Go backend: REST API with authentication, supplier management, catalog and orders.',
+          'Role-based access: suppliers publish products and retailers buy through the app.',
+          'React SPA consuming the API; PostgreSQL persistence.'
+        ]
+      },
       {
         id:'promos',
         company:'Farmalisto',
@@ -1151,7 +1205,7 @@
     const skillsData = [
       { name: 'PHP/Symfony', level: 95, icon: 'fa-brands fa-php' },
       { name: 'Node.js/NestJS', level: 90, icon: 'fa-brands fa-node' },
-      { name: 'Golang', level: 85, icon: 'fa-solid fa-code' },
+      { name: 'Golang', level: 65, icon: 'fa-solid fa-code' },
       { name: 'React/Angular', level: 88, icon: 'fa-brands fa-react' },
       { name: 'MySQL/PostgreSQL', level: 92, icon: 'fa-solid fa-database' },
       { name: 'DevOps/Ansible', level: 87, icon: 'fa-brands fa-linux' },
