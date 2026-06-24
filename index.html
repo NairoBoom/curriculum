@@ -434,7 +434,51 @@
 
       <div class="timeline">
         <div class="timeline-progress" id="timeline-progress"></div>
-
+      <!-- Senior GO DB SYSTEM-->
+      <div class="timeline-item">
+      <article class="mt-8 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
+        <div class="md:col-span-3">
+          <div class="h-12 w-12 rounded-lg bg-white/70 dark:bg-slate-800 ring-1 ring-slate-200 dark:ring-slate-700 overflow-hidden grid place-items-center">
+            <img src="img/logos/db-system.jpg" alt="Logo de DB System" class="h-full w-full object-contain object-center" loading="lazy" decoding="async"/>
+          </div>
+          <h3 class="font-bold text-slate-900 dark:text-white mt-2">DB System</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.senior.role">Desarrollador Backend Go </p>
+          <p class="text-sm text-slate-500 dark:text-slate-400" data-i18n="exp.senior.date">Ene. 2026 – actualidad · Remoto (Bogotá)</p>
+          <div class="mt-3 chips text-xs">
+            <span class="chip"><i class="fa-solid fa-code"></i>Go</span>
+            <span class="chip"><i class="fa-brands fa-node"></i>Oracle</span>
+            <span class="chip"><i class="fa-brands fa-php"></i>SQL</span>
+            <span class="chip"><i class="fa-solid fa-database"></i>SMB</span>
+            <span class="chip"><i class="fa-solid fa-cloud"></i>OAuth</span>
+            <span class="chip"><i class="fa-solid fa-cloud"></i>Servicios RESTful</span>
+            <span class="chip"><i class="fa-solid fa-cloud"></i>.Net</span>
+          </div>
+        </div>
+        <div class="md:col-span-9 space-y-3">
+          <p data-i18n="exp.senior.summary">Diseño e implementación de microservicios REST en Go con enfoque en arquitectura hexagonal (Ports & Adapters), integraciones con bases de datos relacionales y sistemas financieros.
+          Arquitectura y diseño:
+          </p>
+          <ul class="list-disc pl-5 leading-relaxed text-slate-700 dark:text-slate-200">
+            <li data-i18n="exp.senior.b1">Implementación de arquitectura hexagonal estricta: separación entre dominio, casos de uso, puertos e infraestructura.</li>
+            <li data-i18n="exp.senior.b2">Patrones aplicados: Strategy, Repository, Builder, Middleware.</li>
+            <li data-i18n="exp.senior.b3">Diseño de contratos REST con migraciones breaking change coordinadas entre equipos consumidores.</li>
+            <li data-i18n="exp.senior.b4">Documentación técnica en formato RFC corporativo con casos de prueba y ejemplos curl.</li>
+            <li data-i18n="exp.senior.b5">APIs HTTP con Gin, binding y validación de DTOs, manejo de errores de dominio.</li>
+            <li data-i18n="exp.senior.b5">Integración con Oracle vía go-ora/v2 (driver puro Go, sin Instant Client), stored procedures con parámetros nombrados.</li>
+            <li data-i18n="exp.senior.b5">Integración con SQL Server vía go-mssqldb: TVP para inserts masivos en lote, validación de named instances post-conexión.</li>
+            <li data-i18n="exp.senior.b5">Cliente HTTP con OAuth2 client credentials flow, parsing robusto de respuestas de gateways externos.</li>
+            <li data-i18n="exp.senior.b5">Escritura de archivos sobre SMB v2 con autenticación NTLM (go-smb2).</li>
+            <li data-i18n="exp.senior.b5">Generación de archivos de ancho fijo (formato bancario legacy): padding, encoding, dígito verificador, fechas ACH.</li>
+            <li data-i18n="exp.senior.b5">Normalización y validación de datos financieros: códigos bancarios, homologación de productos entre sistemas.</li>
+            <li data-i18n="exp.senior.b5">Testing unitario con testify y mocks generados por interfaz; validación E2E contra entornos reales con curl y Postman.</li>
+            <li data-i18n="exp.senior.b5">Contenedores Docker multi-stage: builder Alpine → runtime scratch (binario estático, mínima superficie de ataque).</li>
+            <li data-i18n="exp.senior.b5">CI/CD con GitHub Actions, conventional commits con ! para breaking changes.</li>
+            <li data-i18n="exp.senior.b5">Gestión de parámetros y secretos en Kubernetes (NullPlatform): variables por ambiente QA/UAT/PROD.</li>
+            <li data-i18n="exp.senior.b5">Observabilidad con Datadog APM: tracing distribuido, profiler opcional, structured logging JSON.</li>
+          </ul>
+        </div>
+      </article>
+      </div>
       <!-- Senior -->
       <div class="timeline-item">
       <article class="mt-8 grid md:grid-cols-12 gap-6 card-hover bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
